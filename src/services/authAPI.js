@@ -17,7 +17,7 @@ export const requestLogIn = async (formData) => {
 };
 
 export const requestLogOut = async () => {
-  const { data } = await axiosInstance.post('auth/signout');
+  const { data } = await axiosInstance.post('auth/logout');
   setToken(data.token);
   return data;
 };
