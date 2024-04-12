@@ -13,8 +13,8 @@ import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage.jsx'));
 const HomePage = lazy(() => import('../pages/HomePage.jsx'));
-const SignInPage = lazy(() => import('../pages/SignInPage.jsx'));
-const SignUpPage = lazy(() => import('../Pages/SignUpPage.jsx'));
+const SignInPage = lazy(() => import('../pages/SigninPage.jsx'));
+const SignUpPage = lazy(() => import('../pages/SignupPage.jsx'));
 
 const routes = [
   {
