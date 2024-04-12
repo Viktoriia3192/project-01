@@ -1,10 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
+
 import { setToken } from '../../services/authAPI';
 import {
   requestAvatarUpdate,
   requestUserInfoUpdate,
 } from '../../services/userAPI';
-import { toast } from 'react-toastify';
 import { requestUpdateWaterRate } from '../../services/waterDataAPI';
 
 export const userAvatarThunk = createAsyncThunk(

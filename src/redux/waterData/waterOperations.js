@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setToken } from '../../services/authAPI';
 
+import { setToken } from '../../services/authAPI';
 import {
   requestAddWater,
   requestDeleteWater,

@@ -2,7 +2,7 @@ import { axiosInstance } from '../constants';
 import { setToken } from './authAPI';
 
 export const requestToday = async () => {
-  const { data } = await axiosInstance.get(`waterdata/today`);
+  const { data } = await axiosInstance.get('waterdata/today');
   setToken(data.token);
   return data;
 };
@@ -14,7 +14,7 @@ export const requestMonth = async (month) => {
 };
 
 export const requestAddWater = async (waterData) => {
-  const { data } = await axiosInstance.post(`waterdata`, waterData);
+  const { data } = await axiosInstance.post('waterdata', waterData);
   setToken(data.token);
   return data;
 };

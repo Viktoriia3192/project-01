@@ -1,27 +1,41 @@
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUserThunk } from '../redux/auth/authOperations.js';
-import Loader from './Loader/Loader.jsx';
 import { Navigate, Route, Routes } from 'react-router-dom';
+
+import Loader from './Loader/Loader.jsx';
 import SharedLayout from './SharedLayout/SharedLayout.jsx';
-import {
-  selectAuthIsLoading,
-  selectAuthIsSignedIn,
-} from '../redux/auth/authSelectors.js';
+import { selectAuthIsLoading } from '../redux/auth/authSelectors.js';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute.jsx';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage.jsx'));
 const HomePage = lazy(() => import('../pages/HomePage.jsx'));
-const SignInPage = lazy(() => import('../pages/SigninPage.jsx'));
-const SignUpPage = lazy(() => import('../pages/SignupPage.jsx'));
+const SigninPage = lazy(() => import('../pages/SigninPage.jsx'));
+const SignupPage = lazy(() => import('../pages/SignupPage.jsx'));
 
 const routes = [
+  {
+    path: '/welcome',
+    element: (
+      <RestrictedRoute>
+        <WelcomePage />
+      </RestrictedRoute>
+    ),
+  },
+  {
+    path: '/home',
+    element: (
+      <PrivateRoute>
+        <HomePage />
+      </PrivateRoute>
+    ),
+  },
   {
     path: '/signup',
     element: (
       <RestrictedRoute>
-        <SignUpPage />
+        <SignupPage />
       </RestrictedRoute>
     ),
   },
@@ -29,20 +43,19 @@ const routes = [
     path: '/signin',
     element: (
       <RestrictedRoute>
-        <SignInPage />
+        <SigninPage />
       </RestrictedRoute>
     ),
   },
   {
     path: '*',
-    element: <Navigate to={<HomePage />} />,
+    element: <Navigate to={<WelcomePage />} />,
   },
 ];
 
 const App = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectAuthIsLoading);
-  const isSignedIn = useSelector(selectAuthIsSignedIn);
 
   useEffect(() => {
     dispatch(refreshUserThunk());
@@ -53,21 +66,6 @@ const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route
-          index
-          path="/"
-          element={
-            !isSignedIn ? (
-              <RestrictedRoute>
-                <WelcomePage />
-              </RestrictedRoute>
-            ) : (
-              <PrivateRoute>
-                <HomePage />
-              </PrivateRoute>
-            )
-          }
-        />
         {routes.map(({ path, element }, index) => (
           <Route key={index} path={path} element={element} />
         ))}
