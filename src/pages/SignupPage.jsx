@@ -3,9 +3,9 @@ import { useFormik } from 'formik';
 const SignupPage = () => {
   // setting initial values for form fields
   const initialValues = {
-    firstName: '',
-    lastName: '',
     email: '',
+    password: '',
+    repeatPassword: '',
   };
 
   // defining handleSubmit function for form submission
@@ -21,27 +21,27 @@ const SignupPage = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="firstName">First Name</label>
-      <input
-        id="firstName"
-        name="firstName"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.firstName}
-      />
-      <label htmlFor="lastName">Last Name</label>
-      <input
-        id="lastName"
-        name="lastName"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.lastName}
-      />
-      <label htmlFor="email">Email Address</label>
+      <label htmlFor="email">Email</label>
       <input
         id="email"
         name="email"
         type="email"
+        onChange={formik.handleChange}
+        value={formik.values.email}
+      />
+      <label htmlFor="password">Password</label>
+      <input
+        id="password"
+        name="password"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.lastName}
+      />
+      <label htmlFor="repeatPassword">Repeat Password</label>
+      <input
+        id="repeatPassword"
+        name="repeatPassword"
+        type="repeatPassword"
         onChange={formik.handleChange}
         value={formik.values.email}
       />
