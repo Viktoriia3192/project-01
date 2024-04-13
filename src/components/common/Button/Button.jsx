@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { sprite } from '../../../icons';
+import sprite from '../../../images/sprite.svg';
 import s from './Button.module.css';
 
 const Button = ({ type = 'button', title, className, onClick, ...rest }) => {
@@ -11,7 +11,7 @@ const Button = ({ type = 'button', title, className, onClick, ...rest }) => {
       {...rest}
     >
       <svg>
-        <use href={sprite + '#icon-plus-circle'}></use>
+        <use href={`${sprite}#icon-plus-circle`}></use>
       </svg>
       {title}
     </button>
