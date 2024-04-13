@@ -15,9 +15,9 @@ const initialState = {
   user: {
     email: '',
     avatarURL: '',
-    userName: '',
+    name: '',
     gender: '',
-    waterRate: 1500,
+    waterRate: null,
   },
   token: null,
   isSignedIn: false,

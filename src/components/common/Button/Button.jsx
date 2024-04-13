@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { sprite } from '../../../icons';
+// import { sprite } from '../../../icons';
 import s from './Button.module.css';
 
 const Button = ({ type = 'button', title, className, onClick, ...rest }) => {
