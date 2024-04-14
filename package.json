@@ -18,6 +18,7 @@
     "@vitejs/plugin-react-swc": "^3.3.2",
     "axios": "^1.6.8",
     "formik": "^2.4.5",
+    "i18next": "^23.11.1",
     "modern-normalize": "^2.0.0",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
