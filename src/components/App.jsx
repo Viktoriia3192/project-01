@@ -16,7 +16,7 @@ const SignupPage = lazy(() => import('../pages/SignupPage.jsx'));
 
 const routes = [
   {
-    path: '/welcome',
+    path: '/',
     element: (
       <RestrictedRoute>
         <WelcomePage />
