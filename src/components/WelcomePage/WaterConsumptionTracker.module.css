@@ -1,0 +1,95 @@
+.trackerContainer {
+  font-family: 'Roboto', sans-serif;
+  background: transparent;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.trackerContainerH3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: medium;
+  line-height: 1.11;
+}
+
+.trackerContainerUl {
+  list-style-type: none;
+  padding: 0;
+  width: 260px;
+}
+
+.trackerContainerLi {
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: inline-block;
+  margin-right: 8px;
+  line-height: 1.25;
+}
+
+.svgIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.trackerBtn {
+  width: 280px;
+  height: 36px;
+  max-width: 280px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: 36px;
+}
+
+.trackerBtn:hover,
+.trackerBtn:active {
+  cursor: url('../../icons/vektor.svg'), pointer;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .trackerContainer {
+    width: 100%;
+    max-width: 494px;
+    position: static;
+  }
+
+  .trackerContainerUl {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .trackerContainerLi {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-right: 8px;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .trackerContainer {
+    padding: 10px;
+  }
+
+  .trackerContainerH3 {
+    font-size: 16px;
+  }
+
+  .trackerContainerLi {
+    font-size: 12px;
+    display: block;
+  }
+
+  .trackerBtn {
+    font-size: 14px;
+    width: 100%;
+    max-width: 280px;
+  }
+}
