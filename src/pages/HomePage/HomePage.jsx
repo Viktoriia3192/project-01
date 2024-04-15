@@ -7,6 +7,7 @@ import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
 import s from './HomePage.module.css';
 import { selectAuthIsLoading } from '../../redux/auth/authSelectors';
 import Loader from '../../components/Loader/Loader';
+import Picture from '../../components/BGPicture/Picture';
 
 const HomePage = () => {
   const isLoading = useSelector(selectAuthIsLoading);
@@ -18,6 +19,7 @@ const HomePage = () => {
       <div className={s.wrapper}>
         <div className={s.dailyNormaWrapper}>
           <DailyNorma />
+          <Picture />
           <WaterRatioPanel />
         </div>
         <div className={s.todayMonthWrapper}>
