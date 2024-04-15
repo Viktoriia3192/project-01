@@ -1,0 +1,88 @@
+.mainContainer {
+  background-image: url('../../public/Frame 1.png');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 20px 40px 20px;
+}
+
+.titleContainer {
+  width: 280px;
+}
+
+.titleConsumption {
+  font-family: 'Roboto', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1.14;
+  letter-spacing: 0;
+}
+
+.titleRecord {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: normal;
+  word-wrap: break-word;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.blocksContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 32px 40px 32px;
+  }
+
+  .titleContainer {
+    width: auto;
+    width: 1014px;
+  }
+
+  .blocksContainer {
+    width: auto;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 32px;
+    padding-left: 0;
+  }
+
+  .blocksContainer > * {
+    margin-right: 20px;
+  }
+
+  .blocksContainer > *:last-child {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .mainContainer {
+    padding: 80px 32px 40px 32px;
+  }
+
+  .blocksContainer {
+    max-width: 50%;
+    padding-left: 0;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: auto;
+  }
+
+  .blocksContainer > * {
+    margin-right: 0;
+  }
+}

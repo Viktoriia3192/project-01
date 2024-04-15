@@ -1,0 +1,43 @@
+.whyWaterContainer {
+  font-family: 'Roboto', sans-serif;
+  background-color: #ECF2FF;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.whyWaterContainerH3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 24px 16px;
+  /* max-width: 156px;
+  font-weight: medium; */
+  line-height: 1.11;
+}
+
+.whyWaterContainerUl {
+  list-style-type: none;
+  padding: 0 0 24px 0;
+}
+
+.whyWaterContainerUl li {
+  font-size: 16px;
+  margin-bottom: 5px;
+  padding: 0 0 5px 24px;
+  position: relative;
+}
+
+.whyWaterContainerSvg {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .whyWaterContainer {
+    width: 100%;
+    width: 494px;
+    position: static;
+  }
+}
