@@ -1,4 +1,4 @@
-import { getMonthsArr } from '../helpers/getMonthArr';
+import { getMonthsArr } from '../helpers/getMonthsArr';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import './MonthSwitcher.module.css';
 import {  today } from '../helpers/getDate';

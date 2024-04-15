@@ -1,6 +1,6 @@
 import './MonthStatistic.module.css'
 import { compareDates, today } from '../helpers/getDate';
-import { getMonthsArr } from '../helpers/getMonthArr';
+import { getMonthsArr } from '../helpers/getMonthsArr';
 import PopoverDay from '../DaysGeneralStats/PopoverDay';
 
 const MonthStatistic = ({ selectedMonth, monthStatistic, registrationDate }) => {
