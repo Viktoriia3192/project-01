@@ -1,4 +1,3 @@
-import AuthGoogleBtn from '../common/AuthGoogleBtn/AuthGoogleBtn';
 import { useFormik } from 'formik';
 import s from '../SignUpForm/SignUpForm.module.css';
 
