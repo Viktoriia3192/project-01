@@ -49,7 +49,15 @@ const routes = [
   },
   {
     path: '*',
-    element: <Navigate to={<WelcomePage />} />,
+    element: (
+      <Navigate
+        to={
+          <RestrictedRoute>
+            <WelcomePage />
+          </RestrictedRoute>
+        }
+      />
+    ),
   },
 ];
 
