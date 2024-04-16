@@ -1,5 +1,4 @@
-import React from 'react';
-import Main from '../../src/components/WelcomePage/Main';
+import Main from '../components/WelcomePage/Main';
 
 const WelcomePage = () => {
   return (
