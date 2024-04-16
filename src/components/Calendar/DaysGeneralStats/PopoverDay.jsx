@@ -1,9 +1,9 @@
 import { Popover } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { getMonthsArr } from '../helpers/getMonthsArr';
-import { TfiClose } from 'react-icons/tfi';
-import  './PopoverDayStyles.module.css';
-import './PopoverButton.module.css';
+// import { TfiClose } from 'react-icons/tfi';
+import  d from './PopoverDayStyles.module.css';
+import b from './PopoverButton.module.css';
 
 const PopoverDay = ({ date, percent, drinks, norm, selectedMonth }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -54,7 +54,7 @@ const PopoverDay = ({ date, percent, drinks, norm, selectedMonth }) => {
   return (
     <>
       <>
-        <button
+        <button className={b.button}
           data-fulfilled={returnNumber(percent) >= 100 ? 'true' : 'false'}
           disabled={!returnNumber(percent) ? true : false}
           aria-describedby={id}
@@ -81,24 +81,24 @@ const PopoverDay = ({ date, percent, drinks, norm, selectedMonth }) => {
           horizontal: 'right',
         }}
       >
-        <div>
+        <div className={d.div}>
           <div>
-            <p>
+            <p className={d.date}>
               {date},{' '}
               {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}
             </p>
-            <button onClick={handleClose}>
+            {/* <button className={d.button} onClick={handleClose}>
               <TfiClose />
-            </button>
+            </button> */}
           </div>
           <p>
-            Daily norma: <span>{norm}</span>
+            Daily norma: <span className={d.span}>{norm}</span>
           </p>
           <p>
-            Fulfillment of the daily norm: <span>{percent}</span>
+            Fulfillment of the daily norm: <span className={d.span}>{percent}</span>
           </p>
           <p>
-            How many servings of water: <span>{drinks}</span>
+            How many servings of water: <span className={d.span}>{drinks}</span>
           </p>
         </div>
       </Popover>
