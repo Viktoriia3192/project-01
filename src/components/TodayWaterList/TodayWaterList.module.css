@@ -8,7 +8,7 @@
 }
 .todayBox {
   height: 212px;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin-top: 16px;
 }
 .todayBox::-webkit-scrollbar {

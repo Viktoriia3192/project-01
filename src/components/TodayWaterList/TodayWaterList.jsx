@@ -7,15 +7,15 @@ import { selectTodayWater } from '../../redux/waterData/waterSelectors';
 const TodayWaterList = () => {
   const todayWaterPortions = useSelector(selectTodayWater);
 
-  const handleAddPortion = () => {
-    // toggleModal(<AddWaterModal />);
-  };
-  const handleEditPortion = (waterId) => {
-    // toggleModal(<DeleteEntryModal waterId={waterId} />);
-  };
-  const handleDeletePortion = (data) => {
-    // toggleModal(<EditAmountModal data={data} />);
-  };
+  // const handleAddPortion = () => {
+  //   // toggleModal(<AddWaterModal />);
+  // };
+  // const handleEditPortion = (waterId) => {
+  //   // toggleModal(<DeleteEntryModal waterId={waterId} />);
+  // };
+  // const handleDeletePortion = (data) => {
+  //   // toggleModal(<EditAmountModal data={data} />);
+  // };
 
   return (
     <div className={s.container}>
@@ -47,7 +47,10 @@ const TodayWaterList = () => {
                     <button
                       type="button"
                       aria-label="Edit button"
-                      onClick={() => handleEditPortion(data)}
+                      onClick={
+                        () => {}
+                        // handleEditPortion(data)
+                      }
                     >
                       <svg className={s.editSvg}>
                         <use href={`${sprite}#icon-pencil`}></use>
@@ -58,7 +61,10 @@ const TodayWaterList = () => {
                     <button
                       type="button"
                       aria-label="Delete button"
-                      onClick={() => handleDeletePortion(data._id)}
+                      onClick={
+                        () => {}
+                        // handleDeletePortion(data._id)
+                      }
                     >
                       <svg className={s.editSvg}>
                         <use href={`${sprite}#icon-trash`}></use>
@@ -69,7 +75,13 @@ const TodayWaterList = () => {
               ))}
           </tbody>
         </table>
-        <button type="submit" onClick={handleAddPortion}>
+        <button
+          type="submit"
+          onClick={
+            () => {}
+            // handleAddPortion
+          }
+        >
           <svg className={s.plusSvg}>
             <use href={`${sprite}#icon-plus-small`}></use>
           </svg>
