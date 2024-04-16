@@ -1,7 +1,7 @@
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUserThunk } from '../redux/auth/authOperations.js';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Loader from './Loader/Loader.jsx';
 import SharedLayout from './SharedLayout/SharedLayout.jsx';
@@ -47,10 +47,10 @@ const routes = [
       </RestrictedRoute>
     ),
   },
-  // {
-  //   path: '*',
-  //   element: <Navigate to={<WelcomePage />} />,
-  // },
+  {
+    path: '*',
+    element: <Navigate to={<WelcomePage />} />,
+  },
 ];
 
 const App = () => {
