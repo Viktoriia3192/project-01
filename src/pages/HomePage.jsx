@@ -1,9 +1,9 @@
-import MonthStatsTable from '../components/Calendar/MonthStatsTable.jsx';
+// import MonthStatsTable from '../components/Calendar/MonthStatsTable.jsx';
 
-const HomePage = () => {
-  return <div>HomePage
-    <MonthStatsTable />
-  </div>;
-};
+// const HomePage = () => {
+//   return <div>HomePage
+//     <MonthStatsTable />
+//   </div>;
+// };
 
-export default HomePage;
+// export default HomePage;
