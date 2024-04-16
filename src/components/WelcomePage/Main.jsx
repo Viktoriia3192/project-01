@@ -1,5 +1,4 @@
-import React from 'react';
-import css from '../../../src/components/WelcomePage/Main.module.css'; 
+import css from '../../../src/components/WelcomePage/Main.module.css';
 import WaterConsumptionTracker from '../WelcomePage/WaterConsumptionTracker';
 import WhyDrinkWater from '../WelcomePage/WhyDrinkWater';
 
