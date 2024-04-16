@@ -1,5 +1,5 @@
 .div {
-     display: flex;
+   display: flex;
    align-items: start;
    padding-top: 16px;
    flex-wrap: wrap;
@@ -21,7 +21,7 @@
      text-align: center;
      height: 52px;
      width: 34px;
-    
+    list-style-type: none;
    }
 
    @media screen and (min-width: 320px) and (max-width: 767px) {

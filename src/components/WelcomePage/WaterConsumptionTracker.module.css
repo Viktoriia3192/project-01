@@ -50,7 +50,7 @@
 
 .trackerBtn:hover,
 .trackerBtn:active {
-  cursor: url('../../icons/vektor.svg'), pointer;
+  cursor: url('../../images/sprite.svg#cursor-pointer'), pointer;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1439px) {
