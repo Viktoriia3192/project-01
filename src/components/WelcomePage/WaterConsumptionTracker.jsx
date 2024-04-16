@@ -1,9 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import css from './WaterConsumptionTracker.module.css'; 
-import { ReactComponent as IconBar } from '../../icons/icon-bar.svg';
-import { ReactComponent as IconCalendar } from '../../icons/icon-calendar.svg';
-import { ReactComponent as IconScrewdriver } from '../../icons/icon-screwdriver.svg';
+import sprite from '../../images/sprite.svg';
 
 const WaterConsumptionTracker = () => {
   return (
@@ -11,13 +9,19 @@ const WaterConsumptionTracker = () => {
       <h3 className={css.trackerContainerH3}>Tracker Benefits</h3>
       <ul className={css.trackerContainerUl}>
         <li className={css.trackerContainerLi}> 
-        <IconCalendar className={css.svgIcon} /> Habit drive
+        <svg className={css.svgIcon}>
+            <use xlinkHref={`${sprite}#icon-calendar`}/>
+          </svg> Habit drive
         </li>
         <li className={css.trackerContainerLi}>
-        <IconBar className={css.svgIcon} /> View statistics
+        <svg className={css.svgIcon}>
+            <use xlinkHref={`${sprite}#icon-bar`}/>
+          </svg> View statistics
         </li>
         <li className={css.trackerContainerLi}>
-        <IconScrewdriver className={css.svgIcon} /> Personal rate setting
+        <svg className={css.svgIcon}>
+            <use xlinkHref={`${sprite}#icon-screwdriver`}/>
+          </svg> Personal rate setting
         </li>
       </ul>
       <Link to="/signup" className={css.trackerBtn}>Try tracker</Link>
