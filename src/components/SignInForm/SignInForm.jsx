@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import s from '../SignInForm/SignInForm.module.scss';
+import s from '../SignInForm/SignInForm.module.css';
 const validate = (values) => {
   const errors = {};
   if (!values.email) {
