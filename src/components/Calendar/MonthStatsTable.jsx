@@ -4,10 +4,10 @@ import MonthStatistic from './MonthStatistic/MonthStatistic';
 import { compareDates, funcGetDate, today } from './helpers/getDate';
 import { useSelector } from 'react-redux';
 import {
-  getCurrentDay,
-  getCurrentMonth,
-  getIsMonthDataLoading,
-} from '../../redux/water/waterSelectors';
+  selectTodayWater,
+  selectMonthWater,
+  selectWaterDataIsLoading,
+} from '../../redux/waterData/waterSelectors';
 import { getMonthInfoAPI } from '../../API/Water/getMonthInfoAPI';
 import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
 import { PiSpinnerGap } from 'react-icons/pi';
@@ -18,9 +18,9 @@ import { getStartDay } from '../../redux/auth/authSelectors';
 const MonthStatsTable = () => {
   const [selectedMonth, setSelectedMonth] = useState({ ...today });
   const [monthStatistic, setMonthStatistic] = useState([]);
-  const currentMonthStatistic = useSelector(getCurrentMonth);
-  const currentDayStatistic = useSelector(getCurrentDay);
-  const isMonthLoading = useSelector(getIsMonthDataLoading);
+  const currentMonthStatistic = useSelector(selectMonthWater);
+  const currentDayStatistic = useSelector(selectTodayWater);
+  const isMonthLoading = useSelector(selectWaterDataIsLoading);
   const [isOtherMonthLoading, setIsOtherMonthLoading] = useState(false);
   const startDay =useSelector(getStartDay);
   const registrationDate = funcGetDate(startDay);
