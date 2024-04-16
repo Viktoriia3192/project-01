@@ -1,5 +1,11 @@
-const WelcomePage = () => {
-  return <div>WelcomePage</div>;
-};
+import React from 'react';
+import Main from '../../src/components/WelcomePage/Main';
 
+const WelcomePage = () => {
+  return (
+    <div>
+      <Main />
+    </div>
+  );
+};
 export default WelcomePage;
