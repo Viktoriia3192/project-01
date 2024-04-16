@@ -78,8 +78,7 @@ const SignUpForm = () => {
             <div className={s.error}>{formik.errors.confirmPassword}</div>
           ) : null}
 
-          {/* <button type="submit">Submit</button> */}
-          <AuthGoogleBtn />
+          <button type="submit">Submit</button>
         </form>
       </div>
     </div>
