@@ -1,6 +1,9 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import css from './WaterConsumptionTracker.module.css'; 
+import { ReactComponent as IconBar } from '../../icons/icon-bar.svg';
+import { ReactComponent as IconCalendar } from '../../icons/icon-calendar.svg';
+import { ReactComponent as IconScrewdriver } from '../../icons/icon-screwdriver.svg';
 
 const WaterConsumptionTracker = () => {
   return (
@@ -8,49 +11,13 @@ const WaterConsumptionTracker = () => {
       <h3 className={css.trackerContainerH3}>Tracker Benefits</h3>
       <ul className={css.trackerContainerUl}>
         <li className={css.trackerContainerLi}> 
-          <svg
-            xlinkHref="../../icons/Vector1.svg"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            className={css.svgIcon}
-          >
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path
-              d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              fill="currentColor"
-            />
-          </svg> Habit drive
+        <IconCalendar className={css.svgIcon} /> Habit drive
         </li>
         <li className={css.trackerContainerLi}>
-          <svg
-            xlinkHref="../../icons/Vector2.svg"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            className={css.svgIcon}
-          >
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path
-              d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              fill="currentColor"
-            />
-          </svg> View statistics
+        <IconBar className={css.svgIcon} /> View statistics
         </li>
         <li className={css.trackerContainerLi}>
-          <svg
-            xlinkHref="../../icons/Vector3.svg"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            className={css.svgIcon}
-          >
-            <path d="M0 0h24v24H0z" fill="none" />
-            <path
-              d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              fill="currentColor"
-            />
-          </svg> Personal rate setting
+        <IconScrewdriver className={css.svgIcon} /> Personal rate setting
         </li>
       </ul>
       <Link to="/signup" className={css.trackerBtn}>Try tracker</Link>
@@ -59,3 +26,4 @@ const WaterConsumptionTracker = () => {
 };
 
 export default WaterConsumptionTracker;
+
