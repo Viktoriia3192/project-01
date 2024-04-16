@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
-import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
+import MonthStatsTable from '../../components/Calendar/MonthStatsTable';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
 

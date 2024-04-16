@@ -1,5 +1,5 @@
-const MonthStatsTable = () => {
-  return <div>MonthStatsTable</div>;
-};
+// const MonthStatsTable = () => {
+//   return <div>MonthStatsTable</div>;
+// };
 
-export default MonthStatsTable;
+// export default MonthStatsTable;
