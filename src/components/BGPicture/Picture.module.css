@@ -1,0 +1,11 @@
+.bottlePicture {
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+@media screen and (min-width: 1440px) {
+  .bottlePicture {
+    margin-bottom: 24px;
+    height: 548px;
+    object-fit: cover;
+  }
+}

@@ -1,0 +1,59 @@
+.container {
+  width: fit-content;
+  height: 258px;
+}
+.title {
+  font-size: 24px;
+  font-weight: 500;
+}
+.todayBox {
+  height: 212px;
+  overflow-y: auto;
+  margin-top: 16px;
+}
+.todayBox::-webkit-scrollbar {
+  width: 4px;
+}
+
+.todayBox::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color-lightblue);
+  border-radius: 2px;
+}
+
+.todayBox::-webkit-scrollbar-track {
+  background-color: var(--secondary-color---5);
+  width: 1px;
+}
+.waterTable {
+  border-collapse: collapse;
+  width: 264px;
+  /* height: 258px; */
+}
+.tRow {
+  border-bottom: 1px solid var(--secondary-color---5);
+  width: 254px;
+  height: 26px;
+  margin-bottom: 12px;
+}
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 26px;
+    line-height: 1.23;
+  }
+  .waterTable {
+    width: 656px;
+  }
+  .tRow {
+    width: 646px;
+    height: 36px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .waterTable {
+    width: 544px;
+  }
+  .tRow {
+    width: 534px;
+    height: 36px;
+  }
+}

@@ -10,7 +10,7 @@ import RestrictedRoute from './RestrictedRoute/RestrictedRoute.jsx';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage.jsx'));
-const HomePage = lazy(() => import('../pages/HomePage.jsx'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage.jsx'));
 const SigninPage = lazy(() => import('../pages/SigninPage.jsx'));
 const SignupPage = lazy(() => import('../pages/SignupPage.jsx'));
 
@@ -49,7 +49,15 @@ const routes = [
   },
   {
     path: '*',
-    element: <Navigate to={<WelcomePage />} />,
+    element: (
+      <Navigate
+        to={
+          <RestrictedRoute>
+            <WelcomePage />
+          </RestrictedRoute>
+        }
+      />
+    ),
   },
 ];
 
@@ -73,5 +81,4 @@ const App = () => {
     </Routes>
   );
 };
-
 export default App;

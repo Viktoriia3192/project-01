@@ -1,5 +1,10 @@
-const WelcomePage = () => {
-  return <div>WelcomePage</div>;
-};
+import Main from '../components/WelcomePage/Main';
 
+const WelcomePage = () => {
+  return (
+    <div>
+      <Main />
+    </div>
+  );
+};
 export default WelcomePage;

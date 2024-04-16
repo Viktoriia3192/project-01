@@ -1,0 +1,59 @@
+.container {
+  display: inline-block;
+
+  border-radius: 10px;
+  border: 1px solid var(--secondary-color-2);
+  background-color: var(--primery-color-white);
+  box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
+  padding: 8px 20px;
+  margin-bottom: 8px;
+}
+.title {
+  font-size: var(--fontSizesMedium);
+  /* font-weight: 500;
+  line-height: calc(24 / 18); */
+  margin-bottom: 12px;
+}
+.normaEditor {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.waterRate {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;
+  color: var(--primery-color-blue);
+}
+.editBtn {
+  font-size: var(--fontSizesSmall);
+  background-color: transparent;
+
+  color: var(--secondary-color-lightblue);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  box-shadow: none;
+  padding: 0;
+}
+.editBtn svg {
+  display: none;
+}
+.editBtn:hover {
+  box-shadow: none;
+  color: var(--secondary-color-orange);
+}
+
+@media only screen and (min-width: 768px) {
+  .waterRate {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    position: absolute;
+    top: 30px;
+    left: 0;
+  }
+}
