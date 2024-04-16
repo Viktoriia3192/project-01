@@ -1,5 +1,7 @@
-const SigninPage = () => {
-  return <div>SigninPage</div>;
-};
+import SignInForm from '../components/SignInForm/SignInForm';
 
-export default SigninPage;
+function SignInPage() {
+  return <SignInForm />;
+}
+
+export default SignInPage;
