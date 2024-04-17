@@ -1,44 +1,48 @@
 import { useFormik } from 'formik';
 import s from '../SignUpForm/SignUpForm.module.css';
+import { signUpThunk } from '../../redux/auth/authOperations';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
 
 const SignUpForm = () => {
-  const validate = (values) => {
-    const errors = {};
-    if (!values.email) {
-      errors.email = 'Email is required';
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = 'Invalid email address';
-    }
+  const dispatch = useDispatch();
+  //const [showPassword, setShowPassword] = useState(false);
+  //const { t } = useTranslation();
 
-    if (!values.password) {
-      errors.password = 'Password is required';
-    } else if (!/^[a-zA-Z0-9!@#$%^&*()_+]{8,64}$/i.test(values.password)) {
-      errors.password = 'Password must not be less than 8 characters';
-    }
-
-    if (!values.confirmPassword) {
-      errors.password = 'It is required to confirm password';
-    } else if (
-      !/^[a-zA-Z0-9!@#$%^&*()_+]{8,64}$/i.test(values.confirmPassword)
-    ) {
-      errors.confirmPassword = 'Passwords should match';
-    }
-    return errors;
-  };
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
-      confirmPassword: '',
+      repeatPassword: '',
     },
-    validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('Email is required')
+        .matches(
+          /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+          'Invalid email address'
+        ),
+      password: Yup.string()
+        .required('Password is required')
+        .min(8, 'Password must be at least 8 characters')
+        .max(64, 'Password must be at most 64 characters'),
+      repeatPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .required('Password is required'),
+    }),
+    onSubmit: async ({ email, password }) => {
+      try {
+        dispatch(signUpThunk({ email, password }));
+      } catch (error) {
+        console.error('Error:', error);
+      }
     },
   });
 
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword(!showPassword);
+  // };
   return (
     <div className={s.container}>
       <div className={s.form}>
@@ -58,7 +62,7 @@ const SignUpForm = () => {
           <input
             id="password"
             name="password"
-            type="text"
+            type="password"
             onChange={formik.handleChange}
             value={formik.values.firstName}
           />
@@ -69,7 +73,7 @@ const SignUpForm = () => {
           <input
             id="confirmPassword"
             name="confirmPassword"
-            type="text"
+            type="password"
             onChange={formik.handleChange}
             value={formik.values.firstName}
           />
