@@ -1,4 +1,4 @@
-import './MonthStatistic.module.css'
+import s from './MonthStatistic.module.css'
 import { compareDates, today } from '../helpers/getDate';
 import { getMonthsArr } from '../helpers/getMonthsArr';
 import PopoverDay from '../DaysGeneralStats/PopoverDay';
@@ -73,9 +73,9 @@ const MonthStatistic = ({ selectedMonth, monthStatistic, registrationDate }) => 
 
   return (
     <>
-      <div>
+      <div className={s.div}>
         {statistic.map(({ date, percent, drinks, norm }) => (
-          <li key={date}>
+          <li className={s.li} key={date}>
             <PopoverDay
               key={date}
               date={date}
@@ -84,7 +84,7 @@ const MonthStatistic = ({ selectedMonth, monthStatistic, registrationDate }) => 
               percent={percent}
               selectedMonth={selectedMonth}
             />
-            <p>{percent}</p>
+            <p className={s.p}>{percent}</p>
           </li>
         ))}
       </div>

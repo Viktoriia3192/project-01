@@ -1,72 +1,73 @@
 :root {
-    --primery-color-white: #fff;
-    --primery-color-black: #2f2f2f;
-    --primery-color-blue: #407bff;
-    --secondary-color-2: #ecf2ff;
-    --secondary-color-red: #ef5050;
-    --secondary-color-lightblue: #9ebbff;
-    --secondary-color-orange: #ff9d43;
-    --secondary-color---5: #d7e3ff;
+  --primery-color-white: #fff;
+  --primery-color-black: #2f2f2f;
+  --primery-color-blue: #407bff;
+  --secondary-color-2: #ecf2ff;
+  --secondary-color-red: #ef5050;
+  --secondary-color-lightblue: #9ebbff;
+  --secondary-color-orange: #ff9d43;
+  --secondary-color---5: #d7e3ff;
 
-    --fontSizesXtraSmall: 12px;
-    --fontSizesSmall: 16px;
-    --fontSizesMedium: 18px;
-    --fontSizesLarge: 26px;
+  --fontSizesXtraSmall: 12px;
+  --fontSizesSmall: 16px;
+  --fontSizesMedium: 18px;
+  --fontSizesLarge: 26px;
 
-    --animationDuration: 0.3s;
-    --animationCubicBezier: 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+  --animationDuration: 0.3s;
+  --animationCubicBezier: 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
 }
 
 body {
-    background-color: var(--primery-color-white);
-    background-size: auto 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    line-height: 1.25;
-    font-weight: 400;
-    font-style: normal;
-    color: var(--primery-color-black);
-    width: 100%;
-    height: 100vh;
-    margin: 0;
+  background-color: var(--primery-color-white);
+
+  background-size: auto 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--primery-color-black);
+  width: 100%;
+  height: 100vh;
+  margin: 0;
 }
 
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
 
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
-    font-display: swap;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    src: url('../fonts/Roboto-Medium.ttf') format('truetype');
-    font-display: swap;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/Roboto-Medium.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../fonts/Roboto-Bold.ttf') format('truetype');
-    font-display: swap;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/Roboto-Bold.ttf') format('truetype');
+  font-display: swap;
 }

@@ -1,6 +1,6 @@
 import { getMonthsArr } from '../helpers/getMonthsArr';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
-import './MonthSwitcher.module.css';
+import s from './MonthSwitcher.module.css';
 import {  today } from '../helpers/getDate';
 
 const MonthSwitcher = ({ selectedMonth, setSelectedMonth, registrationDate}) => {
@@ -33,17 +33,17 @@ const MonthSwitcher = ({ selectedMonth, setSelectedMonth, registrationDate}) => 
   };
 
   return (
-    <div>
-      <h2 className="title">Month</h2>
-      <div>
-        <button onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}>
+    <div className={s.wrap}>
+      <h2 className={s.h2}>Month</h2>
+      <div className={s.div}>
+        <button className={s.button} onClick={handlePrevMonth} disabled={isButtonPrevDisabled()}>
           <SlArrowLeft fill='#407bff' />
         </button>
-        <p>
+        <p className={s.p}>
           {getMonthsArr(selectedMonth.year)[selectedMonth.month].name},{' '}
           {selectedMonth.year}
         </p>
-        <button onClick={handleNextMonth} disabled={isButtonNextDisabled()}>
+        <button className={s.button} onClick={handleNextMonth} disabled={isButtonNextDisabled()}>
           <SlArrowRight fill='#407bff' />
         </button>
       </div>

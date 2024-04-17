@@ -11,8 +11,8 @@ import {
 import { getMonthInfoAPI } from '../../API/Water/getMonthInfoAPI';
 import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
 import { PiSpinnerGap } from 'react-icons/pi';
-import './SpinnerContainer.module.css';
-import './MonthStatsTablet.module.css';
+import s from './SpinnerContainer.module.css';
+import m from './MonthStatsTablet.module.css';
 import { getStartDay } from '../../redux/auth/authSelectors';
 
 const MonthStatsTable = () => {
@@ -77,9 +77,9 @@ const MonthStatsTable = () => {
         setSelectedMonth={setSelectedMonth}
         registrationDate={registrationDate}
       />{' '}
-      <div>
+      <div className={m.month}>
         {isMonthLoading || isOtherMonthLoading ? (
-          <div>
+          <div className={s.spinner}>
             <PiSpinnerGap
               className="spinner"
               fill='black'

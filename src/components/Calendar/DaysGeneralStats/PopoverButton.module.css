@@ -2,7 +2,7 @@
 
 .button {
 border: none;
-  background-color: var(--primary-button-text-color);
+  background-color: var(--primery-color-white);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@ border: none;
     border: none;
     cursor: auto;
   }
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
+  @media screen and (min-width: 768px) {
     .button{
        width: 34px;
     height: 34px;
