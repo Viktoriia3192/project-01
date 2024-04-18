@@ -1,0 +1,24 @@
+.modal {
+  position: absolute;
+  right: 20px;
+  top: 48px;
+
+  border-radius: 10px;
+  background-color: #fff;
+  width: 118px;
+  height: 88px;
+  box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 29px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    top: 56px;
+    right: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .modal {
+    right: 112px;
+  }
+}
