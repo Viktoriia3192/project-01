@@ -1,24 +1,20 @@
 .headerContainer {
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  padding: 8px 20px 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 768px) {
   .headerContainer {
-    padding: 8px 20px;
+    padding: 16px 32px 0;
   }
 }
 
-@media screen and (min-width: 321px) {
+@media screen and (min-width: 1440px) {
   .headerContainer {
-    padding: 16px 32px;
-  }
-}
-
-@media screen and (min-width: 1439px) {
-  .headerContainer {
-    padding: 12px 112px;
+    padding: 12px 112px 0;
   }
 }

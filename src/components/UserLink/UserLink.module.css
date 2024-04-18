@@ -2,7 +2,6 @@
   display: flex;
 }
 .signinButton {
-  padding: 0;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -17,6 +16,7 @@
   width: 28px;
   height: 28px;
 }
+
 .arrowSvg {
   fill: var(--primery-color-blue);
   width: 16px;
