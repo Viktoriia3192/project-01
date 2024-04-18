@@ -10,8 +10,7 @@ import {
 } from '../../redux/waterData/waterSelectors';
 import { requestAddWater } from '../../services/waterDataAPI';
 import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
-import { PiSpinnerGap } from 'react-icons/pi';
-import s from './SpinnerContainer.module.css';
+import PiSpinnerGap from '../Loader/Loader';
 import m from './MonthStatsTablet.module.css';
 import { getStartDay } from '../../redux/auth/authSelectors';
 
@@ -79,12 +78,8 @@ const MonthStatsTable = () => {
       />{' '}
       <div className={m.month}>
         {isMonthLoading || isOtherMonthLoading ? (
-          <div className={s.spinner}>
-            <PiSpinnerGap
-              className="spinner"
-              fill='black'
-              size={40}
-            />
+          <div>
+            <PiSpinnerGap/>
           </div>
         ) : (
           <MonthStatistic
