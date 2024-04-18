@@ -1,0 +1,7 @@
+.barOuter {
+  border-radius: 10px;
+  height: 8px;
+  width: 256px;
+  background-color: var(--secondary-color---5);
+  /* transform: rotate(-90deg); */
+}
