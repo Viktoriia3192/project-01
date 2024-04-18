@@ -8,7 +8,7 @@ import {
   selectMonthWater,
   selectWaterDataIsLoading,
 } from '../../redux/waterData/waterSelectors';
-import { getMonthInfoAPI } from '../../API/Water/getMonthInfoAPI';
+import { requestAddWater } from '../../services/waterDataAPI';
 import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
 import { PiSpinnerGap } from 'react-icons/pi';
 import s from './SpinnerContainer.module.css';
@@ -48,7 +48,7 @@ const MonthStatsTable = () => {
       const fetchData = async () => {
         try {
           setIsOtherMonthLoading(true);
-          const newMonthStatistic = await getMonthInfoAPI({
+          const newMonthStatistic = await requestAddWater({
             month: selectedMonth.month + 1,
             year: selectedMonth.year,
           });

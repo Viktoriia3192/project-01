@@ -1,0 +1,24 @@
+.userAuthContainer {
+  display: flex;
+}
+.signinButton {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 8px;
+  color: var(--primery-color-blue);
+}
+.signinButton:hover {
+  color: var(--secondary-color-orange);
+}
+.userLogo {
+  margin: 0 4px 0 8px;
+  width: 28px;
+  height: 28px;
+}
+
+.arrowSvg {
+  fill: var(--primery-color-blue);
+  width: 16px;
+  height: 16px;
+}

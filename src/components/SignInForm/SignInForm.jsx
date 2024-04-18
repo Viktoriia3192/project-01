@@ -1,66 +1,68 @@
-import { useFormik } from 'formik';
+import { FormikContext, useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 import s from '../SignInForm/SignInForm.module.css';
-const validate = (values) => {
-  const errors = {};
-  if (!values.email) {
-    errors.email = 'Email is required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
-  }
+import { signInThunk } from '../../redux/auth/authOperations.js';
+import * as Yup from 'yup';
 
-  if (!values.password) {
-    errors.password = 'Password is required';
-  } else if (values.password.length < 8) {
-    errors.password = 'Password must not be less than 8 characters';
-  }
-  return errors;
-};
 const SignInForm = () => {
-  // defining handleSubmit function for form submission
+  const dispatch = useDispatch();
 
-  // using useFormik hook to handle form state and validation
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const errors = await formik.validateForm();
+    if (Object.keys(errors).length === 0) {
+      formik.handleSubmit();
+    }
+  };
+
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .required('Email is required')
+      .email('Invalid email address'),
+    password: Yup.string()
+      .min(8, 'Password must be at least 8 characters')
+      .max(64, 'Password is too long')
+      .required('Password is required'),
+  });
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
-    validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: ({ email, password }) => {
+      dispatch(signInThunk({ email, password }));
     },
+    validationSchema: validationSchema,
   });
 
   return (
     <div className={s.container}>
       <div className={s.form}>
-        <form onSubmit={formik.handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-          {formik.errors.email ? (
-            <div className={s.error}>{formik.errors.email}</div>
-          ) : null}
-          <label htmlFor="password">Password</label>
-
-          <input
-            id="password"
-            name="password"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
-          {formik.errors.password ? (
-            <div className={s.error}>{formik.errors.password}</div>
-          ) : null}
-          <button type="submit" className={s.submitBtn}>
-            Sign In
-          </button>
-        </form>
+        <FormikContext.Provider value={formik}>
+          <form onSubmit={handleFormSubmit} noValidate>
+            <label htmlFor="email">Email Address</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
+            {formik.errors.email ? (
+              <div className={s.error}>{formik.errors.email}</div>
+            ) : null}
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              onChange={formik.handleChange}
+              value={formik.values.firstName}
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </FormikContext.Provider>
       </div>
     </div>
   );
