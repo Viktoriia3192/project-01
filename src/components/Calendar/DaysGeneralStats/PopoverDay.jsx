@@ -59,7 +59,7 @@ const PopoverDay = ({ date, percent, drinks, norm, selectedMonth }) => {
           disabled={!returnNumber(percent) ? true : false}
           aria-describedby={id}
           onClick={handleClick}
-          onMouseEnter={handleClick}
+          // onMouseEnter={handleClick}
         >
           {date}
         </button>
