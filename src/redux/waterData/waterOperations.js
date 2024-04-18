@@ -10,7 +10,7 @@ import {
 } from '../../services/waterDataAPI';
 
 export const todayThunk = createAsyncThunk(
-  'waterdata/today',
+  'water-notes/today',
   async (_, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
     try {
@@ -24,7 +24,7 @@ export const todayThunk = createAsyncThunk(
 );
 
 export const monthThunk = createAsyncThunk(
-  'waterdata/month',
+  'water-notes/month',
   async (month, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 
@@ -39,7 +39,7 @@ export const monthThunk = createAsyncThunk(
 );
 
 export const addWaterThunk = createAsyncThunk(
-  'waterdata/add',
+  'water-notes/add',
   async (waterData, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 
@@ -54,7 +54,7 @@ export const addWaterThunk = createAsyncThunk(
 );
 
 export const deleteWaterThunk = createAsyncThunk(
-  'waterdata/delete',
+  'water-notes/delete',
   async (waterId, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 
@@ -69,12 +69,13 @@ export const deleteWaterThunk = createAsyncThunk(
 );
 
 export const updateWaterThunk = createAsyncThunk(
-  'waterdata/update',
+  'water-notes/update',
   async (data, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 
     try {
       setToken(token);
+      //тут потрібно змінити id i newData на те що буде передано з EditWaterModal
       const { id, newData } = data;
       const response = await requestUpdateWater(id, newData);
       return response;

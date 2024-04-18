@@ -1,31 +1,21 @@
 .container {
-  width: 320px;
-  padding: 0 20px;
-  margin: 0 auto;
+  width: 100%;
+  background-image: url('../../images/home/BackHomeMobile.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 320px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 .dailyNormaWrapper {
   position: relative;
-  /* padding-top: 40px; */
   width: 100%;
-  /* img {
-    margin: 0 auto;
-    margin-bottom: 16px;
-    @media screen and (min-width: 1440px) {
-      margin-bottom: 24px;
-    }
-  } */
-  /* @media screen and (min-width: 1440px) {
-    
-    img {
-      height: 548px;
-      object-fit: cover;
-    }
-  } */
 }
 
 .todayMonthWrapper {
@@ -41,11 +31,12 @@
 }
 @media screen and (min-width: 768px) {
   .container {
-    width: 768px;
-    padding: 0 32px;
+    background-image: url('../../images/home/BackHomeTablet.png');
   }
   .wrapper {
     gap: 40px;
+    width: 768px;
+    padding: 0 32px;
   }
   .todayMonthWrapper {
     width: 704px;
@@ -59,12 +50,13 @@
 }
 @media screen and (min-width: 1440px) {
   .container {
-    width: 1440px;
-    padding: 0 112px;
+    background-image: url('../../images/home/BackHomeDesk.png');
   }
   .wrapper {
     flex-direction: row;
     gap: 32px;
+    width: 1440px;
+    padding: 0 112px;
   }
   .dailyNormaWrapper {
     width: 50%;

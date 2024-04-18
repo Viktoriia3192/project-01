@@ -7,7 +7,7 @@
   font-weight: 500;
 }
 .todayBox {
-  height: 212px;
+  height: 220px;
   overflow-y: auto;
   margin-top: 16px;
 }
@@ -26,19 +26,73 @@
 }
 .waterTable {
   border-collapse: collapse;
-  width: 264px;
-  /* height: 258px; */
 }
 .tRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--secondary-color---5);
   width: 254px;
   height: 26px;
   margin-bottom: 12px;
 }
+
+.glassSvg {
+  width: 17px;
+  height: 22px;
+}
+.doseVolume {
+  padding: 12px;
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.33;
+  color: var(--primery-color-blue);
+}
+.doseTime {
+  padding-right: 35px;
+  text-align: left;
+  font-size: 12px;
+  line-height: 2;
+  color: var(--primery-color-black);
+}
+.editBtn {
+  margin: 4px;
+}
+.editSvg {
+  width: 14px;
+  height: 14px;
+}
+
+.deleteSvg {
+  width: 12px;
+  height: 14px;
+}
+.addBtn {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: start;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 10px;
+  color: #407bff;
+  background-color: transparent;
+  text-align: left;
+}
+.plusSvg {
+  stroke-width: 1px;
+  width: 14px;
+  height: 14px;
+}
 @media screen and (min-width: 768px) {
   .title {
     font-size: 26px;
     line-height: 1.23;
+  }
+  .todayBox {
+    height: 228px;
   }
   .waterTable {
     width: 656px;
@@ -47,13 +101,26 @@
     width: 646px;
     height: 36px;
   }
+  .glassSvg {
+    width: 23px;
+    height: 30px;
+  }
+  .doseTime {
+    padding-right: 390px;
+  }
 }
 @media screen and (min-width: 1440px) {
   .waterTable {
-    width: 544px;
+    width: 534px;
+  }
+  .todayBox {
+    height: 212px;
   }
   .tRow {
     width: 534px;
     height: 36px;
+  }
+  .doseTime {
+    padding-right: 278px;
   }
 }

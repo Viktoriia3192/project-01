@@ -8,7 +8,7 @@ import {
 } from './waterOperations';
 
 const initialState = {
-  todayWater: [],
+  todayWater: {},
   monthWater: [],
   isLoading: false,
   error: null,
@@ -31,10 +31,13 @@ const waterSlice = createSlice({
       })
       .addCase(addWaterThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        if (state.todayWater.length) {
-          state.todayWater = [...state.todayWater, payload];
+        if (state.todayWater.dosesWater?.length) {
+          state.todayWater.dosesWater = [
+            ...state.todayWater.dosesWater,
+            payload,
+          ];
         } else {
-          state.todayWater.push(payload);
+          state.todayWater.dosesWater.push(payload);
         }
         state.error = null;
       })
@@ -42,19 +45,19 @@ const waterSlice = createSlice({
       .addCase(updateWaterThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
 
-        const updateIndex = state.todayWater.findIndex(
-          (item) => item._id === payload.id
+        const updateIndex = state.todayWater.dosesWater.findIndex(
+          (item) => item._id === payload._id
         );
         if (updateIndex !== -1) {
-          state.todayWater[updateIndex] = payload;
+          state.todayWater.dosesWater[updateIndex] = payload;
         }
         state.error = null;
       })
       .addCase(deleteWaterThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
 
-        state.todayWater = state.todayWater.filter(
-          (item) => item._id !== payload.id
+        state.todayWater.dosesWater = state.todayWater.dosesWater.filter(
+          (item) => item._id !== payload._id
         );
         state.error = null;
       })
