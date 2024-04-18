@@ -18,7 +18,7 @@ const SignUpForm = () => {
       .min(8, 'Password must be 8 or more characters')
       .max(64)
       .required('Password is required'),
-    repeatPassword: yup
+    confirmPassword: yup
       .string()
       .oneOf([yup.ref('password'), null], 'The passwords do not match')
       .required('Repeat password field is required'),
