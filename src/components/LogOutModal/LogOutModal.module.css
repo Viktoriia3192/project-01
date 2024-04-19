@@ -74,9 +74,8 @@
     width: 160px;
   }
 }
-
 @media screen and (min-width: 1440px) {
-  .deleteModal {
+  .LogOutModal {
     width: 590px;
   }
 }
