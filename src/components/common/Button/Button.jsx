@@ -10,7 +10,7 @@ const Button = ({ type = 'button', title, className, onClick, ...rest }) => {
       className={clsx(s.button, className && className)}
       {...rest}
     >
-      <svg>
+      <svg className={s.svg}>
         <use href={`${sprite}#icon-plus-circle`}></use>
       </svg>
       {title}

@@ -1,7 +1,167 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+.barWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 280px;
+  height: 82px;
+}
+.title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+  text-align: left;
+  color: var(--primery-color-blue);
+}
+.bar {
+  position: relative;
+  height: 8px;
+  margin: 0 auto;
+  background-color: var(--secondary-color-lightblue);
+  width: calc(100% - 24px);
+  border-radius: 10px;
+}
+
 .barOuter {
   border-radius: 10px;
   height: 8px;
   width: 256px;
   background-color: var(--secondary-color---5);
-  /* transform: rotate(-90deg); */
+}
+.barFilled {
+  position: relative;
+  border-radius: 10px;
+  height: 8px;
+  background-color: var(--secondary-color-lightblue);
+}
+.dot {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 14px;
+  height: 14px;
+  background-color: var(--primery-color-white);
+  border: 1px solid var(--primery-color-blue);
+  border-radius: 100%;
+}
+.percentageBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-top: 16px;
+  margin-left: -5px;
+  height: 32px;
+  width: 280px;
+  padding-right: 7px;
+}
+.percent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  color: var(--primery-color-blue);
+}
+.percent::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 8px;
+  background-color: var(--secondary-color-lightblue);
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.percent:first-child {
+  height: 28px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  text-align: center;
+}
+
+.percent:nth-child(2) {
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 500;
+  position: absolute;
+  height: 32px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.percent:last-child {
+  height: 28px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  text-align: center;
+}
+.addBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  width: 100%;
+  height: 36px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .barWrapper {
+    width: 356px;
+    height: 90px;
+    gap: 16px;
+  }
+  .bar {
+    width: calc(100% - 31px);
+  }
+  .barOuter {
+    width: 325px;
+  }
+  .percentageBox {
+    width: 356px;
+    padding-right: 10px;
+    height: 32px;
+  }
+  .addBtn {
+    width: 336px;
+    height: 44px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 592px;
+    gap: 23px;
+  }
+  .barWrapper {
+    width: 391px;
+  }
+  .barOuter {
+    width: 360px;
+  }
+
+  .percentageBox {
+    width: 391px;
+    padding-right: 10px;
+    height: 35px;
+  }
+  .addBtn {
+    width: 178px;
+  }
 }
