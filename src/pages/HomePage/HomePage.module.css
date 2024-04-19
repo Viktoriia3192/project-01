@@ -8,7 +8,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 42px;
   width: 320px;
   padding: 0 20px;
   margin: 0 auto;
@@ -16,6 +16,7 @@
 .dailyNormaWrapper {
   position: relative;
   width: 100%;
+  margin: 0 auto;
 }
 
 .todayMonthWrapper {
@@ -38,6 +39,8 @@
     width: 768px;
     padding: 0 32px;
   }
+  /* .dailyNormaWrapper {
+  } */
   .todayMonthWrapper {
     width: 704px;
     padding: 32px 24px;
