@@ -1,0 +1,81 @@
+.modal_title {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 123%;
+  margin-bottom: 24px;
+}
+
+.modal_p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 111%;
+  margin-bottom: 24px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
+}
+
+.cancel_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px 30px;
+  width: 232px;
+  height: 44px;
+  background: var(--secondary-color---5);
+  color: var(--primery-color-blue);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 133%;
+  transition: box-shadow 0.3s ease;
+}
+
+.cancel_btn:hover,
+.cancel_btn:focus {
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+}
+
+.delete_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px 30px;
+  width: 232px;
+  height: 44px;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background: #ef5050;
+  color: var(--primery-color-white);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 133%;
+  transition: box-shadow 0.3s ease;
+}
+
+.delete_btn:hover,
+.delete_btn:focus {
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+@media screen and (min-width: 768px) {
+  .buttons {
+    flex-direction: row;
+    margin-left: 220px;
+  }
+
+  .cancel_btn {
+    width: 160px;
+  }
+  .delete_btn {
+    width: 160px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .LogOutModal {
+    width: 590px;
+  }
+}
