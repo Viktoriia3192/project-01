@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 import { todayThunk } from '../../redux/waterData/waterOperations';
 import { todayWater } from './data';
 
+// import { AddForm } from '../AddForm/AddForm';
+
 const TodayWaterList = () => {
   // const todayWaterPortions = useSelector(selectTodayWater);
 
@@ -96,7 +98,7 @@ const TodayWaterList = () => {
           <button
             type="submit"
             className={s.addBtn}
-            // onClick={() => openModal(<AddWaterModal />)}
+            // onClick={() => openModal(<AddForm />)}
           >
             <svg className={s.plusSvg}>
               <use href={`${sprite}#icon-plus-small`}></use>
