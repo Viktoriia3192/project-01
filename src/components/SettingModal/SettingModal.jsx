@@ -16,7 +16,7 @@ export default function SettingModal() {
   const dispatch = useDispatch();
   const { user } = useSelector(selectAuthUserData);
   const { email, avatarURL, gender, name } = user;
-  screen;
+
   // https://project01-water-backend.onrender.com/api/users/current
   // http://localhost:3030/api/users/current
 
@@ -35,19 +35,38 @@ export default function SettingModal() {
     }
   };
 
-  const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email address'),
-    name: Yup.string(),
-    gender: Yup.string(),
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().matches(
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+      'Invalid email address'
+    ),
+    name: Yup.string()
+      .min(3, 'Name must be at least 3 characters')
+      .max(32, 'Name is too long'),
+    gender: Yup.string().oneOf(
+      ['male', 'female'],
+      'Gender must be either male or female'
+    ),
     oldPassword: Yup.string()
+      .test(
+        'isOldPasswordRequired',
+        'Please enter your old password',
+        function (value) {
+          console.log(this.parent.password);
+          console.log(value);
+
+          return !!this.parent.password || value;
+        }
+      )
       .min(8, 'Password must be at least 8 characters')
       .max(64, 'Password is too long'),
     password: Yup.string()
-      .min(8, 'Password must be at least 8 characters')
-      .max(64, 'Password is too long'),
-    repeatPassword: Yup.string()
-      .min(8, 'Password must be at least 8 characters')
-      .max(64, 'Password is too long'),
+      .min(8, 'Password must be 8 or more characters')
+      .max(64),
+    repeatPassword: Yup.string().oneOf(
+      [Yup.ref('password'), null],
+      'The passwords do not match'
+    ),
   });
 
   const formik = useFormik({
@@ -150,8 +169,8 @@ export default function SettingModal() {
               value={formik.values.name}
             />
 
-            {formik.errors.email ? (
-              <div className={css.error}>Error</div>
+            {formik.errors.name ? (
+              <div className={css.error}>{formik.errors.name}</div>
             ) : null}
 
             <label htmlFor="email">E-mail</label>
@@ -164,7 +183,7 @@ export default function SettingModal() {
             />
 
             {formik.errors.email ? (
-              <div className={css.error}>Error</div>
+              <div className={css.error}>{formik.errors.email}</div>
             ) : null}
 
             <h3>Password</h3>
@@ -178,6 +197,10 @@ export default function SettingModal() {
               value={formik.values.oldPassword}
             />
 
+            {formik.errors.oldPassword ? (
+              <div className={css.error}>{formik.errors.oldPassword}</div>
+            ) : null}
+
             <label htmlFor="password">New Password:</label>
             <input
               id="password"
@@ -187,6 +210,10 @@ export default function SettingModal() {
               value={formik.values.password}
             />
 
+            {formik.errors.password ? (
+              <div className={css.error}>{formik.errors.password}</div>
+            ) : null}
+
             <label htmlFor="repeatPassword">Repeat new password:</label>
             <input
               id="repeatPassword"
@@ -195,6 +222,10 @@ export default function SettingModal() {
               onChange={formik.handleChange}
               value={formik.values.repeatPassword}
             />
+
+            {formik.errors.repeatPassword ? (
+              <div className={css.error}>{formik.errors.repeatPassword}</div>
+            ) : null}
 
             <button type="submit">Submit</button>
           </form>
