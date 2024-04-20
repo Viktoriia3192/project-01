@@ -3,7 +3,7 @@ import { setToken } from './authAPI';
 
 export const requestAvatarUpdate = async (avatar) => {
   const formData = new FormData();
-  formData.append('picture', avatar);
+  formData.append('avatarURL', avatar);
 
   const { data } = await axiosInstance.patch('users/avatar', formData, {
     headers: {

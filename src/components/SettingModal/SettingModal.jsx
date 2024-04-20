@@ -6,16 +6,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import css from './SettingModal.module.css';
 import Modal from '../Modal/Modal';
 import { selectAuthUserData } from '../../redux/auth/authSelectors';
-// import { refreshUserThunk } from '../../redux/auth/authOperations';
+import {
+  userInfoThunk,
+  userAvatarThunk,
+} from '../../redux/userInfo/userInfoOperations';
 
 export default function SettingModal() {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const dispatch = useDispatch();
   const { user } = useSelector(selectAuthUserData);
   const { email, avatarURL, gender, name } = user;
-
+  screen;
   // https://project01-water-backend.onrender.com/api/users/current
   // http://localhost:3030/api/users/current
+
+  const avatarHandleChange = async (e) => {
+    const file = e.target.files[0];
+
+    await dispatch(userAvatarThunk(file));
+    setIsModalOpen(false);
+  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -26,13 +36,18 @@ export default function SettingModal() {
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string()
-      .required('Email is required')
-      .email('Invalid email address'),
+    email: Yup.string().email('Invalid email address'),
+    name: Yup.string(),
+    gender: Yup.string(),
+    oldPassword: Yup.string()
+      .min(8, 'Password must be at least 8 characters')
+      .max(64, 'Password is too long'),
     password: Yup.string()
       .min(8, 'Password must be at least 8 characters')
-      .max(64, 'Password is too long')
-      .required('Password is required'),
+      .max(64, 'Password is too long'),
+    repeatPassword: Yup.string()
+      .min(8, 'Password must be at least 8 characters')
+      .max(64, 'Password is too long'),
   });
 
   const formik = useFormik({
@@ -44,9 +59,32 @@ export default function SettingModal() {
       password: '',
       repeatPassword: '',
     },
-    onSubmit: (values, actions) => {
+    onSubmit: (values) => {
       console.log(values);
-      console.log(actions);
+      const updateUserInfo = {};
+
+      const {
+        name,
+        gender,
+        email,
+        // password,
+        // oldPassword,
+      } = formik.values;
+
+      if (name.trim() !== '') {
+        updateUserInfo.name = name;
+      }
+
+      if (gender.trim() !== '') {
+        updateUserInfo.gender = gender;
+      }
+
+      if (email.trim() !== '') {
+        updateUserInfo.email = email;
+      }
+
+      console.log(updateUserInfo);
+      dispatch(userInfoThunk(updateUserInfo));
     },
     validationSchema: validationSchema,
   });
@@ -74,8 +112,7 @@ export default function SettingModal() {
               id="avatarURL"
               name="avatarURL"
               type="file"
-              onChange={formik.handleChange}
-              value={formik.values.avatarURL}
+              onChange={avatarHandleChange}
             />
 
             <h3>Your gender identity</h3>
