@@ -8,10 +8,9 @@ import {
   selectMonthWater,
   selectWaterDataIsLoading,
 } from '../../redux/waterData/waterSelectors';
-import { getMonthInfoAPI } from '../../API/Water/getMonthInfoAPI';
+import { requestAddWater } from '../../services/waterDataAPI';
 import { updateOrAddCurrentDay } from './helpers/updateOrAddCurrentDay';
-import { PiSpinnerGap } from 'react-icons/pi';
-import s from './SpinnerContainer.module.css';
+import PiSpinnerGap from '../Loader/Loader';
 import m from './MonthStatsTablet.module.css';
 import { getStartDay } from '../../redux/auth/authSelectors';
 
@@ -48,7 +47,7 @@ const MonthStatsTable = () => {
       const fetchData = async () => {
         try {
           setIsOtherMonthLoading(true);
-          const newMonthStatistic = await getMonthInfoAPI({
+          const newMonthStatistic = await requestAddWater({
             month: selectedMonth.month + 1,
             year: selectedMonth.year,
           });
@@ -79,12 +78,8 @@ const MonthStatsTable = () => {
       />{' '}
       <div className={m.month}>
         {isMonthLoading || isOtherMonthLoading ? (
-          <div className={s.spinner}>
-            <PiSpinnerGap
-              className="spinner"
-              fill='black'
-              size={40}
-            />
+          <div>
+            <PiSpinnerGap/>
           </div>
         ) : (
           <MonthStatistic

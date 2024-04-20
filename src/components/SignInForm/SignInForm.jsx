@@ -1,70 +1,87 @@
-import { useFormik } from 'formik';
+//import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import s from '../SignInForm/SignInForm.module.css';
-//import { useState, useTransition } from 'react';
-import { signInThunk } from '../../redux/auth/authOperations.js';
-import * as Yup from 'yup';
+import * as yup from 'yup';
+import { Formik, Field } from 'formik';
+import { signInThunk } from '../../redux/auth/authOperations';
+
+import {
+  // StyledError,
+  StyledFieldName,
+  StyledForm,
+  StyledSubmitBtn,
+} from './SignInForm.styled';
+//import { ReactComponent as Eye } from '/src/svgs/icons/eye.svg';
+//import { ReactComponent as SlashedEye } from '/src/svgs/icons/slashed-eye.svg';
+
+const SignInSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email('Please enter a valid email')
+    .required('E-mail is required'),
+  password: yup
+    .string()
+    .min(8, 'Password must be 8 or more characters')
+    .max(64)
+    .required('Password is required'),
+  repeatPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'The passwords do not match')
+    .required('Repeat password field is required'),
+});
 
 const SignInForm = () => {
-  //const [visible, setVisible] = useState(false);
-  //const { t } = useTranslation();
+  //const [isPasswordVisible, setPasswordVisibility] = useState(false);
+  // const [isRepeatPasswordVisible, setRepeatPasswordVisibility] =
+  //   useState(false);
 
   const dispatch = useDispatch();
 
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .required('Email is required')
-      .email('Invalid email address'),
-    password: Yup.string()
-      .min(8, 'Password must be at least 8 characters')
-      .max(64, 'Password is too long')
-      .required('Password is required'),
-  });
+  const formInitialValues = {
+    email: '',
+    password: '',
+    repeatPassword: '',
+  };
 
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    onSubmit: ({ email, password }) => {
-      dispatch(signInThunk({ email, password }));
-    },
-    validationSchema: validationSchema,
-  });
-
+  const handleSubmit = ({ email, password }, { resetForm }) => {
+    event.preventDefault();
+    const newUser = { email, password };
+    dispatch(signInThunk(newUser));
+    resetForm();
+  };
   return (
-    <div className={s.container}>
-      <div className={s.form}>
-        <form onSubmit={formik.handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-          {formik.errors.email ? (
-            <div className={s.error}>{formik.errors.email}</div>
-          ) : null}
-          <label htmlFor="password">Password</label>
-
-          <input
-            id="password"
+    <Formik
+      initialValues={formInitialValues}
+      validationSchema={SignInSchema}
+      onSubmit={handleSubmit}
+    >
+      <StyledForm>
+        <h1>Sign In</h1>
+        <label>
+          <StyledFieldName>Enter your email</StyledFieldName>
+          <Field name="email" type="email" placeholder="E-mail" />
+          {/* <StyledError name="email" component="span" /> */}
+        </label>
+        <label>
+          <StyledFieldName>Enter your password</StyledFieldName>
+          <Field
             name="password"
             type="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
+            placeholder="Password"
+            pattern=".{8,}"
           />
-          {formik.errors.password ? (
-            <div className={s.error}>{formik.errors.password}</div>
-          ) : null}
-          <button type="submit" className={s.submitBtn}>
-            Sign In
-          </button>
-        </form>
-      </div>
-    </div>
+          {/* <StyledToggleBtn
+          type="button"
+          onClick={() => setPasswordVisibility(!isPasswordVisible)}
+        > */}
+          {/* {isPasswordVisible ? <Eye /> : <SlashedEye />} */}
+          {/* </StyledToggleBtn> */}
+          {/* <StyledError name="password" component="span" /> */}
+        </label>
+        <StyledSubmitBtn type="submit">Sign In</StyledSubmitBtn>
+        <Link to="/signup">Sign Up</Link>
+      </StyledForm>
+    </Formik>
   );
 };
 
