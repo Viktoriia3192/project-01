@@ -12,7 +12,7 @@ import {
 } from '../../redux/userInfo/userInfoOperations';
 
 export default function SettingModal() {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { user } = useSelector(selectAuthUserData);
   const { email, avatarURL, gender, name } = user;
