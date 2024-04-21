@@ -20,7 +20,8 @@ const HomePage = () => {
         <div className={s.dailyNormaWrapper}>
           <DailyNorma />
           <Picture />
-          <WaterRatioPanel />
+            <WaterRatioPanel />
+    
         </div>
         <div className={s.todayMonthWrapper}>
           <TodayWaterList />
