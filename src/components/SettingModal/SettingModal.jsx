@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FormikContext, useFormik } from 'formik';
-import * as Yup from 'yup';
+import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 
 import css from './SettingModal.module.css';
@@ -35,38 +35,54 @@ export default function SettingModal() {
     }
   };
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().matches(
-      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-      'Invalid email address'
-    ),
-    name: Yup.string()
+  const validationSchema = yup.object().shape({
+    email: yup
+      .string()
+      .matches(
+        /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        'Invalid email address'
+      ),
+    name: yup
+      .string()
       .min(3, 'Name must be at least 3 characters')
       .max(32, 'Name is too long'),
-    gender: Yup.string().oneOf(
-      ['male', 'female'],
-      'Gender must be either male or female'
-    ),
-    oldPassword: Yup.string()
+    gender: yup
+      .string()
+      .oneOf(['male', 'female'], 'Gender must be either male or female'),
+    oldPassword: yup
+      .string()
       .test(
         'isOldPasswordRequired',
-        'Please enter your old password',
+        'Please fill in old password',
         function (value) {
-          console.log(this.parent.password);
-          console.log(value);
-
-          return !!this.parent.password || value;
+          return !this.parent.password || value;
         }
       )
       .min(8, 'Password must be at least 8 characters')
       .max(64, 'Password is too long'),
-    password: Yup.string()
-      .min(8, 'Password must be 8 or more characters')
+    password: yup
+      .string()
+      .test(
+        'isPasswordRequired',
+        'Please fill in new password',
+        function (value) {
+          return !this.parent.oldPassword || value;
+        }
+      )
+      .test(
+        'isSamePassword',
+        'This is your old password, create a new password',
+        function (value) {
+          return this.parent.oldPassword !== value || !value;
+        }
+      )
+      .min(8, 'Password must be at least 8 characters')
       .max(64),
-    repeatPassword: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      'The passwords do not match'
-    ),
+    repeatPassword: yup
+      .string()
+      .test('passwords-match', 'The passwords do not match', function (value) {
+        return this.parent.password === value;
+      }),
   });
 
   const formik = useFormik({
@@ -82,13 +98,7 @@ export default function SettingModal() {
       console.log(values);
       const updateUserInfo = {};
 
-      const {
-        name,
-        gender,
-        email,
-        // password,
-        // oldPassword,
-      } = formik.values;
+      const { name, gender, email, password, oldPassword } = formik.values;
 
       if (name.trim() !== '') {
         updateUserInfo.name = name;
@@ -100,6 +110,14 @@ export default function SettingModal() {
 
       if (email.trim() !== '') {
         updateUserInfo.email = email;
+      }
+
+      if (oldPassword.trim() !== '') {
+        updateUserInfo.oldPassword = oldPassword;
+      }
+
+      if (password.trim() !== '') {
+        updateUserInfo.password = password;
       }
 
       console.log(updateUserInfo);
