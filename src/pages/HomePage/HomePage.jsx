@@ -8,7 +8,6 @@ import s from './HomePage.module.css';
 import { selectAuthIsLoading } from '../../redux/auth/authSelectors';
 import Loader from '../../components/Loader/Loader';
 import Picture from '../../components/BGPicture/Picture';
-import SettingModal from '../../components/SettingModal/SettingModal.jsx';
 
 const HomePage = () => {
   const isLoading = useSelector(selectAuthIsLoading);
@@ -19,7 +18,6 @@ const HomePage = () => {
     <div className={s.container}>
       <div className={s.wrapper}>
         <div className={s.dailyNormaWrapper}>
-          <SettingModal />
           <DailyNorma />
           <Picture />
           <WaterRatioPanel />
