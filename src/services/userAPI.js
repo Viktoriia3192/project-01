@@ -9,7 +9,7 @@ export const requestRefreshUser = async () => {
 
 export const requestAvatarUpdate = async (avatar) => {
   const formData = new FormData();
-  formData.append('avatarUrl', avatar);
+  formData.append('avatarURL', avatar);
 
   const { data } = await axiosInstance.patch('users/avatar', formData, {
     headers: {
