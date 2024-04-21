@@ -6,13 +6,14 @@ import { Formik, Field } from 'formik';
 import { signInThunk } from '../../redux/auth/authOperations';
 
 import {
-  // StyledError,
+  StyledError,
   StyledFieldName,
   StyledForm,
   StyledSubmitBtn,
+  StyledToggleBtn,
 } from './SignInForm.styled';
-//import { ReactComponent as Eye } from '/src/svgs/icons/eye.svg';
-//import { ReactComponent as SlashedEye } from '/src/svgs/icons/slashed-eye.svg';
+import { HiOutlineEyeSlash, HiOutlineEye } from 'react-icons/hi2';
+import { useState } from 'react';
 
 const SignInSchema = yup.object().shape({
   email: yup
@@ -24,23 +25,16 @@ const SignInSchema = yup.object().shape({
     .min(8, 'Password must be 8 or more characters')
     .max(64)
     .required('Password is required'),
-  repeatPassword: yup
-    .string()
-    .oneOf([yup.ref('password'), null], 'The passwords do not match')
-    .required('Repeat password field is required'),
 });
 
 const SignInForm = () => {
-  //const [isPasswordVisible, setPasswordVisibility] = useState(false);
-  // const [isRepeatPasswordVisible, setRepeatPasswordVisibility] =
-  //   useState(false);
+  const [isPasswordVisible, setPasswordVisibility] = useState(false);
 
   const dispatch = useDispatch();
 
   const formInitialValues = {
     email: '',
     password: '',
-    repeatPassword: '',
   };
 
   const handleSubmit = ({ email, password }, { resetForm }) => {
@@ -60,23 +54,24 @@ const SignInForm = () => {
         <label>
           <StyledFieldName>Enter your email</StyledFieldName>
           <Field name="email" type="email" placeholder="E-mail" />
-          {/* <StyledError name="email" component="span" /> */}
+          <StyledError name="email" component="span" />
         </label>
         <label>
           <StyledFieldName>Enter your password</StyledFieldName>
-          <Field
-            name="password"
-            type="password"
-            placeholder="Password"
-            pattern=".{8,}"
-          />
-          {/* <StyledToggleBtn
-          type="button"
-          onClick={() => setPasswordVisibility(!isPasswordVisible)}
-        > */}
-          {/* {isPasswordVisible ? <Eye /> : <SlashedEye />} */}
-          {/* </StyledToggleBtn> */}
-          {/* <StyledError name="password" component="span" /> */}
+          <div>
+            <Field
+              name="password"
+              type={isPasswordVisible ? 'text' : 'password'}
+              placeholder="Password"
+            />
+            <StyledToggleBtn
+              type="button"
+              onClick={() => setPasswordVisibility(!isPasswordVisible)}
+            >
+              {isPasswordVisible ? <HiOutlineEye /> : <HiOutlineEyeSlash />}
+            </StyledToggleBtn>
+          </div>
+          <StyledError name="password" component="span" />
         </label>
         <StyledSubmitBtn type="submit">Sign In</StyledSubmitBtn>
         <Link to="/signup">Sign Up</Link>
