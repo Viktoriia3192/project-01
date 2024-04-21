@@ -41,9 +41,11 @@ export default function SettingModal() {
       .matches(
         /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
         'Invalid email address'
-      ),
+      )
+      .required(),
     name: yup
       .string()
+      .required()
       .min(3, 'Name must be at least 3 characters')
       .max(32, 'Name is too long'),
     gender: yup
@@ -94,7 +96,7 @@ export default function SettingModal() {
       password: '',
       repeatPassword: '',
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log(values);
       const updateUserInfo = {};
 
@@ -121,7 +123,8 @@ export default function SettingModal() {
       }
 
       console.log(updateUserInfo);
-      dispatch(userInfoThunk(updateUserInfo));
+      setIsModalOpen(false);
+      await dispatch(userInfoThunk(updateUserInfo));
     },
     validationSchema: validationSchema,
   });
