@@ -1,16 +1,17 @@
 import { useSelector } from 'react-redux';
-import SignInForm from '../../components/SignInForm/SignInForm';
 import { selectAuthError } from '../../redux/auth/authSelectors';
 import {
   StyledBackgroundWrap,
   StyledErrorMessage,
 } from '../SignInPage/SignInPage.styled';
+import { AuthForm } from '../../components/AuthForm';
 const SignInPage = () => {
   const authError = useSelector(selectAuthError);
   return (
     <>
       <StyledBackgroundWrap></StyledBackgroundWrap>
-      <SignInForm />
+
+      <AuthForm />
       {authError && <StyledErrorMessage>{authError}</StyledErrorMessage>}
     </>
   );

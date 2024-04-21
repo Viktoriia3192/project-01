@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Form } from 'formik';
+import { ErrorMessage, Form } from 'formik';
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -26,7 +26,6 @@ export const StyledForm = styled(Form)`
   label {
     position: relative;
   }
-
   input {
     padding: 12px 10px;
     width: 100%;
@@ -47,12 +46,10 @@ export const StyledForm = styled(Form)`
     color: var(--secondary-color-red);
     border: 1px solid var(--secondary-color-red);
   }
-
   input::-ms-reveal,
   input::-ms-clear {
     display: none;
   }
-
   a {
     width: fit-content;
     font-size: 16px;
@@ -62,6 +59,9 @@ export const StyledForm = styled(Form)`
   }
   a:hover {
     color: var(--secondary-color-orange);
+  }
+  svg {
+    color: var(--primery-color-blue);
   }
 `;
 export const StyledSubmitBtn = styled.button`
@@ -73,11 +73,9 @@ export const StyledSubmitBtn = styled.button`
   background-color: var(--primery-color-blue);
   color: var(--primery-color-white);
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-
   @media (min-width: 768px) {
     font-size: 18px;
   }
-
   :hover {
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
   }
@@ -100,8 +98,8 @@ export const StyledToggleBtn = styled.button`
   stroke: var(--primery-color-blue);
 `;
 
-// export const StyledError = styled(ErrorMessage)`
-//   margin-left: 4px;
-//   font-size: 14px;
-//   color: ${colors.secondaryColor3};
-// `;
+export const StyledError = styled(ErrorMessage)`
+  margin-left: 4px;
+  font-size: 14px;
+  color: var(--secondary-color-orange);
+`;
