@@ -1,4 +1,4 @@
-import{f as m,j as e,L as x,i as u,u as h,k as g}from"./index-14f72632.js";import{F as b,c as w,a as r,b as f,d as k,e as t,m as v,f as a,g as y,t as j,h as S,i as $,j as z,k as B,l as E}from"./background-element-main-page@2x-1415857c.js";import{n as i}from"./emotion-styled.browser.esm-485d4114.js";const F=i(b)`
+import{f as x,j as e,L as m,l as u,u as h,k as g}from"./index-cc0bac7f.js";import{F as b,c as w,a as o,b as f,d as k,e as t,m as v,f as n,g as y,t as j,h as S,i as $,j as z,k as B,l as E}from"./background-element-main-page@2x-fb8a3532.js";import{n as r}from"./emotion-styled.browser.esm-99fb4528.js";const F=r(b)`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -60,7 +60,7 @@ import{f as m,j as e,L as x,i as u,u as h,k as g}from"./index-14f72632.js";impor
   a:hover {
     color: var(--secondary-color-orange);
   }
-`,I=i.button`
+`,P=r.button`
   padding: 8px 30px;
   font-size: 16px;
   line-height: 1.25;
@@ -77,13 +77,13 @@ import{f as m,j as e,L as x,i as u,u as h,k as g}from"./index-14f72632.js";impor
   :hover {
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
   }
-`,n=i.span`
+`,a=r.span`
   display: block;
   margin-bottom: 8px;
   font-size: 18px;
   line-height: 1.33;
   color: var(--primery-color-black);
-`;i.button`
+`;r.button`
   position: absolute;
   right: 10px;
   top: 44px;
@@ -91,7 +91,7 @@ import{f as m,j as e,L as x,i as u,u as h,k as g}from"./index-14f72632.js";impor
   border: none;
   cursor: pointer;
   stroke: var(--primery-color-blue);
-`;const P=w().shape({email:r().email("Please enter a valid email").required("E-mail is required"),password:r().min(8,"Password must be 8 or more characters").max(64).required("Password is required"),repeatPassword:r().oneOf([f("password"),null],"The passwords do not match").required("Repeat password field is required")}),q=()=>{const o=m(),s={email:"",password:"",repeatPassword:""},l=({email:p,password:d},{resetForm:c})=>{event.preventDefault(),o(u({email:p,password:d})),c()};return e.jsx(k,{initialValues:s,validationSchema:P,onSubmit:l,children:e.jsxs(F,{children:[e.jsx("h1",{children:"Sign In"}),e.jsxs("label",{children:[e.jsx(n,{children:"Enter your email"}),e.jsx(t,{name:"email",type:"email",placeholder:"E-mail"})]}),e.jsxs("label",{children:[e.jsx(n,{children:"Enter your password"}),e.jsx(t,{name:"password",type:"password",placeholder:"Password",pattern:".{8,}"})]}),e.jsx(I,{type:"submit",children:"Sign In"}),e.jsx(x,{to:"/signup",children:"Sign Up"})]})})},U=i.div`
+`;const U=w().shape({email:o().email("Please enter a valid email").required("E-mail is required"),password:o().min(8,"Password must be 8 or more characters").max(64).required("Password is required"),repeatPassword:o().oneOf([f("password"),null],"The passwords do not match").required("Repeat password field is required")}),q=()=>{const i=x(),s={email:"",password:"",repeatPassword:""},l=({email:p,password:d},{resetForm:c})=>{event.preventDefault(),i(u({email:p,password:d})),c()};return e.jsx(k,{initialValues:s,validationSchema:U,onSubmit:l,children:e.jsxs(F,{children:[e.jsx("h1",{children:"Sign Up"}),e.jsxs("label",{children:[e.jsx(a,{children:"Enter your email"}),e.jsx(t,{name:"email",type:"email",placeholder:"E-mail"})]}),e.jsxs("label",{children:[e.jsx(a,{children:"Enter your password"}),e.jsx(t,{name:"password",type:"password",placeholder:"Password",pattern:".{8,}"})]}),e.jsxs("label",{children:[e.jsx(a,{children:"Repeat password"}),e.jsx(t,{name:"repeatPassword",type:"password",placeholder:"Repeat password",pattern:".{8,}"})]}),e.jsx(P,{type:"submit",children:"Sign Up"}),e.jsx(m,{to:"/signin",children:"Sign in"})]})})},R=r.div`
   max-width: 320px;
   width: 100%;
   height: 570px;
@@ -100,7 +100,7 @@ import{f as m,j as e,L as x,i as u,u as h,k as g}from"./index-14f72632.js";impor
   left: 0;
   z-index: -10;
   background-image: url(${v}),
-    url(${a});
+    url(${n});
   background-size: 280px, cover;
   background-repeat: no-repeat;
   background-position:
@@ -112,7 +112,7 @@ import{f as m,j as e,L as x,i as u,u as h,k as g}from"./index-14f72632.js";impor
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     background-image: url(${y}),
-      url(${a});
+      url(${n});
   }
 
   @media (min-width: 768px) {
@@ -154,7 +154,7 @@ import{f as m,j as e,L as x,i as u,u as h,k as g}from"./index-14f72632.js";impor
         url(${E});
     }
   }
-`,D=i.p`
+`,D=r.p`
   margin-top: 20px;
   width: 280px;
   font-size: 18px;
@@ -169,4 +169,4 @@ import{f as m,j as e,L as x,i as u,u as h,k as g}from"./index-14f72632.js";impor
     margin-left: auto;
     margin-right: 133px;
   }
-`,A=()=>{const o=h(g);return e.jsxs(e.Fragment,{children:[e.jsx(U,{}),e.jsx(q,{}),o&&e.jsx(D,{children:o})]})};export{A as default};
+`,I=()=>{const i=h(g);return e.jsxs(e.Fragment,{children:[e.jsx(q,{}),e.jsx(R,{}),i&&e.jsx(D,{children:i})]})};export{I as default};
