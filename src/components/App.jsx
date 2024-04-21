@@ -1,6 +1,6 @@
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { refreshUserThunk } from '../redux/auth/authOperations.js';
+// import { currentUserThunk } from '../redux/auth/authOperations.js';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Loader from './Loader/Loader.jsx';
@@ -8,6 +8,7 @@ import SharedLayout from './SharedLayout/SharedLayout.jsx';
 import { selectAuthIsLoading } from '../redux/auth/authSelectors.js';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute.jsx';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
+import { refreshUserThunk } from '../redux/userInfo/userInfoOperations.js';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage.jsx'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage.jsx'));
