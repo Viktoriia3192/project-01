@@ -1,7 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
+  // currentUserThunk,
   logOutThunk,
-  refreshUserThunk,
   signInThunk,
   signUpThunk,
 } from './authOperations';
@@ -9,6 +9,7 @@ import {
   updateWaterRateThunk,
   userAvatarThunk,
   userInfoThunk,
+  refreshUserThunk,
 } from '../userInfo/userInfoOperations';
 
 const initialState = {

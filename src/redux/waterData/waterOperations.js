@@ -25,12 +25,12 @@ export const todayThunk = createAsyncThunk(
 
 export const monthThunk = createAsyncThunk(
   'water-notes/month',
-  async (month, thunkAPI) => {
+  async (_, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 
     try {
       setToken(token);
-      const response = await requestMonth(month + 1);
+      const response = await requestMonth();
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -39,7 +39,7 @@ export const monthThunk = createAsyncThunk(
 );
 
 export const addWaterThunk = createAsyncThunk(
-  'water-notes/add',
+  'water-notes/',
   async (waterData, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 
@@ -54,7 +54,7 @@ export const addWaterThunk = createAsyncThunk(
 );
 
 export const deleteWaterThunk = createAsyncThunk(
-  'water-notes/delete',
+  'water-notes/delete-dose-water',
   async (waterId, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 
@@ -69,7 +69,7 @@ export const deleteWaterThunk = createAsyncThunk(
 );
 
 export const updateWaterThunk = createAsyncThunk(
-  'water-notes/update',
+  'water-notes/update-dose-water',
   async (data, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 

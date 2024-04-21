@@ -1,20 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
+  // requestCurrentUser,
   requestLogIn,
   requestLogOut,
-  requestRefreshUser,
+  // requestRefreshUser,
   requestSignUp,
   setToken,
 } from '../../services/authAPI';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+import { toastError, toastSuccess } from '../../services/toastNotification';
 
 export const signUpThunk = createAsyncThunk(
   'auth/signup',
   async (formData, thunkAPI) => {
     try {
       const response = await requestSignUp(formData);
+      toastSuccess('Successfully signed up');
       return response;
     } catch (error) {
+      toastError('Failed to sign up. Try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -25,10 +29,10 @@ export const signInThunk = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await requestLogIn(formData);
-      toast.success('Successfully logged in');
+      toastSuccess('Successfully logged in');
       return response;
     } catch (error) {
-      toast.error('Failed to log in. Try again');
+      toastError('Failed to log in. Try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -41,31 +45,32 @@ export const logOutThunk = createAsyncThunk(
     try {
       setToken(token);
       await requestLogOut();
-      toast.success('Successfully loggged out');
+      toastSuccess('Successfully loggged out');
       return;
     } catch (error) {
+      toastError('Failed to log out. Try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const refreshUserThunk = createAsyncThunk(
-  'users/current',
-  async (_, thunkAPI) => {
-    const token = thunkAPI.getState().auth.token;
-    try {
-      setToken(token);
-      const response = await requestRefreshUser();
-      return response;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
-  {
-    condition: (_, thunkAPI) => {
-      const token = thunkAPI.getState().auth.token;
-      if (!token) return false;
-      return true;
-    },
-  }
-);
+// export const currentUserThunk = createAsyncThunk(
+//   'auth/current',
+//   async (_, thunkAPI) => {
+//     const token = thunkAPI.getState().auth.token;
+//     try {
+//       setToken(token);
+//       const response = await requestCurrentUser();
+//       return response;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// {
+//   condition: (_, thunkAPI) => {
+//     const token = thunkAPI.getState().auth.token;
+//     if (!token) return false;
+//     return true;
+//   },
+// }
+// );
