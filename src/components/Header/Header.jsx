@@ -11,7 +11,7 @@ const Header = () => {
   const isLoggedIn = useSelector(selectAuthIsSignedIn);
   return (
     <div className={css.headerContainer}>
-      <NavLink to="/">
+      <NavLink to={isLoggedIn ? '/home' : '/welcome'}>
         <Logo />
       </NavLink>
       {isLoggedIn ? <UserAuth /> : <UserLink />}

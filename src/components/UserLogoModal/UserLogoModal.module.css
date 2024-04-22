@@ -1,4 +1,7 @@
 .modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: absolute;
   right: 20px;
   top: 48px;
@@ -10,6 +13,38 @@
   box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 29px 0px;
 }
 
+.toothSvg {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+}
+
+.LogOutSvg {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+}
+.settingButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primery-color-blue);
+}
+
+.settingButton:hover {
+  color: var(--secondary-color-orange);
+}
+
+.logOutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  color: var(--primery-color-blue);
+}
+.logOutButton:hover {
+  color: var(--secondary-color-orange);
+}
 @media screen and (min-width: 768px) {
   .modal {
     top: 56px;

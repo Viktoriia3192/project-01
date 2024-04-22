@@ -22,8 +22,8 @@ export const requestLogOut = async () => {
   return data;
 };
 
-export const requestRefreshUser = async () => {
-  const { data } = await axiosInstance.get('users/current');
-  setToken(data.token);
-  return data;
-};
+// export const requestCurrentUser = async () => {
+//   const { data } = await axiosInstance.get('auth/current');
+//   setToken(data.token);
+//   return data;
+// };
