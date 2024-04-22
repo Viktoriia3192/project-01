@@ -1,4 +1,3 @@
-//import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
@@ -6,13 +5,15 @@ import { Formik, Field } from 'formik';
 import { signUpThunk } from '../../redux/auth/authOperations';
 
 import {
-  // StyledError,
+  StyledError,
   StyledFieldName,
   StyledForm,
   StyledSubmitBtn,
+  StyledToggleBtn,
 } from './SignUpForm.styled';
-//import { ReactComponent as Eye } from '/src/svgs/icons/eye.svg';
-//import { ReactComponent as SlashedEye } from '/src/svgs/icons/slashed-eye.svg';
+import { useState } from 'react';
+
+import { HiOutlineEyeSlash, HiOutlineEye } from 'react-icons/hi2';
 
 const SignUpSchema = yup.object().shape({
   email: yup
@@ -31,9 +32,9 @@ const SignUpSchema = yup.object().shape({
 });
 
 const SignUpForm = () => {
-  //const [isPasswordVisible, setPasswordVisibility] = useState(false);
-  // const [isRepeatPasswordVisible, setRepeatPasswordVisibility] =
-  //   useState(false);
+  const [isPasswordVisible, setPasswordVisibility] = useState(false);
+  const [isRepeatPasswordVisible, setRepeatPasswordVisibility] =
+    useState(false);
 
   const dispatch = useDispatch();
 
@@ -55,43 +56,70 @@ const SignUpForm = () => {
       validationSchema={SignUpSchema}
       onSubmit={handleSubmit}
     >
-      <StyledForm>
-        <h1>Sign Up</h1>
-        <label>
-          <StyledFieldName>Enter your email</StyledFieldName>
-          <Field name="email" type="email" placeholder="E-mail" />
-          {/* <StyledError name="email" component="span" /> */}
-        </label>
-        <label>
-          <StyledFieldName>Enter your password</StyledFieldName>
-          <Field
-            name="password"
-            type="password"
-            placeholder="Password"
-            pattern=".{8,}"
-          />
-          {/* <StyledToggleBtn
-          type="button"
-          onClick={() => setPasswordVisibility(!isPasswordVisible)}
-        > */}
-          {/* {isPasswordVisible ? <Eye /> : <SlashedEye />} */}
-          {/* </StyledToggleBtn> */}
-          {/* <StyledError name="password" component="span" /> */}
-        </label>
-        <label>
-          <StyledFieldName>Repeat password</StyledFieldName>
-          <Field
-            name="repeatPassword"
-            type="password"
-            placeholder="Repeat password"
-            pattern=".{8,}"
-          />
+      {(formik) => {
+        return (
+          <StyledForm>
+            <h1>Sign Up</h1>
+            <label>
+              <StyledFieldName>Enter your email</StyledFieldName>
+              <Field name="email" type="email" placeholder="E-mail" />
+              <StyledError name="email" component="span" />
+            </label>
+            <label>
+              <StyledFieldName>Enter your password</StyledFieldName>
+              <div>
+                <Field
+                  name="password"
+                  type={isPasswordVisible ? 'text' : 'password'}
+                  placeholder="Password"
+                  // pattern=".{8,}"
+                />
+                <StyledToggleBtn
+                  type="button"
+                  onClick={() => setPasswordVisibility(!isPasswordVisible)}
+                >
+                  {isPasswordVisible ? <HiOutlineEye /> : <HiOutlineEyeSlash />}
+                </StyledToggleBtn>
+              </div>
+              <StyledError name="password" component="span" />
+            </label>
+            <label>
+              <StyledFieldName>Repeat password</StyledFieldName>
+              <div>
+                <Field
+                  name="repeatPassword"
+                  type={isRepeatPasswordVisible ? 'text' : 'password'}
+                  placeholder="Password"
+                  // pattern=".{8,}"
+                />
+                <StyledToggleBtn
+                  type="button"
+                  onClick={() =>
+                    setRepeatPasswordVisibility(!isRepeatPasswordVisible)
+                  }
+                >
+                  {isRepeatPasswordVisible ? (
+                    <HiOutlineEye />
+                  ) : (
+                    <HiOutlineEyeSlash />
+                  )}
+                </StyledToggleBtn>
+              </div>
 
-          {/* <StyledError name="repeatPassword" component="span" /> */}
-        </label>
-        <StyledSubmitBtn type="submit">Sign Up</StyledSubmitBtn>
-        <Link to="/signin">Sign in</Link>
-      </StyledForm>
+              <StyledError name="repeatPassword" component="span" />
+            </label>
+            <StyledSubmitBtn type="submit">Sign Up</StyledSubmitBtn>
+            <Link
+              to="/signin"
+              onClick={() => {
+                formik.handleReset();
+              }}
+            >
+              Sign in
+            </Link>
+          </StyledForm>
+        );
+      }}
     </Formik>
   );
 };

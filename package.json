@@ -25,6 +25,7 @@
     "i18next": "^23.11.1",
     "modern-normalize": "^2.0.0",
     "normalize.css": "^8.0.1",
+    "rc-menu": "^9.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.3",
