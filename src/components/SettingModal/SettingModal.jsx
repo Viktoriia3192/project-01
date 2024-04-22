@@ -1,32 +1,32 @@
 import { FormikContext, useFormik } from 'formik';
 import * as yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import css from './SettingModal.module.css';
 import Modal from '../Modal/Modal';
-// import { selectAuthUserData } from '../../redux/auth/authSelectors';
+import { selectAuthUserData } from '../../redux/auth/authSelectors';
 import {
   userInfoThunk,
   userAvatarThunk,
 } from '../../redux/userInfo/userInfoOperations';
 
-const testUser = {
-  token:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjVhMDE2NjBmMjcyY2M4ZDMwZWU3ZiIsImlhdCI6MTcxMzc0MTg0N30.UPeK_rPUxPAKcy7Je9-ACJ6uM49HQczRhS8_0Po1wVQ',
-  user: {
-    _id: '6625a01660f272cc8d30ee7f',
-    email: 'test-setting-modal@mail.com',
-    name: 'User',
-    gender: null,
-    waterRate: 2000,
-    avatarURL: '//www.gravatar.com/avatar/759547a9c2c5213af970762f8e9786ae',
-  },
-};
+// const testUser = {
+//   token:
+//     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjVhMDE2NjBmMjcyY2M4ZDMwZWU3ZiIsImlhdCI6MTcxMzc0MTg0N30.UPeK_rPUxPAKcy7Je9-ACJ6uM49HQczRhS8_0Po1wVQ',
+//   user: {
+//     _id: '6625a01660f272cc8d30ee7f',
+//     email: 'test-setting-modal@mail.com',
+//     name: 'User',
+//     gender: null,
+//     waterRate: 2000,
+//     avatarURL: '//www.gravatar.com/avatar/759547a9c2c5213af970762f8e9786ae',
+//   },
+// };
 
 export default function SettingModal({ isOpen, setIsSettingOpen }) {
   const dispatch = useDispatch();
-  // const { user } = useSelector(selectAuthUserData);
-  const { user } = testUser;
+  const { user } = useSelector(selectAuthUserData);
+  // const { user } = testUser;
   const { email, avatarURL, gender, name } = user;
 
   const avatarHandleChange = async (e) => {
