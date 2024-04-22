@@ -57,11 +57,12 @@ const TodayWaterList = () => {
                       </td>
                       <td className={s.doseVolume}>{dose.waterVolume} ml</td>
                       <td className={s.doseTime}>
-                        {new Intl.DateTimeFormat('en', {
+                        {/* {new Intl.DateTimeFormat('en', {
                           hour: 'numeric',
                           minute: 'numeric',
                           hour12: true,
-                        }).format(new Date(dose.date)?.toJSON()?.split('T')[0])}
+                        }).format(new Date(dose.date)?.toJSON()?.split('T')[0])} */}
+                        {dose.time}
                       </td>
 
                       <td>
