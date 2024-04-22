@@ -3,16 +3,43 @@ import Modal from '../Modal/Modal';
 import sprite from '../../images/sprite.svg';
 import css from './EditWater.module.css';
 import { GrAdd } from 'react-icons/gr';
+import { useDispatch } from 'react-redux';
+import { updateWaterThunk } from '../../redux/waterData/waterOperations';
 
 export default function EditWaterModal() {
   const [modalIsOpen, setModalIsOpen] = useState(true);
   const [time, setTime] = useState('00:00');
   const [amount, setAmount] = useState(0);
   const [waterValue, setWaterValue] = useState(0);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setWaterValue(amount);
   }, [amount]);
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    const waterVolume = event.currentTarget.water.value;
+    const time = event.currentTarget.time.value;
+
+    const formData = {
+      waterVolume,
+      time,
+    };
+
+    handleUpdateWater(formData);
+    event.currentTarget.reset();
+  };
+
+  const handleUpdateWater = (formData) => {
+    const newWater = {
+      ...formData,
+      id: Math.random().toString(),
+    };
+
+    dispatch(updateWaterThunk(newWater));
+  };
 
   const incrementAmount = () => {
     setAmount((prevAmount) => prevAmount + 5);
@@ -69,35 +96,38 @@ export default function EditWaterModal() {
             </button>
           </div>
           <p className={css.recording_time}>Recording time:</p>
-          <select
-            className={css.custom_select}
-            value={time}
-            onChange={handleTimeChange}
-          >
-            {generateOptions().map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <p className={css.water_value_title}>
-            Enter the value of the water used:
-          </p>
-          <form name="water_value">
+          <form name="water_value" onSubmit={handleFormSubmit}>
+            <select
+              className={css.custom_select}
+              name={time}
+              value={time}
+              onChange={handleTimeChange}
+            >
+              {generateOptions().map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <p className={css.water_value_title}>
+              Enter the value of the water used:
+            </p>
+
             <input
               className={css.water_value}
               type="number"
+              name="water"
               min="0"
               value={waterValue}
               onChange={(e) => setWaterValue(e.target.value)}
             />
+            <div className={css.water_value_button_send}>
+              <p className={css.water}>{waterValue}ml</p>
+              <button className={css.button_save} type="submit">
+                Save
+              </button>
+            </div>
           </form>
-          <div className={css.water_value_button_send}>
-            <p className={css.water}>{waterValue}ml</p>
-            <button className={css.button_save} type="submit">
-              Save
-            </button>
-          </div>
         </div>
       </Modal>
     </>
