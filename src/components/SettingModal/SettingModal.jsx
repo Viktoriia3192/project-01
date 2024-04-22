@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FormikContext, useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,20 +10,30 @@ import {
   userAvatarThunk,
 } from '../../redux/userInfo/userInfoOperations';
 
-export default function SettingModal() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+// const testUser = {
+//   token:
+//     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjVhMDE2NjBmMjcyY2M4ZDMwZWU3ZiIsImlhdCI6MTcxMzc0MTg0N30.UPeK_rPUxPAKcy7Je9-ACJ6uM49HQczRhS8_0Po1wVQ',
+//   user: {
+//     _id: '6625a01660f272cc8d30ee7f',
+//     email: 'test-setting-modal@mail.com',
+//     name: 'User',
+//     gender: null,
+//     waterRate: 2000,
+//     avatarURL: '//www.gravatar.com/avatar/759547a9c2c5213af970762f8e9786ae',
+//   },
+// };
+
+export default function SettingModal({ isOpen, setIsSettingOpen }) {
   const dispatch = useDispatch();
   const { user } = useSelector(selectAuthUserData);
+  // const { user } = testUser;
   const { email, avatarURL, gender, name } = user;
-
-  // https://project01-water-backend.onrender.com/api/users/current
-  // http://localhost:3030/api/users/current
 
   const avatarHandleChange = async (e) => {
     const file = e.target.files[0];
 
     await dispatch(userAvatarThunk(file));
-    setIsModalOpen(false);
+    setIsSettingOpen(false);
   };
 
   const handleFormSubmit = async (e) => {
@@ -123,7 +132,7 @@ export default function SettingModal() {
       }
 
       console.log(updateUserInfo);
-      setIsModalOpen(false);
+      setIsSettingOpen(false);
       await dispatch(userInfoThunk(updateUserInfo));
     },
     validationSchema: validationSchema,
@@ -131,7 +140,7 @@ export default function SettingModal() {
 
   return (
     <>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <Modal isOpen={isOpen} onClose={() => setIsSettingOpen(false)}>
         <FormikContext.Provider value={formik}>
           <form
             className={css.form}
@@ -139,50 +148,64 @@ export default function SettingModal() {
             noValidate
             autoComplete="off"
           >
-            <h2>Setting</h2>
+            <h2 className={css.title}>Setting</h2>
 
-            <label htmlFor="avatarURL">Your photo</label>
-            <img
-              src={avatarURL || ''}
-              alt="user avatar"
-              height={80}
-              width={80}
-            />
-            <input
-              id="avatarURL"
-              name="avatarURL"
-              type="file"
-              onChange={avatarHandleChange}
-            />
+            <h3 className={css.subtitle_photo}>Your photo</h3>
 
-            <h3>Your gender identity</h3>
-
-            <div>
-              <input
-                type="radio"
-                id="female"
-                name="gender"
-                value="female"
-                checked={formik.values.gender === 'female'}
-                onChange={formik.handleChange}
+            <div className={css.avatar_conteiner}>
+              <img
+                className={css.avatar}
+                src={avatarURL || ''}
+                alt="user avatar"
+                height={80}
+                width={80}
               />
-              <label htmlFor="female">Woman</label>
+              <input
+                className={css.input_avatar}
+                id="avatarURL"
+                name="avatarURL"
+                type="file"
+                accept="image/*,.png,.jpg"
+                onChange={avatarHandleChange}
+              />
+              <label className={css.photo_lable} htmlFor="avatarURL">
+                Upload a photo
+              </label>
             </div>
 
-            <div>
-              <input
-                type="radio"
-                id="male"
-                name="gender"
-                value="male"
-                checked={formik.values.gender === 'male'}
-                onChange={formik.handleChange}
-              />
-              <label htmlFor="male">Man</label>
+            <h3 className={css.subtitle_gender}>Your gender identity</h3>
+
+            <div className={css.gender_conteiner}>
+              <div className={css.gender_wraper}>
+                <input
+                  type="radio"
+                  id="female"
+                  name="gender"
+                  value="female"
+                  checked={formik.values.gender === 'female'}
+                  onChange={formik.handleChange}
+                />
+                <label htmlFor="female">Woman</label>
+              </div>
+
+              <div className={css.gender_wraper}>
+                <input
+                  type="radio"
+                  id="male"
+                  name="gender"
+                  value="male"
+                  checked={formik.values.gender === 'male'}
+                  onChange={formik.handleChange}
+                />
+                <label htmlFor="male">Man</label>
+              </div>
             </div>
 
-            <label htmlFor="name">Your name</label>
+            <label className={css.name_lable} htmlFor="name">
+              Your name
+            </label>
             <input
+              className={css.input_field}
               id="name"
               name="name"
               type="text"
@@ -194,8 +217,11 @@ export default function SettingModal() {
               <div className={css.error}>{formik.errors.name}</div>
             ) : null}
 
-            <label htmlFor="email">E-mail</label>
+            <label className={css.email_lable} htmlFor="email">
+              E-mail
+            </label>
             <input
+              className={css.input_field}
               id="email"
               name="email"
               type="email"
@@ -207,48 +233,62 @@ export default function SettingModal() {
               <div className={css.error}>{formik.errors.email}</div>
             ) : null}
 
-            <h3>Password</h3>
+            <h3 className={css.subtitle_password}>Password</h3>
 
-            <label htmlFor="oldPassword">Outdated password:</label>
+            <label className={css.lable_password} htmlFor="oldPassword">
+              Outdated password:
+            </label>
             <input
+              className={css.input_field}
               id="oldPassword"
               name="oldPassword"
               type="password"
               onChange={formik.handleChange}
               value={formik.values.oldPassword}
+              placeholder="Password"
             />
 
             {formik.errors.oldPassword ? (
               <div className={css.error}>{formik.errors.oldPassword}</div>
             ) : null}
 
-            <label htmlFor="password">New Password:</label>
+            <label className={css.lable_password} htmlFor="password">
+              New Password:
+            </label>
             <input
+              className={css.input_field}
               id="password"
               name="password"
               type="password"
               onChange={formik.handleChange}
               value={formik.values.password}
+              placeholder="Password"
             />
 
             {formik.errors.password ? (
               <div className={css.error}>{formik.errors.password}</div>
             ) : null}
 
-            <label htmlFor="repeatPassword">Repeat new password:</label>
+            <label className={css.lable_password} htmlFor="repeatPassword">
+              Repeat new password:
+            </label>
             <input
+              className={css.input_field}
               id="repeatPassword"
               name="repeatPassword"
               type="password"
               onChange={formik.handleChange}
               value={formik.values.repeatPassword}
+              placeholder="Password"
             />
 
             {formik.errors.repeatPassword ? (
               <div className={css.error}>{formik.errors.repeatPassword}</div>
             ) : null}
 
-            <button type="submit">Submit</button>
+            <button className={css.save_btn} type="submit">
+              Save
+            </button>
           </form>
         </FormikContext.Provider>
       </Modal>
