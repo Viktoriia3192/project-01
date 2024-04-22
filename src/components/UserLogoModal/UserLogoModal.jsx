@@ -2,15 +2,20 @@ import css from './UserLogoModal.module.css';
 import sprite from '../../images/sprite.svg';
 import { useState } from 'react';
 import LogOutModal from '../LogOutModal/LogOutModal';
+import SettingModal from '../SettingModal/SettingModal';
 const UserLogoModal = () => {
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
+  const [isSettingOpen, setIsSettingOpen] = useState(false);
 
   const toggleLogOutModal = () => {
     setIsLogOutModalOpen(!isLogOutModalOpen);
   };
   return (
     <div className={css.modal}>
-      <button className={css.settingButton}>
+      <button
+        className={css.settingButton}
+        onClick={() => setIsSettingOpen(!isSettingOpen)}
+      >
         <svg className={css.toothSvg}>
           <use href={`${sprite}#icon-6-tooth`}></use>
         </svg>
@@ -31,6 +36,12 @@ const UserLogoModal = () => {
         <LogOutModal
           isOpen={isLogOutModalOpen}
           setIsLogOutModalOpen={setIsLogOutModalOpen}
+        />
+      )}
+      {isSettingOpen && (
+        <SettingModal
+          isOpen={isSettingOpen}
+          setIsSettingOpen={setIsSettingOpen}
         />
       )}
     </div>
