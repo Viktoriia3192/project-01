@@ -15,24 +15,6 @@ import deskBub from '../../images/signup/desktop/background-element-main-page@1x
 import deskBottle2x from '../../images/signup/desktop/bottle-for-sign-in@2x.png';
 import deskBub2x from '../../images/signup/desktop/background-element-main-page@2x.png';
 
-// export const StyledContainer = styled.div`
-//   width: 100%;
-//   background-image: url(${mobBottle}), url(${mobBubbles});
-//   background-position: center;
-//   background-size: cover;
-//   background-repeat: no-repeat;
-// `;
-
-export const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  //gap: 42px;
-  width: 320px;
-  padding-right: 20px;
-  padding-left: 0;
-  //margin: 0 auto;
-`;
-
 export const StyledBackgroundWrap = styled.div`
   max-width: 320px;
   width: 100%;

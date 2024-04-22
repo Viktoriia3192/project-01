@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-//import colors from '../../root/root';
 import mobBottle from '../../images/signup/mobile/bottle-sign-in@1x.png';
 import mobBubbles from '../../images/signup/mobile/background-element-sign-in@1x.png';
 
