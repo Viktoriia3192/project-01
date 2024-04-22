@@ -25,8 +25,8 @@ export const userAvatarThunk = createAsyncThunk(
   }
 );
 
-export const userInfoThunk = createAsyncThunk(
-  'users/',
+export const updateUserInfoThunk = createAsyncThunk(
+  'users',
   async (data, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
     try {
@@ -57,9 +57,15 @@ export const updateWaterRateThunk = createAsyncThunk(
 export const refreshUserThunk = createAsyncThunk(
   'users/current',
   async (_, thunkAPI) => {
-    const token = thunkAPI.getState().auth.token;
+    const token = thunkAPI.getState();
+    const storageToken = token.auth.token;
+
+    if (storageToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
     try {
-      setToken(token);
+      setToken(storageToken);
       const response = await requestRefreshUser();
       return response;
     } catch (error) {

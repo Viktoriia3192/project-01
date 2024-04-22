@@ -21,10 +21,11 @@ export const requestAvatarUpdate = async (avatar) => {
 };
 
 export const requestUserInfoUpdate = async (userData) => {
-  const { data } = await axiosInstance.patch('users/', userData);
+  const { data } = await axiosInstance.patch('users', userData);
   setToken(data.token);
-  return data.user;
+  return data;
 };
+
 export const requestUpdateWaterRate = async (rate) => {
   const { data } = await axiosInstance.patch('users/water-rate', rate);
   setToken(data.token);

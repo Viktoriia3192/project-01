@@ -1,32 +1,40 @@
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 import sprite from '../../images/sprite.svg';
 import Modal from '../Modal/Modal';
 
 import s from './TodayWaterList.module.css';
 
-import { selectTodayWater } from '../../redux/waterData/waterSelectors';
-import { useEffect, useState } from 'react';
-import { todayThunk } from '../../redux/waterData/waterOperations';
-// import { todayWater } from './data';
+// import { selectTodayWater } from '../../redux/waterData/waterSelectors';
+import { useState } from 'react';
+// import { todayThunk } from '../../redux/waterData/waterOperations';
+import { todayWater } from './data';
 import DeleteModal from '../DeleteModal/DeleteModal';
-
+import EditWaterModal from '../EditWater/EditWaterModal';
 // import { AddForm } from '../AddForm/AddForm';
 
-const TodayWaterList = () => {
-  const todayWater = useSelector(selectTodayWater);
+import AddWaterModal from '../AddWaterModal/AddWaterModal';
 
+const TodayWaterList = () => {
+  // const todayWater = useSelector(selectTodayWater);
+  const { dosesWater } = todayWater;
+  // const listRef = useRef(null);
   const [modalContent, setModalContent] = useState(null);
-  const [modalData, setModalData] = useState(null);
+  const [modalData, setModalData] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(todayThunk());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(todayThunk());
+  // }, [dispatch]);
 
   const openModal = (children, data) => {
+
+    console.log(todayWater);
+    console.log(data);
+
+
     setModalData(data);
     setModalContent(children);
     setModalIsOpen(true);
@@ -42,8 +50,8 @@ const TodayWaterList = () => {
         <div className={s.todayBox}>
           <table className={s.waterTable}>
             <tbody>
-              {todayWater.dosesWater &&
-                todayWater.dosesWater
+              {dosesWater &&
+                dosesWater
                   .toSorted(
                     (a, b) =>
                       new Date(a.date).getTime() - new Date(b.date).getTime()
@@ -57,11 +65,12 @@ const TodayWaterList = () => {
                       </td>
                       <td className={s.doseVolume}>{dose.waterVolume} ml</td>
                       <td className={s.doseTime}>
-                        {new Intl.DateTimeFormat('en', {
+                        {/* {new Intl.DateTimeFormat('en', {
                           hour: 'numeric',
                           minute: 'numeric',
                           hour12: true,
-                        }).format(new Date(dose.date)?.toJSON()?.split('T')[0])}
+                        }).format(new Date(dose.date)?.toJSON()?.split('T')[0])} */}
+                        {dose.time}
                       </td>
 
                       <td>
@@ -69,19 +78,19 @@ const TodayWaterList = () => {
                           type="button"
                           aria-label="Edit button"
                           className={s.editBtn}
-                          // onClick={() =>
-                          //   openModal(
-                          //     <EditWaterModal
-                          //       modalData={modalData}
-                          //       onClose={handleCloseModal}
-                          //     />,
-                          //     {
-                          //       recordId: dose._id,
-                          //       waterVolume: dose.waterVolume,
-                          //       date: dose.date,
-                          //     }
-                          //   )
-                          // }
+                          onClick={() =>
+                            openModal(
+                              <EditWaterModal
+                                modalData={modalData}
+                                onClose={handleCloseModal}
+                              />,
+                              {
+                                recordId: dose._id,
+                                waterVolume: dose.waterVolume,
+                                time: dose.time,
+                              }
+                            )
+                          }
                         >
                           <svg className={s.editSvg}>
                             <use href={`${sprite}#icon-edit`}></use>
@@ -115,7 +124,10 @@ const TodayWaterList = () => {
           <button
             type="submit"
             className={s.addBtn}
-            // onClick={() => openModal(<AddForm />)}
+
+            onClick={() => openModal(<AddWaterModal modalData={modalData}
+                                onClose={handleCloseModal}/>)}
+
           >
             <svg className={s.plusSvg}>
               <use href={`${sprite}#icon-plus-small`}></use>
