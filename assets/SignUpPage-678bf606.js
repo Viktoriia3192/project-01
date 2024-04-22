@@ -1,4 +1,4 @@
-import{b as r,l as a,j as i}from"./index-758dcc7d.js";import{n as o}from"./emotion-styled.browser.esm-21efb873.js";import{m as n,a as e,b as p,t as d,c as x,d as l,e as s,f as m,g as u,A as c}from"./AuthForm-13df99d0.js";const g=o.div`
+import{b as r,m as a,j as e}from"./index-812a59d1.js";import{n as o}from"./emotion-styled.browser.esm-120b3bfa.js";import{m as p,a as t,b as n,t as d,c as s,d as x,e as l,f as m,g as u,A as g}from"./AuthForm-31b67c77.js";const c=o.div`
   max-width: 320px;
   width: 100%;
   height: 570px;
@@ -6,8 +6,8 @@ import{b as r,l as a,j as i}from"./index-758dcc7d.js";import{n as o}from"./emoti
   top: 150px;
   left: 0;
   z-index: -10;
-  background-image: url(${n}),
-    url(${e});
+  background-image: url(${p}),
+    url(${t});
   background-size: 280px, cover;
   background-repeat: no-repeat;
   background-position:
@@ -18,8 +18,8 @@ import{b as r,l as a,j as i}from"./index-758dcc7d.js";import{n as o}from"./emoti
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url(${p}),
-      url(${e});
+    background-image: url(${n}),
+      url(${t});
   }
 
   @media (min-width: 768px) {
@@ -36,7 +36,7 @@ import{b as r,l as a,j as i}from"./index-758dcc7d.js";import{n as o}from"./emoti
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(${x});
+      background-image: url(${s});
     }
   }
 
@@ -46,8 +46,8 @@ import{b as r,l as a,j as i}from"./index-758dcc7d.js";import{n as o}from"./emoti
     height: 100%;
     top: 60px;
     left: 18px;
-    background-image: url(${l}),
-      url(${s});
+    background-image: url(${x}),
+      url(${l});
     background-size: 916px, 1404px;
     background-position:
       top 28px left -51px,
@@ -76,4 +76,4 @@ import{b as r,l as a,j as i}from"./index-758dcc7d.js";import{n as o}from"./emoti
     margin-left: auto;
     margin-right: 133px;
   }
-`,w=()=>{const t=r(a);return i.jsxs(i.Fragment,{children:[i.jsx(g,{}),i.jsx(c,{}),t&&i.jsx(b,{children:t})]})};export{w as default};
+`,w=()=>{const i=r(a);return e.jsxs(e.Fragment,{children:[e.jsx(c,{}),e.jsx(g,{isRegister:!0}),i&&e.jsx(b,{children:i})]})};export{w as default};
