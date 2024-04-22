@@ -7,12 +7,15 @@ export const StyledForm = styled(Form)`
   gap: 16px;
   margin-top: 24px;
   width: 100%;
+  justify-content: center;
+  margin-left: 20px;
+
   @media (min-width: 768px) {
-    width: 336px;
+    width: 316px;
     margin-top: 40px;
   }
   @media (min-width: 1440px) {
-    width: 384px;
+    width: 364px;
     margin-top: 140px;
     margin-right: 104px;
     margin-left: auto;
