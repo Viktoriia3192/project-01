@@ -6,7 +6,7 @@ import css from './SettingModal.module.css';
 import Modal from '../Modal/Modal';
 import { selectAuthUserData } from '../../redux/auth/authSelectors';
 import {
-  userInfoThunk,
+  updateUserInfoThunk,
   userAvatarThunk,
 } from '../../redux/userInfo/userInfoOperations';
 
@@ -25,7 +25,7 @@ import {
 
 export default function SettingModal({ isOpen, setIsSettingOpen }) {
   const dispatch = useDispatch();
-  const { user } = useSelector(selectAuthUserData);
+  const user = useSelector(selectAuthUserData);
   // const { user } = testUser;
   const { email, avatarURL, gender, name } = user;
 
@@ -133,7 +133,7 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
 
       console.log(updateUserInfo);
       setIsSettingOpen(false);
-      await dispatch(userInfoThunk(updateUserInfo));
+      await dispatch(updateUserInfoThunk(updateUserInfo));
     },
     validationSchema: validationSchema,
   });

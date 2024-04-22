@@ -8,7 +8,7 @@ import {
 import {
   updateWaterRateThunk,
   userAvatarThunk,
-  userInfoThunk,
+  updateUserInfoThunk,
   refreshUserThunk,
 } from '../userInfo/userInfoOperations';
 
@@ -21,7 +21,7 @@ const initialState = {
     waterRate: null,
   },
   token: null,
-  isSignedIn: true,
+  isSignedIn: false,
   isLoading: false,
   error: null,
 };
@@ -47,12 +47,13 @@ const authSlice = createSlice({
       })
       .addCase(refreshUserThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.user = payload;
+        state.token = payload.token;
+        state.user = payload.user;
         state.isSignedIn = true;
       })
-      .addCase(userInfoThunk.fulfilled, (state, { payload }) => {
+      .addCase(updateUserInfoThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.user = payload;
+        state.user = { ...payload };
         state.isSignedIn = true;
       })
       .addCase(userAvatarThunk.fulfilled, (state, { payload }) => {
@@ -71,7 +72,7 @@ const authSlice = createSlice({
           logOutThunk.pending,
           signInThunk.pending,
           refreshUserThunk.pending,
-          userInfoThunk.pending,
+          updateUserInfoThunk.pending,
           updateWaterRateThunk.pending
         ),
         (state) => {
@@ -85,7 +86,7 @@ const authSlice = createSlice({
           signInThunk.rejected,
           signUpThunk.rejected,
           refreshUserThunk.rejected,
-          userInfoThunk.rejected,
+          updateUserInfoThunk.rejected,
           updateWaterRateThunk.rejected
         ),
         (state, { payload }) => {
