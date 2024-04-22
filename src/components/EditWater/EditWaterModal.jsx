@@ -5,6 +5,7 @@ import css from './EditWater.module.css';
 import { GrAdd } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
 import { updateWaterThunk } from '../../redux/waterData/waterOperations';
+import Modal from '../Modal/Modal';
 
 export default function EditWaterModal() {
   const [modalIsOpen, setModalIsOpen] = useState(true);
