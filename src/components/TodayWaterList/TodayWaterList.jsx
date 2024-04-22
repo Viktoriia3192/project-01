@@ -11,7 +11,7 @@ import { todayThunk } from '../../redux/waterData/waterOperations';
 // import { todayWater } from './data';
 import DeleteModal from '../DeleteModal/DeleteModal';
 
-// import { AddForm } from '../AddForm/AddForm';
+import AddWaterModal from '../AddWaterModal/AddWaterModal';
 
 const TodayWaterList = () => {
   const todayWater = useSelector(selectTodayWater);
@@ -27,6 +27,7 @@ const TodayWaterList = () => {
   }, [dispatch]);
 
   const openModal = (children, data) => {
+    console.log("Opening modal with data:", data);
     setModalData(data);
     setModalContent(children);
     setModalIsOpen(true);
@@ -116,7 +117,8 @@ const TodayWaterList = () => {
           <button
             type="submit"
             className={s.addBtn}
-            // onClick={() => openModal(<AddForm />)}
+            onClick={() => openModal(<AddWaterModal modalData={modalData}
+                                onClose={handleCloseModal}/>)}
           >
             <svg className={s.plusSvg}>
               <use href={`${sprite}#icon-plus-small`}></use>
