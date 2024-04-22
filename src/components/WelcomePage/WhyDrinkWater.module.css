@@ -2,7 +2,6 @@
   font-family: 'Roboto', sans-serif;
   background-color: #ECF2FF;
   border-radius: 10px;
-  margin-bottom: 20px;
   padding: 24px 16px 24px 16px;
 }
 
@@ -19,7 +18,7 @@
 
 .whyWaterContainerUl li {
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-bottom: 16px;
   position: relative;
 }
 
@@ -36,5 +35,6 @@
     width: 100%;
     width: 494px;
     position: static;
+    padding: 32px 24px 32px 24px;
   }
 }
