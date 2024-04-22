@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../Modal/Modal';
 import sprite from '../../images/sprite.svg';
 import css from './EditWater.module.css';
+import { GrAdd } from 'react-icons/gr';
 
 export default function EditWaterModal() {
   const [modalIsOpen, setModalIsOpen] = useState(true);
   const [time, setTime] = useState('00:00');
   const [amount, setAmount] = useState(0);
+  const [waterValue, setWaterValue] = useState(0);
+
+  useEffect(() => {
+    setWaterValue(amount);
+  }, [amount]);
 
   const incrementAmount = () => {
     setAmount((prevAmount) => prevAmount + 5);
@@ -44,8 +50,8 @@ export default function EditWaterModal() {
                 <use xlinkHref={`${sprite}#icon-glass`} />
               </svg>
             </span>
-            <p className={css.water_info}>250 ml</p>
-            <p className={css.water_info_time}>7:00 AM</p>
+            <p className={css.water_info}>{waterValue} ml</p>
+            <p className={css.water_info_time}>{time} AM</p>
           </div>
           <p className={css.correct_title}>Correct entered data:</p>
           <p className={css.correct_subtitle}>Amount of water:</p>
@@ -56,12 +62,10 @@ export default function EditWaterModal() {
               </svg>
             </button>
             <p className={css.amount_water}>
-              <span>{amount}</span> ml
+              <span>{waterValue}</span> ml
             </p>
             <button className={css.count_button} onClick={incrementAmount}>
-              <svg className={css.count_icon}>
-                <use xlinkHref={`${sprite}#icon-plus-circle`} />
-              </svg>
+              <GrAdd className={css.plus_icon} />
             </button>
           </div>
           <p className={css.recording_time}>Recording time:</p>
@@ -80,12 +84,20 @@ export default function EditWaterModal() {
             Enter the value of the water used:
           </p>
           <form name="water_value">
-            <input className={css.water_value} type="number" />
+            <input
+              className={css.water_value}
+              type="number"
+              min="0"
+              value={waterValue}
+              onChange={(e) => setWaterValue(e.target.value)}
+            />
           </form>
-          <p className={css.water}>250ml</p>
-          <button className={css.button_save} type="submit">
-            Save
-          </button>
+          <div className={css.water_value_button_send}>
+            <p className={css.water}>{waterValue}ml</p>
+            <button className={css.button_save} type="submit">
+              Save
+            </button>
+          </div>
         </div>
       </Modal>
     </>

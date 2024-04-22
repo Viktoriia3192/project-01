@@ -1,11 +1,8 @@
-/* .edit_water_modal {
-  width: 284px;
-} */
-
 .title {
   font-weight: 500;
   font-size: 26px;
   line-height: 123%;
+  margin-right: 40px;
   margin-bottom: 25px;
 }
 
@@ -77,6 +74,10 @@
   fill: var(--primery-color-blue);
 }
 
+.plus_icon {
+  color: var(--primery-color-blue);
+}
+
 .count_button {
   display: flex;
   align-items: center;
@@ -89,6 +90,10 @@
   cursor: pointer;
   box-shadow: 0 2px 4px 0 rgba(64, 123, 255, 0.2);
   background: var(--primery-color-white);
+}
+
+.count_button:active {
+  box-shadow: 0 0 0 0 rgba(64, 123, 255, 0.34);
 }
 
 .recording_time {
@@ -116,6 +121,7 @@
 }
 
 .water_value {
+  appearance: none;
   border: 1px solid var(--secondary-color---5);
   border-radius: 6px;
   padding: 12px 10px;
@@ -127,12 +133,18 @@
   color: var(--primery-color-blue);
 }
 
+.water_value_button_send {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
 .water {
   font-weight: 700;
   font-size: 18px;
   color: var(--primery-color-blue);
   text-align: center;
-  margin-bottom: 15px;
 }
 
 .button_save {
@@ -145,4 +157,47 @@
   color: white;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background: var(--primery-color-blue);
+}
+
+.button_save:active {
+  box-shadow: 0 0 0 0 rgba(64, 123, 255, 0.34);
+}
+
+@media screen and (min-width: 768px) {
+  .edit_water_modal {
+    width: 704px;
+  }
+
+  .info {
+    width: 254px;
+  }
+
+  .custom_select {
+    width: 544px;
+  }
+
+  .water_value {
+    width: 544px;
+    margin-bottom: 25px;
+  }
+
+  .water_value_button_send {
+    flex-direction: row;
+    margin-left: 475px;
+  }
+
+  .button_save {
+    width: 160px;
+    height: 44px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .edit_water_modal {
+    width: 592px;
+  }
+
+  .water_value_button_send {
+    margin-left: 375px;
+  }
 }
