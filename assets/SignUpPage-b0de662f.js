@@ -1,4 +1,4 @@
-import{b as r,l as a,j as e}from"./index-4356ad6f.js";import{n as o}from"./emotion-styled.browser.esm-b3612582.js";import{m as p,a as t,b as n,t as d,c as s,d as x,e as l,f as m,g as u,A as g}from"./AuthForm-787701be.js";const c=o.div`
+import{b as r,l as a,j as e}from"./index-302fa099.js";import{n as o}from"./emotion-styled.browser.esm-83ca5f99.js";import{m as p,a as t,b as n,t as d,c as s,d as x,e as l,f as m,g as u,A as g}from"./AuthForm-352eba74.js";const c=o.div`
   max-width: 320px;
   width: 100%;
   height: 570px;
@@ -76,4 +76,4 @@ import{b as r,l as a,j as e}from"./index-4356ad6f.js";import{n as o}from"./emoti
     margin-left: auto;
     margin-right: 133px;
   }
-`,w=()=>{const i=r(a);return e.jsxs(e.Fragment,{children:[e.jsx(g,{isRegister:!0}),e.jsx(c,{}),i&&e.jsx(b,{children:i})]})};export{w as default};
+`,w=()=>{const i=r(a);return e.jsxs(e.Fragment,{children:[e.jsx(c,{}),e.jsx(g,{isRegister:!0}),i&&e.jsx(b,{children:i})]})};export{w as default};
