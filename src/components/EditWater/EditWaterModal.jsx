@@ -9,9 +9,9 @@ import { updateWaterThunk } from '../../redux/waterData/waterOperations';
 export default function EditWaterModal({ onClose, modalData }) {
   // const [modalIsOpen, setModalIsOpen] = useState(true);
   const { recordId, waterVolume: oldWaterVolume, time: oldTime } = modalData;
-  const [time, setTime] = useState(oldTime);
-  const [amount, setAmount] = useState(oldWaterVolume);
-  const [waterValue, setWaterValue] = useState(0);
+  const [time, setTime] = useState(modalData ? oldTime : '00:00');
+  const [amount, setAmount] = useState(modalData ? oldWaterVolume : 250);
+  const [waterValue, setWaterValue] = useState(250);
 
   const dispatch = useDispatch();
 
@@ -23,11 +23,11 @@ export default function EditWaterModal({ onClose, modalData }) {
     event.preventDefault();
 
     const waterVolume = event.currentTarget.water.value;
-    const time = event.currentTarget.time.value;
+    // const time = event.currentTarget.time.value;
 
     const formData = {
       waterVolume,
-      time,
+      // time,
     };
 
     handleUpdateWater(formData);
@@ -102,7 +102,7 @@ export default function EditWaterModal({ onClose, modalData }) {
         <form name="water_value" onSubmit={handleFormSubmit}>
           <select
             className={css.custom_select}
-            name={time}
+            name="time"
             value={time}
             onChange={handleTimeChange}
           >
