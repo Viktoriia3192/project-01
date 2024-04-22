@@ -20,6 +20,8 @@
   font-size: 16px;
   margin-bottom: 16px;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .whyWaterContainerSvg {
@@ -37,4 +39,18 @@
     position: static;
     padding: 32px 24px 32px 24px;
   }
+}
+
+@media screen and (min-width: 1440px) {
+  .whyWaterContainerUl li {
+    margin: 0;
+
+  }
+
+  .whyWaterContainerUl {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
 }

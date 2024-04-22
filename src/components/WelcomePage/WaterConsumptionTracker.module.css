@@ -50,6 +50,9 @@
   text-decoration: none;
   text-align: center;
   line-height: 36px;
+  display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .trackerBtn:hover,
@@ -57,12 +60,12 @@
   cursor: url('../../images/main//mdi_cursor-pointer.png'), pointer;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1439px) {
+@media screen and (min-width: 768px) {
   .trackerContainer {
     width: 100%;
     max-width: 494px;
     position: static;
-
+margin-bottom: 60px;
   }
 
   .trackerContainerUl {
@@ -94,9 +97,17 @@
 }
 
 @media screen and (min-width: 1440px) {
- 
+  .trackerContainer {
+    margin: 0;
+  }
 
-  /* .trackerContainerH3 {
+  .trackerContainerUl {
+    flex-direction: column;
+  }
+
+  
+
+  .trackerContainerH3 {
     font-size: 16px;
   }
 
@@ -105,8 +116,8 @@
   }
 
   .trackerBtn {
-    font-size: 14px;
-    width: 100%;
-    max-width: 280px;
-  } */
+    padding: 10px 30px;
+    min-width: 384px;
+    
+  }
 }
