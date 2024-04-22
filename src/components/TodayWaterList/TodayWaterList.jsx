@@ -12,6 +12,7 @@ import EditWaterModal from '../EditWater/EditWaterModal';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { todayThunk } from '../../redux/waterData/waterOperations';
+import AddWaterModal from '../AddWaterModal/AddWaterModal';
 
 const TodayWaterList = () => {
   const todayWater = useSelector(selectTodayWater);
@@ -26,7 +27,7 @@ const TodayWaterList = () => {
     dispatch(todayThunk());
   }, [dispatch]);
 
-  const openModal = (children, data) => {
+  const openModal = (children, data = {}) => {
     console.log(todayWater);
     console.log(data);
 
@@ -117,9 +118,14 @@ const TodayWaterList = () => {
           <button
             type="submit"
             className={s.addBtn}
-
-            // onClick={() => openModal(<AddWaterModal modalData={modalData}
-            //                     onClose={handleCloseModal}/>)}
+            onClick={() =>
+              openModal(
+                <AddWaterModal
+                  modalData={modalData}
+                  onClose={handleCloseModal}
+                />
+              )
+            }
           >
             <svg className={s.plusSvg}>
               <use href={`${sprite}#icon-plus-small`}></use>
