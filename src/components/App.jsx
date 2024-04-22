@@ -9,6 +9,7 @@ import { selectAuthIsLoading } from '../redux/auth/authSelectors.js';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute.jsx';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 import { refreshUserThunk } from '../redux/userInfo/userInfoOperations.js';
+import EditWaterModal from './EditWater/EditWaterModal.jsx';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage.jsx'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage.jsx'));
@@ -22,6 +23,14 @@ const routes = [
       <RestrictedRoute>
         <WelcomePage />
       </RestrictedRoute>
+    ),
+  },
+  {
+    path: '/m',
+    element: (
+      <PrivateRoute>
+        <EditWaterModal />
+      </PrivateRoute>
     ),
   },
   {
