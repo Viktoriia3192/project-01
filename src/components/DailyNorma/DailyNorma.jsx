@@ -16,6 +16,10 @@ const DailyNorma = () => {
     setModalIsOpen(true);
   };
 
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <div className={s.container}>
       <h2 className={s.title}>My daily norma</h2>
@@ -27,8 +31,8 @@ const DailyNorma = () => {
           onClick={handleOpenModal}
         />
       </div>
-      <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
-        <DailyNormaModal />
+      <Modal isOpen={modalIsOpen} onClose={handleCloseModal}>
+        <DailyNormaModal onClose={handleCloseModal} />
       </Modal>
     </div>
   );

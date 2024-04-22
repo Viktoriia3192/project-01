@@ -1,13 +1,17 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import css from './DailyNormaModal.module.css';
+import { useDispatch } from 'react-redux';
+import { updateWaterRateThunk } from '../../redux/userInfo/userInfoOperations';
 
-const DailyNormaModal = () => {
+const DailyNormaModal = ({ onClose }) => {
   const [mass, setMass] = useState('');
   const [time, setTime] = useState('');
   const [amount, setAmount] = useState('');
   const [result, setResult] = useState(0);
   const [gender, setGender] = useState('woman');
+
+  const dispatch = useDispatch();
 
   const handleGenderChange = (event) => {
     setGender(event.target.value);
@@ -33,6 +37,11 @@ const DailyNormaModal = () => {
       setResult(mass * 0.04 + time * 0.6);
     }
   }, [gender, mass, time]);
+
+  const handleSubmit = ({ result }) => {
+    dispatch(updateWaterRateThunk(result));
+    onClose();
+  };
 
   return (
     <div className={css.container}>
@@ -153,7 +162,7 @@ const DailyNormaModal = () => {
           type="submit"
           className={css.normaModalBtn}
           aria-label="click to save"
-          onClick
+          onClick={() => handleSubmit(result)}
         >
           Save
         </button>
