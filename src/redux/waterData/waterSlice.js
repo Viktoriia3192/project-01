@@ -31,7 +31,7 @@ const waterSlice = createSlice({
       })
       .addCase(addWaterThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        if (state.todayWater.dosesWater?.length) {
+        if (state.todayWater.dosesWater.length) {
           state.todayWater.dosesWater = [
             ...state.todayWater.dosesWater,
             payload,

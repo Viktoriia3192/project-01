@@ -7,8 +7,8 @@ export const requestToday = async () => {
   return data;
 };
 
-export const requestMonth = async (month) => {
-  const { data } = await axiosInstance.get(`water-notes/month/${month}`);
+export const requestMonth = async () => {
+  const { data } = await axiosInstance.get('water-notes/month');
   setToken(data.token);
   return data;
 };
@@ -20,22 +20,18 @@ export const requestAddWater = async (waterData) => {
 };
 
 export const requestDeleteWater = async (waterId) => {
-  const { data } = await axiosInstance.delete(`water-notes/${waterId}`);
+  const { data } = await axiosInstance.delete(
+    `water-notes/delete-dose-water/${waterId}`
+  );
   setToken(data.token);
   return data;
 };
 
 export const requestUpdateWater = async (waterId, waterData) => {
   const { data } = await axiosInstance.patch(
-    `water-notes/${waterId}`,
+    `water-notes/update-dose-water/${waterId}`,
     waterData
   );
   setToken(data.token);
   return data;
-};
-
-export const requestUpdateWaterRate = async (rate) => {
-  const { data } = await axiosInstance.patch(`users/waterrate`, rate);
-  setToken(data.token);
-  return data.waterRate;
 };

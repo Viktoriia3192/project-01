@@ -4,9 +4,10 @@ import { toast } from 'react-toastify';
 import { setToken } from '../../services/authAPI';
 import {
   requestAvatarUpdate,
+  requestRefreshUser,
   requestUserInfoUpdate,
 } from '../../services/userAPI';
-import { requestUpdateWaterRate } from '../../services/waterDataAPI';
+import { requestUpdateWaterRate } from '../../services/userAPI';
 
 export const userAvatarThunk = createAsyncThunk(
   'users/avatar',
@@ -25,7 +26,7 @@ export const userAvatarThunk = createAsyncThunk(
 );
 
 export const userInfoThunk = createAsyncThunk(
-  'users',
+  'users/',
   async (data, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
     try {
@@ -41,7 +42,7 @@ export const userInfoThunk = createAsyncThunk(
 );
 
 export const updateWaterRateThunk = createAsyncThunk(
-  'waterrate/update',
+  'users/water-rate',
   async (newWaterRate, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
     try {
@@ -52,4 +53,24 @@ export const updateWaterRateThunk = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
+);
+export const refreshUserThunk = createAsyncThunk(
+  'users/current',
+  async (_, thunkAPI) => {
+    const token = thunkAPI.getState().auth.token;
+    try {
+      setToken(token);
+      const response = await requestRefreshUser();
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+  // {
+  //   condition: (_, thunkAPI) => {
+  //     const token = thunkAPI.getState().auth.token;
+  //     if (!token) return false;
+  //     return true;
+  //   },
+  // }
 );

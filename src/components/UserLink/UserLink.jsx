@@ -3,7 +3,7 @@ import userLogo from '../../../public/outline.png';
 import { Link } from 'react-router-dom';
 const UserLink = () => {
   return (
-    <Link to="/signin">
+    <Link className={css.signinButton} to="/signin">
       <div className={css.userAuthContainer}>
         Sign in
         <img className={css.userLogo} src={userLogo} />

@@ -1,5 +1,6 @@
 .userAuthContainer {
   display: flex;
+  align-items: center;
 }
 .signinButton {
   display: flex;
@@ -15,10 +16,4 @@
   margin: 0 4px 0 8px;
   width: 28px;
   height: 28px;
-}
-
-.arrowSvg {
-  fill: var(--primery-color-blue);
-  width: 16px;
-  height: 16px;
 }
