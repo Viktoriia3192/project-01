@@ -14,7 +14,7 @@ export const requestMonth = async () => {
 };
 
 export const requestAddWater = async (waterData) => {
-  const { data } = await axiosInstance.post('water-notes/', waterData);
+  const { data } = await axiosInstance.post('water-notes', waterData);
   setToken(data.token);
   return data;
 };

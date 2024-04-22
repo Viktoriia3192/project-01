@@ -1,6 +1,5 @@
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { currentUserThunk } from '../redux/auth/authOperations.js';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Loader from './Loader/Loader.jsx';
