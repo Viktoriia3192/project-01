@@ -4,8 +4,8 @@ import bottleTablet from '../../images/home/BottleHomeTablet.png';
 import bottleTablet2x from '../../images/home/BottleHomeTablet2x.png';
 import bottleDesk from '../../images/home/BotleHomeDesk.png';
 import bottleDesk2x from '../../images/home/BotleHomeDesk2x.png';
-
 import s from './Picture.module.css';
+
 const Picture = () => {
   return (
     <picture className={s.bottlePicture}>
