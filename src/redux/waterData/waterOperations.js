@@ -39,7 +39,7 @@ export const monthThunk = createAsyncThunk(
 );
 
 export const addWaterThunk = createAsyncThunk(
-  'water-notes/',
+  'water-notes',
   async (waterData, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 

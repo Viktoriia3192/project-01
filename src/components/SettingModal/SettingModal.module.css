@@ -1,6 +1,116 @@
 .form {
   display: flex;
   flex-direction: column;
+  width: 280px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.23;
+  margin-bottom: 24px;
+}
+
+.subtitle_photo {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  margin-bottom: 8px;
+}
+
+.avatar_conteiner {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.input_avatar {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.photo_lable {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  color: var(--primery-color-blue);
+}
+
+.subtitle_gender {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  margin-bottom: 12px;
+}
+
+.gender_conteiner {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.gender_wraper {
+  display: flex;
+  gap: 8px;
+}
+
+.name_lable {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  margin-bottom: 8px;
+}
+
+.input_field {
+  border: 1px solid var(--secondary-color---5);
+  border-radius: 6px;
+  padding: 12px 10px;
+  height: 44px;
+  color: var(--primery-color-blue);
+  margin-bottom: 24px;
+}
+
+.input_field::placeholder {
+  color: #9ebbff;
+}
+
+.email_lable {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  margin-bottom: 8px;
+}
+
+.subtitle_password {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  margin-bottom: 12px;
+}
+
+.lable_password {
+  margin-bottom: 8px;
+}
+
+.save_btn {
+  border-radius: 10px;
+  height: 36px;
+  padding: 0;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background-color: var(--primery-color-blue);
+
+  font-weight: 500;
+  color: var(--primery-color-white);
 }
 
 .error {

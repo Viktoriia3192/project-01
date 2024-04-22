@@ -10,7 +10,9 @@ export default function DeleteModal({ onClose, modalData }) {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
+    console.log(modalData);
     dispatch(deleteWaterThunk(modalData));
+    onClose();
   };
 
   return (
