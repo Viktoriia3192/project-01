@@ -1,12 +1,12 @@
 // import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from '../Modal/Modal';
 import Button from '../common/Button/Button';
 import s from './WaterRatioPanel.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { selectWaterRate } from '../../redux/userInfo/userInfoSelectors';
 import { selectTodayWater } from '../../redux/waterData/waterSelectors';
-import { todayThunk } from '../../redux/waterData/waterOperations';
+// import { todayThunk } from '../../redux/waterData/waterOperations';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
 
 const WaterRatioPanel = () => {
@@ -24,11 +24,11 @@ const WaterRatioPanel = () => {
   const handleCloseModal = () => {
     setModalIsOpen(false);
   };
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(todayThunk());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(todayThunk());
+  // }, [dispatch]);
   return (
     <>
       <div className={s.container}>
