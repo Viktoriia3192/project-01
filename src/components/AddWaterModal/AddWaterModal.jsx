@@ -105,11 +105,9 @@
 // }
 
 import { useEffect, useState } from 'react';
-// import Modal from '../Modal/Modal';
 import sprite from '../../images/sprite.svg';
 import css from '../EditWater/EditWater.module.css'; // Измените имя файла стилей на соответствующее
 import { GrAdd } from 'react-icons/gr';
-// import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import {
   addWaterThunk,
@@ -117,7 +115,6 @@ import {
 } from '../../redux/waterData/waterOperations';
 
 export default function AddWaterModal({ onClose }) {
-  // const [modalIsOpen, setModalIsOpen] = useState(true);
   const [time, setTime] = useState('00:00');
   const [waterValue, setWaterValue] = useState(250);
   const dispatch = useDispatch();
@@ -125,11 +122,11 @@ export default function AddWaterModal({ onClose }) {
     dispatch(todayThunk());
   }, [time, waterValue, dispatch]);
   const incrementWater = () => {
-    setWaterValue((prev) => prev + 50); // Предположим, что минимальное увеличение составляет 50 мл
+    setWaterValue((prev) => prev + 50);
   };
 
   const decrementWater = () => {
-    setWaterValue((prev) => (prev > 0 ? prev - 50 : 0)); // Не позволяет уйти в отрицательные значения
+    setWaterValue((prev) => (prev > 0 ? prev - 50 : 0));
   };
 
   const handleTimeChange = (event) => {
@@ -140,7 +137,6 @@ export default function AddWaterModal({ onClose }) {
     let options = [];
     for (let hour = 0; hour < 24; hour++) {
       for (let minute = 0; minute < 60; minute += 15) {
-        // Изменение интервала до 15 минут для удобства
         let formattedHour = hour.toString().padStart(2, '0');
         let formattedMinute = minute.toString().padStart(2, '0');
         options.push(`${formattedHour}:${formattedMinute}`);
@@ -149,8 +145,7 @@ export default function AddWaterModal({ onClose }) {
     return options;
   };
 
-  const handleSave = () => {
-    console.log(`Added ${waterValue} ml at ${time}`); // Логика для сохранения данных
+  const handleSave = async () => {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
@@ -161,12 +156,11 @@ export default function AddWaterModal({ onClose }) {
     const newNote = {
       waterVolume: waterValue,
       date: formattedDate,
-      // _id: nanoid(),
     };
-    dispatch(addWaterThunk(newNote));
+    await dispatch(addWaterThunk(newNote));
     // setWaterValue(newNote.waterVolume);
     // setTime();
-    onClose(); // Закрыть модальное окно после сохранения
+    onClose();
   };
 
   return (

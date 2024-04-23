@@ -10,7 +10,7 @@ import AddWaterModal from '../AddWaterModal/AddWaterModal';
 import s from './TodayWaterList.module.css';
 
 const TodayWaterList = () => {
-  let todayWater = useSelector(selectTodayWater);
+  const todayWater = useSelector(selectTodayWater);
   const { dosesWater } = todayWater;
   const [modalContent, setModalContent] = useState(null);
   const [modalData, setModalData] = useState({});
@@ -27,7 +27,8 @@ const TodayWaterList = () => {
     setModalContent(children);
     setModalIsOpen(true);
   };
-  const handleCloseModal = () => {
+  const handleCloseModal = async () => {
+    await dispatch(todayThunk());
     setModalIsOpen(false);
   };
 
@@ -62,7 +63,11 @@ const TodayWaterList = () => {
                           onClick={() =>
                             openModal(
                               <EditWaterModal
-                                modalData={modalData}
+                                modalData={{
+                                  recordId: dose._id,
+                                  waterVolume: dose.waterVolume,
+                                  time: dose.time,
+                                }}
                                 onClose={handleCloseModal}
                               />,
                               {
