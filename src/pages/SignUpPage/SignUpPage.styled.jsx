@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-//import colors from '../../root/root';
 import mobBottle from '../../images/signup/mobile/bottle-sign-in@1x.png';
 import mobBubbles from '../../images/signup/mobile/background-element-sign-in@1x.png';
 
@@ -18,13 +17,12 @@ import deskBub2x from '../../images/signup/desktop/background-element-main-page@
 export const StyledBackgroundWrap = styled.div`
   max-width: 320px;
   width: 100%;
-  height: 570px;
+  height: 620px;
   position: absolute;
-  top: 150px;
+  top: 60px;
   left: 0;
   z-index: -10;
-  background-image: url(${mobBottle}),
-    url(${mobBubbles});
+  background-image: url(${mobBottle}), url(${mobBubbles});
   background-size: 280px, cover;
   background-repeat: no-repeat;
   background-position:
@@ -35,17 +33,17 @@ export const StyledBackgroundWrap = styled.div`
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url(${mobBottle2x}),
-      url(${mobBubbles2x});
+    background-image: url(${mobBottle2x}), url(${mobBubbles2x});
   }
 
   @media (min-width: 768px) {
     max-width: 768px;
     width: 100%;
     height: 680px;
-    top: 104px;
+    top: -20px;
     left: 0;
-    background-image: url(${tabBottle});tabBottle2x
+    right: 30px;
+    background-image: url(${tabBottle});
     background-size: cover;
     background-position: top 0 left 0;
 
@@ -63,8 +61,7 @@ export const StyledBackgroundWrap = styled.div`
     height: 100%;
     top: 60px;
     left: 18px;
-    background-image: url(${deskBottle}),
-      url(${deskBub});
+    background-image: url(${deskBottle}), url(${deskBub});
     background-size: 916px, 1404px;
     background-position:
       top 28px left -51px,
@@ -74,8 +71,7 @@ export const StyledBackgroundWrap = styled.div`
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(${deskBottle2x}),
-        url(${deskBub2x});
+      background-image: url(${deskBottle2x}), url(${deskBub2x});
     }
   }
 `;
