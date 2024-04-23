@@ -124,13 +124,13 @@ import { useEffect, useState } from 'react';
 import sprite from '../../images/sprite.svg';
 import css from './AddWater.module.css';
 import { GrAdd } from 'react-icons/gr';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   addWaterThunk,
   todayThunk,
 } from '../../redux/waterData/waterOperations';
 
-import { selectTodayWater } from '../../redux/waterData/waterSelectors';
+// import { selectTodayWater } from '../../redux/waterData/waterSelectors';
 
 export default function AddWaterModal({ onClose }) {
   const [time, setTime] = useState('00:00');
