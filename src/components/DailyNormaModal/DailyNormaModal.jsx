@@ -37,8 +37,9 @@ const DailyNormaModal = ({ onClose }) => {
     }
   }, [gender, mass, time]);
 
-  const handleSubmit = async ({ result }) => {
-    await dispatch(updateWaterRateThunk(result));
+  const handleSubmit = async (result) => {
+    const formattedResult = result * 1000;
+    await dispatch(updateWaterRateThunk(formattedResult));
     onClose();
   };
 
