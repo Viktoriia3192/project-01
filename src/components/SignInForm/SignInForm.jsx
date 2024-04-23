@@ -11,6 +11,7 @@ import {
   StyledForm,
   StyledSubmitBtn,
   StyledToggleBtn,
+  StyledWrapper,
 } from './SignInForm.styled';
 import { HiOutlineEyeSlash, HiOutlineEye } from 'react-icons/hi2';
 import { useState } from 'react';
@@ -49,33 +50,35 @@ const SignInForm = () => {
       validationSchema={SignInSchema}
       onSubmit={handleSubmit}
     >
-      <StyledForm>
-        <h1>Sign In</h1>
-        <label>
-          <StyledFieldName>Enter your email</StyledFieldName>
-          <Field name="email" type="email" placeholder="E-mail" />
-          <StyledError name="email" component="span" />
-        </label>
-        <label>
-          <StyledFieldName>Enter your password</StyledFieldName>
-          <div>
-            <Field
-              name="password"
-              type={isPasswordVisible ? 'text' : 'password'}
-              placeholder="Password"
-            />
-            <StyledToggleBtn
-              type="button"
-              onClick={() => setPasswordVisibility(!isPasswordVisible)}
-            >
-              {isPasswordVisible ? <HiOutlineEye /> : <HiOutlineEyeSlash />}
-            </StyledToggleBtn>
-          </div>
-          <StyledError name="password" component="span" />
-        </label>
-        <StyledSubmitBtn type="submit">Sign In</StyledSubmitBtn>
-        <Link to="/signup">Sign Up</Link>
-      </StyledForm>
+      <StyledWrapper>
+        <StyledForm>
+          <h1>Sign In</h1>
+          <label>
+            <StyledFieldName>Enter your email</StyledFieldName>
+            <Field name="email" type="email" placeholder="E-mail" />
+            <StyledError name="email" component="span" />
+          </label>
+          <label>
+            <StyledFieldName>Enter your password</StyledFieldName>
+            <div>
+              <Field
+                name="password"
+                type={isPasswordVisible ? 'text' : 'password'}
+                placeholder="Password"
+              />
+              <StyledToggleBtn
+                type="button"
+                onClick={() => setPasswordVisibility(!isPasswordVisible)}
+              >
+                {isPasswordVisible ? <HiOutlineEye /> : <HiOutlineEyeSlash />}
+              </StyledToggleBtn>
+            </div>
+            <StyledError name="password" component="span" />
+          </label>
+          <StyledSubmitBtn type="submit">Sign In</StyledSubmitBtn>
+          <Link to="/signup">Sign Up</Link>
+        </StyledForm>
+      </StyledWrapper>
     </Formik>
   );
 };

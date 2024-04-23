@@ -1,18 +1,27 @@
 import styled from '@emotion/styled';
 import { Form, ErrorMessage } from 'formik';
 
+export const StyledWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
+`;
+
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-top: 24px;
   width: 100%;
+  justify-content: center;
+
   @media (min-width: 768px) {
-    width: 336px;
+    width: 316px;
     margin-top: 40px;
   }
   @media (min-width: 1440px) {
-    width: 384px;
+    width: 364px;
     margin-top: 140px;
     margin-right: 104px;
     margin-left: auto;
