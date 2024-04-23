@@ -1,13 +1,16 @@
-import css from './DeleteModal.module.css';
 import { useDispatch } from 'react-redux';
-import { deleteWaterThunk } from '../../redux/waterData/waterOperations';
+import {
+  deleteWaterThunk,
+  todayThunk,
+} from '../../redux/waterData/waterOperations';
+import css from './DeleteModal.module.css';
 
 export default function DeleteModal({ onClose, modalData }) {
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
-    // console.log(modalData);
     await dispatch(deleteWaterThunk(modalData));
+    await dispatch(todayThunk());
     onClose();
   };
 
