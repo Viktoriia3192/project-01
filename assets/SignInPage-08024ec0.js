@@ -1,13 +1,12 @@
-import{b as r,m as a,j as i}from"./index-10b466c9.js";import{n as o}from"./emotion-styled.browser.esm-7c3ea2c3.js";import{m as n,a as e,b as p,t as d,c as x,d as s,e as l,f as m,g as u,A as c}from"./AuthForm-4d18b62e.js";const g=o.div`
+import{b as r,m as a,j as i}from"./index-0119e11f.js";import{n as o}from"./emotion-styled.browser.esm-b80b4082.js";import{m as n,a as t,b as p,t as d,c as x,d as s,e as l,f as m,g as u,A as g}from"./AuthForm-8137717b.js";const c=o.div`
   max-width: 320px;
   width: 100%;
-  height: 570px;
+  height: 620px;
   position: absolute;
-  top: 150px;
+  top: 60px;
   left: 0;
   z-index: -10;
-  background-image: url(${n}),
-    url(${e});
+  background-image: url(${n}), url(${t});
   background-size: 280px, cover;
   background-repeat: no-repeat;
   background-position:
@@ -18,17 +17,17 @@ import{b as r,m as a,j as i}from"./index-10b466c9.js";import{n as o}from"./emoti
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url(${p}),
-      url(${e});
+    background-image: url(${p}), url(${t});
   }
 
   @media (min-width: 768px) {
     max-width: 768px;
     width: 100%;
     height: 680px;
-    top: 104px;
+    top: -20px;
     left: 0;
-    background-image: url(${d});tabBottle2x
+    right: 30px;
+    background-image: url(${d});
     background-size: cover;
     background-position: top 0 left 0;
 
@@ -46,8 +45,7 @@ import{b as r,m as a,j as i}from"./index-10b466c9.js";import{n as o}from"./emoti
     height: 100%;
     top: 60px;
     left: 18px;
-    background-image: url(${s}),
-      url(${l});
+    background-image: url(${s}), url(${l});
     background-size: 916px, 1404px;
     background-position:
       top 28px left -51px,
@@ -57,8 +55,7 @@ import{b as r,m as a,j as i}from"./index-10b466c9.js";import{n as o}from"./emoti
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(${m}),
-        url(${u});
+      background-image: url(${m}), url(${u});
     }
   }
 `,b=o.p`
@@ -76,4 +73,4 @@ import{b as r,m as a,j as i}from"./index-10b466c9.js";import{n as o}from"./emoti
     margin-left: auto;
     margin-right: 133px;
   }
-`,w=()=>{const t=r(a);return i.jsxs(i.Fragment,{children:[i.jsx(g,{}),i.jsx(c,{}),t&&i.jsx(b,{children:t})]})};export{w as default};
+`,w=()=>{const e=r(a);return i.jsxs(i.Fragment,{children:[i.jsx(c,{}),i.jsx(g,{}),e&&i.jsx(b,{children:e})]})};export{w as default};
