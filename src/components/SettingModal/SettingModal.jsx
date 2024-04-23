@@ -107,8 +107,7 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
       password: '',
       repeatPassword: '',
     },
-    onSubmit: async (values) => {
-      console.log(values);
+    onSubmit: async () => {
       const updateUserInfo = {};
 
       const { name, gender, email, password, oldPassword } = formik.values;
@@ -133,7 +132,6 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
         updateUserInfo.password = password;
       }
 
-      console.log(updateUserInfo);
       setIsSettingOpen(false);
       await dispatch(updateUserInfoThunk(updateUserInfo));
     },
