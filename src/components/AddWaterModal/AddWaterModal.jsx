@@ -14,11 +14,12 @@ export default function AddWaterModal({ onClose }) {
   const [time, setTime] = useState('00:00');
   const [waterValue, setWaterValue] = useState(250);
   const dispatch = useDispatch();
-  const { percentageWaterDrunk } = useSelector(selectTodayWater);
+
 
   useEffect(() => {
     dispatch(todayThunk());
   }, [time, waterValue, dispatch]);
+
   const incrementWater = () => {
     setWaterValue((prev) => prev + 50);
   };
@@ -36,7 +37,7 @@ export default function AddWaterModal({ onClose }) {
     for (let hour = 0; hour < 24; hour++) {
       for (let minute = 0; minute < 60; minute += 15) {
         let formattedHour = hour.toString().padStart(2, '0');
-        let formattedMinute = minute.toString().padStart(2, '0');
+        let formattedMinute = minute.toString().padStart(2, '0').padEnd(2, '0');
         options.push(`${formattedHour}:${formattedMinute}`);
       }
     }
@@ -48,16 +49,15 @@ export default function AddWaterModal({ onClose }) {
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
-
     const formattedDate = `${year}-${month}-${day}`;
 
     const newNote = {
       waterVolume: waterValue,
       date: formattedDate,
     };
+
     await dispatch(addWaterThunk(newNote));
-    // setWaterValue(newNote.waterVolume);
-    // setTime();
+
     onClose();
   };
 
