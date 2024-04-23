@@ -13,8 +13,9 @@ import {
   StyledToggleBtn,
   StyledWrapper,
 } from './SignInForm.styled';
-import { HiOutlineEyeSlash, HiOutlineEye } from 'react-icons/hi2';
+//import { HiOutlineEyeSlash, HiOutlineEye } from 'react-icons/hi2';
 import { useState } from 'react';
+import { Icon } from '../Icon/Icon';
 
 const SignInSchema = yup.object().shape({
   email: yup
@@ -70,7 +71,15 @@ const SignInForm = () => {
                 type="button"
                 onClick={() => setPasswordVisibility(!isPasswordVisible)}
               >
-                {isPasswordVisible ? <HiOutlineEye /> : <HiOutlineEyeSlash />}
+                {isPasswordVisible ? (
+                  <Icon iconName={'icon-eye'} width={'16px'} height={'16px'} />
+                ) : (
+                  <Icon
+                    iconName={'icon-eye-slash'}
+                    width={'16px'}
+                    height={'16px'}
+                  />
+                )}
               </StyledToggleBtn>
             </div>
             <StyledError name="password" component="span" />
