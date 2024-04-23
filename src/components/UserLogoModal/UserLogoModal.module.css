@@ -28,7 +28,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primery-color-blue);
+
+  stroke: var(--primery-color-blue);
 }
 
 .settingButton:hover {

@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  width: 280px;
+  width: 256px;
 }
 
 .title {
@@ -77,7 +77,6 @@
   padding: 12px 10px;
   height: 44px;
   color: var(--primery-color-blue);
-  margin-bottom: 24px;
 }
 
 .input_field::placeholder {
@@ -85,20 +84,38 @@
 }
 
 .email_lable {
+  margin-top: 24px;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.11;
   margin-bottom: 8px;
 }
 
+.passwordContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.userContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .subtitle_password {
+  margin-top: 24px;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.11;
-  margin-bottom: 12px;
+}
+
+.uploadPhotoSvg {
+  display: inline;
+  fill: var(--primery-color-blue);
+  stroke: var(--primery-color-blue);
 }
 
 .lable_password {
+  margin-top: 12px;
   margin-bottom: 8px;
 }
 
@@ -111,8 +128,55 @@
 
   font-weight: 500;
   color: var(--primery-color-white);
+  margin-top: 24px;
 }
 
 .error {
   color: red;
+}
+@media screen and (min-width: 768px) {
+  .form {
+    width: 656px;
+  }
+
+  .save_btn {
+    width: 160px;
+    margin-left: auto;
+  }
+  .input_field {
+    width: 392px;
+  }
+  .email_lable {
+    margin-top: 24px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .form {
+    width: 960px;
+  }
+  .save_btn {
+    width: 100px;
+    margin-left: auto;
+    margin-top: 24px;
+  }
+  .passwordContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 24px;
+  }
+  .userContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .settingContainer {
+    display: flex;
+  }
+  .input_field {
+    margin: 0;
+  }
+  .gender_conteiner {
+    margin-bottom: 52px;
+  }
 }
