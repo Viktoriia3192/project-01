@@ -1,22 +1,21 @@
 // import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../Modal/Modal';
 import Button from '../common/Button/Button';
 import s from './WaterRatioPanel.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { selectWaterRate } from '../../redux/userInfo/userInfoSelectors';
 import { selectTodayWater } from '../../redux/waterData/waterSelectors';
-// import { todayThunk } from '../../redux/waterData/waterOperations';
+import { todayThunk } from '../../redux/waterData/waterOperations';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
 
 const WaterRatioPanel = () => {
+  const dispatch = useDispatch();
   const [modalContent, setModalContent] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  // const waterRate = useSelector(selectWaterRate);
   const { percentageWaterDrunk } = useSelector(selectTodayWater);
-  // const totalWater = todayWater.totalWater;
-  // const percentage = ((totalWater / waterRate) * 100).toFixed(0);
+
   const openModal = (children) => {
     setModalContent(children);
     setModalIsOpen(true);
@@ -24,11 +23,11 @@ const WaterRatioPanel = () => {
   const handleCloseModal = () => {
     setModalIsOpen(false);
   };
-  // const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(todayThunk());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(todayThunk());
+  }, [dispatch, percentageWaterDrunk]);
+
   return (
     <>
       <div className={s.container}>
