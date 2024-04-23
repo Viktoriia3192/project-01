@@ -2,6 +2,8 @@ import { FormikContext, useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 
+import sprite from '../../images/sprite.svg';
+
 import css from './SettingModal.module.css';
 import Modal from '../Modal/Modal';
 import { selectAuthUserData } from '../../redux/auth/authSelectors';
@@ -168,124 +170,137 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
                 accept="image/*,.png,.jpg"
                 onChange={avatarHandleChange}
               />
+              <svg className={css.uploadPhotoSvg} width="16" height="16">
+                <use
+                  xlinkHref={`${sprite}#icon-upload-photo`}
+                  width="16"
+                  height="16"
+                ></use>
+              </svg>
               <label className={css.photo_lable} htmlFor="avatarURL">
                 Upload a photo
               </label>
             </div>
+            <div className={css.settingContainer}>
+              <div className={css.userContainer}>
+                <h3 className={css.subtitle_gender}>Your gender identity</h3>
 
-            <h3 className={css.subtitle_gender}>Your gender identity</h3>
+                <div className={css.gender_conteiner}>
+                  <div className={css.gender_wraper}>
+                    <input
+                      type="radio"
+                      id="female"
+                      name="gender"
+                      value="female"
+                      checked={formik.values.gender === 'female'}
+                      onChange={formik.handleChange}
+                    />
+                    <label htmlFor="female">Woman</label>
+                  </div>
 
-            <div className={css.gender_conteiner}>
-              <div className={css.gender_wraper}>
+                  <div className={css.gender_wraper}>
+                    <input
+                      type="radio"
+                      id="male"
+                      name="gender"
+                      value="male"
+                      checked={formik.values.gender === 'male'}
+                      onChange={formik.handleChange}
+                    />
+                    <label htmlFor="male">Man</label>
+                  </div>
+                </div>
+
+                <label className={css.name_lable} htmlFor="name">
+                  Your name
+                </label>
                 <input
-                  type="radio"
-                  id="female"
-                  name="gender"
-                  value="female"
-                  checked={formik.values.gender === 'female'}
+                  className={css.input_field}
+                  id="name"
+                  name="name"
+                  type="text"
                   onChange={formik.handleChange}
+                  value={formik.values.name}
                 />
-                <label htmlFor="female">Woman</label>
+
+                {formik.errors.name ? (
+                  <div className={css.error}>{formik.errors.name}</div>
+                ) : null}
+
+                <label className={css.email_lable} htmlFor="email">
+                  E-mail
+                </label>
+                <input
+                  className={css.input_field}
+                  id="email"
+                  name="email"
+                  type="email"
+                  onChange={formik.handleChange}
+                  value={formik.values.email}
+                />
+
+                {formik.errors.email ? (
+                  <div className={css.error}>{formik.errors.email}</div>
+                ) : null}
               </div>
 
-              <div className={css.gender_wraper}>
+              <div className={css.passwordContainer}>
+                <h3 className={css.subtitle_password}>Password</h3>
+
+                <label className={css.lable_password} htmlFor="oldPassword">
+                  Outdated password:
+                </label>
                 <input
-                  type="radio"
-                  id="male"
-                  name="gender"
-                  value="male"
-                  checked={formik.values.gender === 'male'}
+                  className={css.input_field}
+                  id="oldPassword"
+                  name="oldPassword"
+                  type="password"
                   onChange={formik.handleChange}
+                  value={formik.values.oldPassword}
+                  placeholder="Password"
                 />
-                <label htmlFor="male">Man</label>
+
+                {formik.errors.oldPassword ? (
+                  <div className={css.error}>{formik.errors.oldPassword}</div>
+                ) : null}
+
+                <label className={css.lable_password} htmlFor="password">
+                  New Password:
+                </label>
+                <input
+                  className={css.input_field}
+                  id="password"
+                  name="password"
+                  type="password"
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
+                  placeholder="Password"
+                />
+
+                {formik.errors.password ? (
+                  <div className={css.error}>{formik.errors.password}</div>
+                ) : null}
+
+                <label className={css.lable_password} htmlFor="repeatPassword">
+                  Repeat new password:
+                </label>
+                <input
+                  className={css.input_field}
+                  id="repeatPassword"
+                  name="repeatPassword"
+                  type="password"
+                  onChange={formik.handleChange}
+                  value={formik.values.repeatPassword}
+                  placeholder="Password"
+                />
+
+                {formik.errors.repeatPassword ? (
+                  <div className={css.error}>
+                    {formik.errors.repeatPassword}
+                  </div>
+                ) : null}
               </div>
             </div>
-
-            <label className={css.name_lable} htmlFor="name">
-              Your name
-            </label>
-            <input
-              className={css.input_field}
-              id="name"
-              name="name"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.name}
-            />
-
-            {formik.errors.name ? (
-              <div className={css.error}>{formik.errors.name}</div>
-            ) : null}
-
-            <label className={css.email_lable} htmlFor="email">
-              E-mail
-            </label>
-            <input
-              className={css.input_field}
-              id="email"
-              name="email"
-              type="email"
-              onChange={formik.handleChange}
-              value={formik.values.email}
-            />
-
-            {formik.errors.email ? (
-              <div className={css.error}>{formik.errors.email}</div>
-            ) : null}
-
-            <h3 className={css.subtitle_password}>Password</h3>
-
-            <label className={css.lable_password} htmlFor="oldPassword">
-              Outdated password:
-            </label>
-            <input
-              className={css.input_field}
-              id="oldPassword"
-              name="oldPassword"
-              type="password"
-              onChange={formik.handleChange}
-              value={formik.values.oldPassword}
-              placeholder="Password"
-            />
-
-            {formik.errors.oldPassword ? (
-              <div className={css.error}>{formik.errors.oldPassword}</div>
-            ) : null}
-
-            <label className={css.lable_password} htmlFor="password">
-              New Password:
-            </label>
-            <input
-              className={css.input_field}
-              id="password"
-              name="password"
-              type="password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
-              placeholder="Password"
-            />
-
-            {formik.errors.password ? (
-              <div className={css.error}>{formik.errors.password}</div>
-            ) : null}
-
-            <label className={css.lable_password} htmlFor="repeatPassword">
-              Repeat new password:
-            </label>
-            <input
-              className={css.input_field}
-              id="repeatPassword"
-              name="repeatPassword"
-              type="password"
-              onChange={formik.handleChange}
-              value={formik.values.repeatPassword}
-              placeholder="Password"
-            />
-
-            {formik.errors.repeatPassword ? (
-              <div className={css.error}>{formik.errors.repeatPassword}</div>
-            ) : null}
-
             <button className={css.save_btn} type="submit">
               Save
             </button>
