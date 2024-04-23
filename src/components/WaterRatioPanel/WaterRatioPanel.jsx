@@ -16,17 +16,18 @@ const WaterRatioPanel = () => {
 
   const { percentageWaterDrunk } = useSelector(selectTodayWater);
 
+  useEffect(() => {
+    dispatch(todayThunk());
+  }, [dispatch, percentageWaterDrunk]);
+
   const openModal = (children) => {
     setModalContent(children);
     setModalIsOpen(true);
   };
-  const handleCloseModal = () => {
+  const handleCloseModal = async () => {
+    await dispatch(todayThunk());
     setModalIsOpen(false);
   };
-
-  useEffect(() => {
-    dispatch(todayThunk());
-  }, [dispatch, percentageWaterDrunk]);
 
   return (
     <>
