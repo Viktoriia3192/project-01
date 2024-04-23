@@ -4,10 +4,8 @@ import css from './EditWater.module.css';
 import { GrAdd } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
 import { updateWaterThunk } from '../../redux/waterData/waterOperations';
-// import Modal from '../Modal/Modal';
 
 export default function EditWaterModal({ onClose, modalData }) {
-  // const [modalIsOpen, setModalIsOpen] = useState(true);
   const { recordId, waterVolume: oldWaterVolume, time: oldTime } = modalData;
   const [time, setTime] = useState(modalData ? oldTime : '00:00');
   const [amount, setAmount] = useState(modalData ? oldWaterVolume : 250);
@@ -23,11 +21,8 @@ export default function EditWaterModal({ onClose, modalData }) {
     event.preventDefault();
 
     const waterVolume = event.currentTarget.water.value;
-    // const time = event.currentTarget.time.value;
-
     const formData = {
       waterVolume,
-      // time,
     };
 
     handleUpdateWater(formData);
@@ -35,13 +30,12 @@ export default function EditWaterModal({ onClose, modalData }) {
     event.currentTarget.reset();
   };
 
-  const handleUpdateWater = (formData) => {
+  const handleUpdateWater = async (formData) => {
     const newData = {
       ...formData,
-      // id: Math.random().toString(),
     };
 
-    dispatch(updateWaterThunk({ newData, id: recordId }));
+    await dispatch(updateWaterThunk({ newData, id: recordId }));
   };
 
   const incrementAmount = () => {
@@ -71,7 +65,6 @@ export default function EditWaterModal({ onClose, modalData }) {
   };
   return (
     <>
-      {/* <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}> */}
       <div className={css.edit_water_modal}>
         <h2 className={css.title}>Edit the entered amount of water</h2>
         <div className={css.info}>
@@ -132,7 +125,6 @@ export default function EditWaterModal({ onClose, modalData }) {
           </div>
         </form>
       </div>
-      {/* </Modal> */}
     </>
   );
 }

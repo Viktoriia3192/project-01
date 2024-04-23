@@ -1,23 +1,18 @@
-// import { useState } from 'react';
 import css from './DeleteModal.module.css';
 import { useDispatch } from 'react-redux';
-// import Modal from '../Modal/Modal';
 import { deleteWaterThunk } from '../../redux/waterData/waterOperations';
 
 export default function DeleteModal({ onClose, modalData }) {
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
-
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
-    console.log(modalData);
-    dispatch(deleteWaterThunk(modalData));
+  const handleDelete = async () => {
+    // console.log(modalData);
+    await dispatch(deleteWaterThunk(modalData));
     onClose();
   };
 
   return (
     <>
-      {/* <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}> */}
       <div className={css.deleteModal}>
         <h2 className={css.modal_title}>Delete entry</h2>
         <p className={css.modal_p}>
@@ -32,7 +27,6 @@ export default function DeleteModal({ onClose, modalData }) {
           </button>
         </div>
       </div>
-      {/* </Modal> */}
     </>
   );
 }

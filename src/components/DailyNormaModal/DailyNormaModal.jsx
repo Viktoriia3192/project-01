@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import css from './DailyNormaModal.module.css';
 import { useDispatch } from 'react-redux';
@@ -38,8 +37,8 @@ const DailyNormaModal = ({ onClose }) => {
     }
   }, [gender, mass, time]);
 
-  const handleSubmit = ({ result }) => {
-    dispatch(updateWaterRateThunk(result));
+  const handleSubmit = async ({ result }) => {
+    await dispatch(updateWaterRateThunk(result));
     onClose();
   };
 
@@ -138,7 +137,7 @@ const DailyNormaModal = ({ onClose }) => {
         <p className={css.amountWaterText}>
           The required amount of water in liters per day:
         </p>
-        <span className={css.amount}>{result} L </span>
+        <span className={css.amount}>{result.toFixed(1)} L </span>
       </div>
 
       <div className={css.normaWaterDrink}>
@@ -149,7 +148,7 @@ const DailyNormaModal = ({ onClose }) => {
           type="text"
           className={css.normaWaterDrinkInput}
           name="waterVolume"
-          placeholder={result}
+          placeholder={result.toFixed(1)}
           min="0"
           max="15"
           value={amount}
@@ -162,7 +161,7 @@ const DailyNormaModal = ({ onClose }) => {
           type="submit"
           className={css.normaModalBtn}
           aria-label="click to save"
-          onClick={() => handleSubmit(result)}
+          onClick={() => handleSubmit(result.toFixed(1))}
         >
           Save
         </button>
