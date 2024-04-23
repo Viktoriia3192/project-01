@@ -14,7 +14,7 @@ import {
 } from './SignUpForm.styled';
 import { useState } from 'react';
 
-import { HiOutlineEyeSlash, HiOutlineEye } from 'react-icons/hi2';
+import { Icon } from '../Icon/Icon';
 
 const SignUpSchema = yup.object().shape({
   email: yup
@@ -81,9 +81,17 @@ const SignUpForm = () => {
                     onClick={() => setPasswordVisibility(!isPasswordVisible)}
                   >
                     {isPasswordVisible ? (
-                      <HiOutlineEye />
+                      <Icon
+                        iconName={'icon-eye'}
+                        width={'16px'}
+                        height={'16px'}
+                      />
                     ) : (
-                      <HiOutlineEyeSlash />
+                      <Icon
+                        iconName={'icon-eye-slash'}
+                        width={'16px'}
+                        height={'16px'}
+                      />
                     )}
                   </StyledToggleBtn>
                 </div>
@@ -105,9 +113,17 @@ const SignUpForm = () => {
                     }
                   >
                     {isRepeatPasswordVisible ? (
-                      <HiOutlineEye />
+                      <Icon
+                        iconName={'icon-eye'}
+                        width={'16px'}
+                        height={'16px'}
+                      />
                     ) : (
-                      <HiOutlineEyeSlash />
+                      <Icon
+                        iconName={'icon-eye-slash'}
+                        width={'16px'}
+                        height={'16px'}
+                      />
                     )}
                   </StyledToggleBtn>
                 </div>
