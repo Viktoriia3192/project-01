@@ -164,14 +164,13 @@ export default function AddWaterModal({ onClose }) {
       // _id: nanoid(),
     };
     dispatch(addWaterThunk(newNote));
-    // setWaterValue(waterValue);
+    // setWaterValue(newNote.waterVolume);
     // setTime();
     onClose(); // Закрыть модальное окно после сохранения
   };
 
   return (
     <>
-      {/* <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}> */}
       <div className={css.add_water_modal}>
         <h2 className={css.title}>Add Water Intake</h2>
         <div className={css.info}>
@@ -215,7 +214,6 @@ export default function AddWaterModal({ onClose }) {
           Add Water
         </button>
       </div>
-      {/* </Modal> */}
     </>
   );
 }

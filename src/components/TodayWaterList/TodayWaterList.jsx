@@ -1,21 +1,16 @@
 import sprite from '../../images/sprite.svg';
 import Modal from '../Modal/Modal';
-
-import s from './TodayWaterList.module.css';
-
 import { selectTodayWater } from '../../redux/waterData/waterSelectors';
 import { useEffect, useState } from 'react';
-// import { todayWater } from './data';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import EditWaterModal from '../EditWater/EditWaterModal';
-// import { AddForm } from '../AddForm/AddForm';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { todayThunk } from '../../redux/waterData/waterOperations';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
+import s from './TodayWaterList.module.css';
 
 const TodayWaterList = () => {
-  const todayWater = useSelector(selectTodayWater);
+  let todayWater = useSelector(selectTodayWater);
   const { dosesWater } = todayWater;
   const [modalContent, setModalContent] = useState(null);
   const [modalData, setModalData] = useState({});
@@ -25,12 +20,9 @@ const TodayWaterList = () => {
 
   useEffect(() => {
     dispatch(todayThunk());
-  }, [dispatch]);
+  }, [dispatch, modalIsOpen]);
 
   const openModal = (children, data = {}) => {
-    console.log(todayWater);
-    console.log(data);
-
     setModalData(data);
     setModalContent(children);
     setModalIsOpen(true);
