@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import sprite from '../../images/sprite.svg';
-import css from './EditWater.module.css';
 import { GrAdd } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
-import { updateWaterThunk } from '../../redux/waterData/waterOperations';
+import {
+  todayThunk,
+  updateWaterThunk,
+} from '../../redux/waterData/waterOperations';
+import css from './EditWater.module.css';
 
 export default function EditWaterModal({ onClose, modalData }) {
   const { recordId, waterVolume: oldWaterVolume, time: oldTime } = modalData;
@@ -36,6 +39,7 @@ export default function EditWaterModal({ onClose, modalData }) {
     };
 
     await dispatch(updateWaterThunk({ newData, id: recordId }));
+    await dispatch(todayThunk);
   };
 
   const incrementAmount = () => {
