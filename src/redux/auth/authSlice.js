@@ -21,7 +21,7 @@ const initialState = {
     waterRate: null,
   },
   token: null,
-  isSignedIn: false,
+  isSignedIn: true,
   isLoading: false,
   error: null,
 };
