@@ -27,7 +27,9 @@ export const requestUserInfoUpdate = async (userData) => {
 };
 
 export const requestUpdateWaterRate = async (rate) => {
-  const { data } = await axiosInstance.patch('users/water-rate', rate);
+  const { data } = await axiosInstance.patch('users/water-rate', {
+    waterRate: rate,
+  });
   setToken(data.token);
   return data.waterRate;
 };

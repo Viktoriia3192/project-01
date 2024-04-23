@@ -7,24 +7,28 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { selectWaterRate } from '../../redux/userInfo/userInfoSelectors';
 import { selectTodayWater } from '../../redux/waterData/waterSelectors';
 import { todayThunk } from '../../redux/waterData/waterOperations';
+import AddWaterModal from '../AddWaterModal/AddWaterModal';
 
 const WaterRatioPanel = () => {
-  // const [modalContent, setModalContent] = useState(null);
+  const dispatch = useDispatch();
+  const [modalContent, setModalContent] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  // const waterRate = useSelector(selectWaterRate);
   const { percentageWaterDrunk } = useSelector(selectTodayWater);
-  // const totalWater = todayWater.totalWater;
-  // const percentage = ((totalWater / waterRate) * 100).toFixed(0);
-  // const openModal = (children) => {
-  //   setModalContent(children);
-  //   setModalIsOpen(true);
-  // };
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(todayThunk());
-  }, [dispatch]);
+  }, [dispatch, percentageWaterDrunk]);
+
+  const openModal = (children) => {
+    setModalContent(children);
+    setModalIsOpen(true);
+  };
+  const handleCloseModal = async () => {
+    await dispatch(todayThunk());
+    setModalIsOpen(false);
+  };
+
   return (
     <>
       <div className={s.container}>
@@ -50,11 +54,13 @@ const WaterRatioPanel = () => {
         <Button
           className={s.addBtn}
           title={'Add Water'}
-          // onClick={() => openModal(<AddWaterModal />)}
+          onClick={() =>
+            openModal(<AddWaterModal onClose={handleCloseModal} />)
+          }
         />
       </div>
-      <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
-        {/* {modalContent} */}
+      <Modal isOpen={modalIsOpen} onClose={handleCloseModal}>
+        {modalContent}
       </Modal>
     </>
   );

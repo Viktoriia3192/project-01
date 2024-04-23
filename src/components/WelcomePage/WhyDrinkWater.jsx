@@ -8,7 +8,7 @@ const WhyDrinkWater = () => {
       <h3 className={css.whyWaterContainerH3}>Why drink water</h3>
       <ul className={css.whyWaterContainerUl}>
         <li><svg className={css.whyWaterContainerSvg}>
-            <use xlinkHref={`${sprite}#ellipse`} />
+            <use xlinkHref={`${sprite}#ellipse`} width="8" height="8"/>
           </svg>Supply of nutrients to all organs</li>
         <li><svg className={css.whyWaterContainerSvg}>
             <use xlinkHref={`${sprite}#ellipse`} />
@@ -26,7 +26,7 @@ const WhyDrinkWater = () => {
             <use xlinkHref={`${sprite}#ellipse`} />
           </svg>Maintaining within the normal temperature</li>
         <li><svg className={css.whyWaterContainerSvg}>
-            <use xlinkHref={`${sprite}#ellipse`} />
+            <use xlinkHref={`${sprite}#ellipse`} width="8" height="8" />
           </svg>Maintaining an immune system capable of resisting disease</li>
       </ul>
     </div>

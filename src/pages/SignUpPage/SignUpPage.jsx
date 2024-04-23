@@ -8,8 +8,8 @@ const SignUpPage = () => {
 
   return (
     <>
-      <AuthForm isRegister />
       <StyledBackgroundWrap></StyledBackgroundWrap>
+      <AuthForm isRegister />
       {authError && <StyledErrorMessage>{authError}</StyledErrorMessage>}
     </>
   );
