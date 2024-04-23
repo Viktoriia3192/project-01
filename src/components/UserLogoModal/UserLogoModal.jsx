@@ -21,6 +21,7 @@ const UserLogoModal = () => {
         </svg>
         Setting
       </button>
+
       <button
         className={css.logOutButton}
         onClick={() => {
@@ -32,6 +33,7 @@ const UserLogoModal = () => {
         </svg>
         Log out
       </button>
+
       {isLogOutModalOpen && (
         <LogOutModal
           isOpen={isLogOutModalOpen}

@@ -14,6 +14,7 @@ export default function AddWaterModal({ onClose }) {
   useEffect(() => {
     dispatch(todayThunk());
   }, [time, waterValue, dispatch]);
+
   const incrementWater = () => {
     setWaterValue((prev) => prev + 50);
   };
@@ -40,11 +41,13 @@ export default function AddWaterModal({ onClose }) {
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
     const formattedDate = `${year}-${month}-${day}`;
+
     const newNote = {
       waterVolume: waterValue,
       date: formattedDate,
     };
     await dispatch(addWaterThunk(newNote));
+
     onClose();
   };
 

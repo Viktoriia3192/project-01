@@ -1,12 +1,12 @@
-import sprite from '../../images/sprite.svg';
-import Modal from '../Modal/Modal';
-import { selectTodayWater } from '../../redux/waterData/waterSelectors';
-import { useEffect, useState } from 'react';
-import DeleteModal from '../DeleteModal/DeleteModal';
-import EditWaterModal from '../EditWater/EditWaterModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { todayThunk } from '../../redux/waterData/waterOperations';
+import { useEffect, useState } from 'react';
+import Modal from '../Modal/Modal';
+import EditWaterModal from '../EditWater/EditWaterModal';
+import DeleteModal from '../DeleteModal/DeleteModal';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
+import { selectTodayWater } from '../../redux/waterData/waterSelectors';
+import { todayThunk } from '../../redux/waterData/waterOperations';
+import sprite from '../../images/sprite.svg';
 import s from './TodayWaterList.module.css';
 
 const TodayWaterList = () => {
@@ -91,7 +91,7 @@ const TodayWaterList = () => {
                           onClick={() =>
                             openModal(
                               <DeleteModal
-                                modalData={modalData}
+                                modalData={dose._id}
                                 onClose={handleCloseModal}
                               />,
                               dose._id
