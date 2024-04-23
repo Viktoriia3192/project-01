@@ -1,45 +1,34 @@
-// import { useDispatch } from 'react-redux';
-
 import sprite from '../../images/sprite.svg';
 import Modal from '../Modal/Modal';
-
-import s from './TodayWaterList.module.css';
-
-// import { selectTodayWater } from '../../redux/waterData/waterSelectors';
-import { useState } from 'react';
-// import { todayThunk } from '../../redux/waterData/waterOperations';
-import { todayWater } from './data';
+import { selectTodayWater } from '../../redux/waterData/waterSelectors';
+import { useEffect, useState } from 'react';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import EditWaterModal from '../EditWater/EditWaterModal';
-// import { AddForm } from '../AddForm/AddForm';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { todayThunk } from '../../redux/waterData/waterOperations';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
+import s from './TodayWaterList.module.css';
 
 const TodayWaterList = () => {
-  // const todayWater = useSelector(selectTodayWater);
+  const todayWater = useSelector(selectTodayWater);
   const { dosesWater } = todayWater;
-  // const listRef = useRef(null);
   const [modalContent, setModalContent] = useState(null);
   const [modalData, setModalData] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(todayThunk());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(todayThunk());
+  }, [dispatch, modalIsOpen]);
 
-  const openModal = (children, data) => {
-
-    console.log(todayWater);
-    console.log(data);
-
-
+  const openModal = (children, data = {}) => {
     setModalData(data);
     setModalContent(children);
     setModalIsOpen(true);
   };
-  const handleCloseModal = () => {
+  const handleCloseModal = async () => {
+    await dispatch(todayThunk());
     setModalIsOpen(false);
   };
 
@@ -50,7 +39,7 @@ const TodayWaterList = () => {
         <div className={s.todayBox}>
           <table className={s.waterTable}>
             <tbody>
-              {dosesWater &&
+              {dosesWater ? (
                 dosesWater
                   .toSorted(
                     (a, b) =>
@@ -64,14 +53,7 @@ const TodayWaterList = () => {
                         </svg>
                       </td>
                       <td className={s.doseVolume}>{dose.waterVolume} ml</td>
-                      <td className={s.doseTime}>
-                        {/* {new Intl.DateTimeFormat('en', {
-                          hour: 'numeric',
-                          minute: 'numeric',
-                          hour12: true,
-                        }).format(new Date(dose.date)?.toJSON()?.split('T')[0])} */}
-                        {dose.time}
-                      </td>
+                      <td className={s.doseTime}>{dose.time}</td>
 
                       <td>
                         <button
@@ -81,7 +63,11 @@ const TodayWaterList = () => {
                           onClick={() =>
                             openModal(
                               <EditWaterModal
-                                modalData={modalData}
+                                modalData={{
+                                  recordId: dose._id,
+                                  waterVolume: dose.waterVolume,
+                                  time: dose.time,
+                                }}
                                 onClose={handleCloseModal}
                               />,
                               {
@@ -118,16 +104,25 @@ const TodayWaterList = () => {
                         </button>
                       </td>
                     </tr>
-                  ))}
+                  ))
+              ) : (
+                <tr>
+                  <td>No notes yet</td>
+                </tr>
+              )}
             </tbody>
           </table>
           <button
             type="submit"
             className={s.addBtn}
-
-            onClick={() => openModal(<AddWaterModal modalData={modalData}
-                                onClose={handleCloseModal}/>)}
-
+            onClick={() =>
+              openModal(
+                <AddWaterModal
+                  modalData={modalData}
+                  onClose={handleCloseModal}
+                />
+              )
+            }
           >
             <svg className={s.plusSvg}>
               <use href={`${sprite}#icon-plus-small`}></use>

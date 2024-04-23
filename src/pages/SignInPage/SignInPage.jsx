@@ -10,7 +10,6 @@ const SignInPage = () => {
   return (
     <>
       <StyledBackgroundWrap></StyledBackgroundWrap>
-
       <AuthForm />
       {authError && <StyledErrorMessage>{authError}</StyledErrorMessage>}
     </>

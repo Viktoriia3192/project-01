@@ -17,7 +17,7 @@ const UserLogoModal = () => {
         onClick={() => setIsSettingOpen(!isSettingOpen)}
       >
         <svg className={css.toothSvg}>
-          <use xlinkHref={`${sprite}#icon-settings`}></use>
+          <use href={`${sprite}#icon-tooth`}></use>
         </svg>
         Setting
       </button>
@@ -29,7 +29,7 @@ const UserLogoModal = () => {
         }}
       >
         <svg className={css.LogOutSvg}>
-          <use xlinkHref={`${sprite}#icon-arrow-right`}></use>
+          <use href={`${sprite}#icon-arrow-exit`}></use>
         </svg>
         Log out
       </button>

@@ -1,4 +1,5 @@
 .modal {
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,7 +30,7 @@
   align-items: center;
   justify-content: center;
 
-  stroke: var(--primery-color-blue);
+  color: var(--primery-color-blue);
 }
 
 .settingButton:hover {

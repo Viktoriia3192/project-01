@@ -1,7 +1,9 @@
+
+
 .trackerContainer {
   font-family: 'Roboto', sans-serif;
   background: transparent;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,33 +12,35 @@
 .trackerContainerH3 {
   font-size: 18px;
   margin-bottom: 12px;
-  font-weight: medium;
+  font-weight:500;
   line-height: 1.11;
 }
 
 .trackerContainerUl {
   list-style-type: none;
-  padding: 0;
   width: 260px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .trackerContainerLi {
   font-size: 16px;
-  margin-bottom: 5px;
-  display: inline-block;
-  margin-right: 8px;
   line-height: 1.25;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .svgIcon {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 
 .trackerBtn {
-  width: 280px;
   height: 36px;
-  max-width: 280px;
+  min-width: 280px;
   font-size: 16px;
   background-color: #007bff;
   color: #fff;
@@ -46,23 +50,30 @@
   text-decoration: none;
   text-align: center;
   line-height: 36px;
+  display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .trackerBtn:hover,
 .trackerBtn:active {
-  cursor: url('../../images/sprite.svg#cursor-pointer'), pointer;
+  cursor: url('../../images/main//mdi_cursor-pointer.png'), pointer;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1439px) {
+@media screen and (min-width: 768px) {
   .trackerContainer {
     width: 100%;
     max-width: 494px;
     position: static;
+margin-bottom: 60px;
   }
 
   .trackerContainerUl {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    width: 704px;
+    gap: 16px;
+    flex-grow: 1;
   }
 
   .trackerContainerLi {
@@ -70,13 +81,31 @@
     margin-bottom: 5px;
     margin-right: 8px;
     line-height: 1.25;
+    white-space: nowrap;
+    min-width: 224px;
+  }
+  .svgIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .trackerBtn {
+    height: 44px;
+    width: 336px;
+    font-size: 18px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 1440px) {
   .trackerContainer {
-    padding: 10px;
+    margin: 0;
   }
+
+  .trackerContainerUl {
+    flex-direction: column;
+  }
+
+  
 
   .trackerContainerH3 {
     font-size: 16px;
@@ -84,12 +113,11 @@
 
   .trackerContainerLi {
     font-size: 12px;
-    display: block;
   }
 
   .trackerBtn {
-    font-size: 14px;
-    width: 100%;
-    max-width: 280px;
+    padding: 10px 30px;
+    min-width: 384px;
+    
   }
 }
