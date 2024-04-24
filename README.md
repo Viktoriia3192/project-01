@@ -1,4 +1,4 @@
-<div style="background-image: url= './src/images/main/BackElemMainDesk.png'">
+<div style="background-image: url('./src/images/main/BackElemMainDesk.png')">
 
 ## About:
 
