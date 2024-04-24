@@ -25,12 +25,12 @@ export const todayThunk = createAsyncThunk(
 
 export const monthThunk = createAsyncThunk(
   'water-notes/month',
-  async (_, thunkAPI) => {
+  async (date, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 
     try {
       setToken(token);
-      const response = await requestMonth();
+      const response = await requestMonth(date);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
