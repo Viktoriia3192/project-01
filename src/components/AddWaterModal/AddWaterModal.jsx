@@ -9,9 +9,9 @@ import {
 import css from './AddWater.module.css';
 
 export default function AddWaterModal({ onClose }) {
-  const [time, setTime] = useState('00:00');
+  const [time, setTime] = useState('00:00 AM');
   const [waterValue, setWaterValue] = useState(250);
-  const [changedTime, setChangedTime] = useState('');
+  const [changedTime, setChangedTime] = useState('00:00 AM');
 
   const dispatch = useDispatch();
 
