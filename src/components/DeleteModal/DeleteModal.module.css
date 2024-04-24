@@ -1,3 +1,7 @@
+.deleteModal {
+  width: 250px;
+}
+
 .modal_title {
   font-weight: 500;
   font-size: 26px;
@@ -24,7 +28,7 @@
   justify-content: center;
   border-radius: 10px;
   padding: 10px 30px;
-  width: 232px;
+  width: 100%;
   height: 44px;
   background: var(--secondary-color---5);
   color: var(--primery-color-blue);
@@ -45,7 +49,7 @@
   justify-content: center;
   border-radius: 10px;
   padding: 10px 30px;
-  width: 232px;
+  width: 100%;
   height: 44px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background: #ef5050;
@@ -62,6 +66,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .deleteModal {
+    width: 592px;
+  }
+
   .buttons {
     flex-direction: row;
     margin-left: 220px;
@@ -72,11 +80,5 @@
   }
   .delete_btn {
     width: 160px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .deleteModal {
-    width: 590px;
   }
 }
