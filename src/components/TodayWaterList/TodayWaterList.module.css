@@ -56,13 +56,27 @@
   color: var(--primery-color-black);
 }
 .editBtn {
-  margin: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px;
+  width: 16px;
+}
+.editBtn:hover {
+  border-bottom: 1px solid var(--secondary-color-lightblue);
 }
 .editSvg {
   width: 14px;
   height: 14px;
 }
-
+.deleteBtn {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px;
+  width: 16px;
+}
+.deleteBtn:hover {
+  border-bottom: 1px solid var(--secondary-color-red);
+}
 .deleteSvg {
   width: 12px;
   height: 14px;

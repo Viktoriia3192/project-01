@@ -27,9 +27,9 @@
   margin: 20px;
   min-width: 280px;
   max-width: 1000px;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: #ffffff;
-  padding: 24px 12px;
+  padding: 34px 24px;
   transform: translateY(-50px);
   transition:
     opacity 0.3s,
@@ -71,4 +71,16 @@
 .modal--exiting .modal_content,
 .modal--exited .modal_content {
   transform: translateY(50px);
+}
+
+@media screen and (min-width: 320px) {
+  .modal_content {
+    padding: 32px 12px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal_content {
+    padding: 32px 24px;
+  }
 }
