@@ -26,7 +26,7 @@ const DailyNorma = () => {
     <div className={s.container}>
       <h2 className={s.title}>My daily norma</h2>
       <div className={s.normaEditor}>
-        <p className={s.waterRate}>{waterRate} L</p>
+        <p className={s.waterRate}>{waterRate / 1000} L</p>
         <Button
           className={s.editBtn}
           title={'Edit'}
