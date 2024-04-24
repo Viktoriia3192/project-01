@@ -6,14 +6,12 @@ import b from './PopoverButton.module.css';
 import { selectTodayWater } from '../../../redux/waterData/waterSelectors'
 import { useSelector } from 'react-redux';
 
-const PopoverDay = ({ date, percent, norm, selectedMonth }) => {
+const PopoverDay = ({ date,  norm, selectedMonth }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [coordsButton, setCoordsButton] = useState({ left: 0, top: 0 });
   const [isMobile, setIsMobile] = useState(false);
 
-  const { percentageWaterDrunk } = useSelector(selectTodayWater);
-const normValue = parseInt(norm);
-
+  const { percentageWaterDrunk, dosesWater } = useSelector(selectTodayWater);
 
   
 
@@ -49,21 +47,21 @@ const normValue = parseInt(norm);
   const screenWidth = window.innerWidth / 2;
   const leftCoordinate = screenWidth + halfWidthPopover;
 
-  const returnNumber = string => {
-    const processedString = string.slice(0, -1);
-    if (processedString === '0') {
-      return 1;
-    }
-    const number = Number(processedString);
-    return number;
-  };
+  // const returnNumber = string => {
+  //   const processedString = string.slice(0, -1);
+  //   if (processedString === '0') {
+  //     return 1;
+  //   }
+  //   const number = Number(processedString);
+  //   return number;
+  // };
 
   return (
     <>
       <>
         <button className={b.button}
-          data-fulfilled={returnNumber(percent) >= 100 ? 'true' : 'false'}
-          disabled={!returnNumber(percent) ? true : false}
+          data-fulfilled={percentageWaterDrunk >= 100 ? 'true' : 'false'}
+          disabled={!percentageWaterDrunk ? true : false}
           aria-describedby={id}
           onClick={handleClick}
           // onMouseEnter={handleClick}
@@ -103,8 +101,7 @@ const normValue = parseInt(norm);
             Fulfillment of the daily norm: <span className={d.span}>{percentageWaterDrunk}%</span>
           </p>
           <p>
-            How many servings of water: <span className={d.span}>{Math.ceil(percentageWaterDrunk / 100 * normValue)
-}</span>
+            How many servings of water: <span className={d.span}>{Array.isArray(dosesWater) ? dosesWater.length : 0}</span>
           </p>
         </div>
       </Popover>
