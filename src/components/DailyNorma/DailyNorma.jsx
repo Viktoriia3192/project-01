@@ -9,14 +9,16 @@ import Modal from '../Modal/Modal';
 import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
 
 const DailyNorma = () => {
+  // const dispatch =useDispatch();
   const waterRate = useSelector(selectWaterRate);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const handleOpenModal = () => {
     setModalIsOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = async () => {
     setModalIsOpen(false);
   };
 

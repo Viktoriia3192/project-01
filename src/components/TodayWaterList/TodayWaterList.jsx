@@ -39,7 +39,7 @@ const TodayWaterList = () => {
         <div className={s.todayBox}>
           <table className={s.waterTable}>
             <tbody>
-              {dosesWater ? (
+              {dosesWater?.length > 0 ? (
                 dosesWater
                   .toSorted(
                     (a, b) =>
@@ -106,8 +106,8 @@ const TodayWaterList = () => {
                     </tr>
                   ))
               ) : (
-                <tr>
-                  <td>No notes yet</td>
+                <tr className={s.noNotesRow}>
+                  <td className={s.noNotes}>No notes yet</td>
                 </tr>
               )}
             </tbody>

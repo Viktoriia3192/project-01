@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import css from './DailyNormaModal.module.css';
 import { useDispatch } from 'react-redux';
 import { updateWaterRateThunk } from '../../redux/userInfo/userInfoOperations';
+import { todayThunk } from '../../redux/waterData/waterOperations';
 
 const DailyNormaModal = ({ onClose }) => {
   const [mass, setMass] = useState('');
@@ -28,6 +29,9 @@ const DailyNormaModal = ({ onClose }) => {
     setAmount(event.currentTarget.value);
     setResult(event.currentTarget.value);
   };
+  useEffect(() => {
+    dispatch(todayThunk());
+  }, [dispatch]);
 
   useEffect(() => {
     if (gender === 'woman') {
@@ -40,6 +44,7 @@ const DailyNormaModal = ({ onClose }) => {
   const handleSubmit = async (result) => {
     const formattedResult = result;
     await dispatch(updateWaterRateThunk(formattedResult));
+
     onClose();
   };
 
