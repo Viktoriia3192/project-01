@@ -7,8 +7,8 @@ export const requestToday = async () => {
   return data;
 };
 
-export const requestMonth = async () => {
-  const { data } = await axiosInstance.get('water-notes/month');
+export const requestMonth = async (date) => {
+  const { data } = await axiosInstance.get(`water-notes/month?date=${date}`);
   setToken(data.token);
   return data;
 };
