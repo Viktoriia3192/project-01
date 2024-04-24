@@ -1,12 +1,14 @@
+## About:
+
 Water tracker is a project that was developed by the CodeWave team. This can
 help people calculate their water intake and track its amount over time.
 
-Technologies
+## Technologies:
 
--HTML -CSS -JavaScript -React -React hooks -React Router -Redux -Redux-toolkit
--Axios
+`HTML` `CSS` `JavaScript` `React` `React hooks` `React Router` `Redux`
+`Redux-toolkit` `Axios`
 
-Team
+## Team:
 
 1. **[Viktoriia Otsabryk](https://github.com/Viktoriia3192)** Team lead;
    Calendar
