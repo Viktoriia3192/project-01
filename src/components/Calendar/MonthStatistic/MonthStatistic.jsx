@@ -3,11 +3,11 @@ import { compareDates, today } from '../helpers/getDate';
 import { getMonthsArr } from '../helpers/getMonthsArr';
 import PopoverDay from '../DaysGeneralStats/PopoverDay';
 import { useSelector } from 'react-redux';
-import { selectTodayWater } from '../../../redux/waterData/waterSelectors';
+import { selectMonthWater } from '../../../redux/waterData/waterSelectors';
 
 const MonthStatistic = ({ selectedMonth, monthStatistic, registrationDate }) => {
-  const { percentageWaterDrunk } = useSelector(selectTodayWater);
-
+  const today2 = useSelector(selectMonthWater);
+console.log('today', today2)
   const currentMonth = (year, month, statistic) => {
     const daysArr = [];
     const monthData = getMonthsArr(year)[month];
@@ -30,10 +30,10 @@ const MonthStatistic = ({ selectedMonth, monthStatistic, registrationDate }) => 
 
       if (compare === 0) {
         if (!day && i <= today.day) {
-          daysArr.push({ date: i, percent: '0%', norm: '2L', drinks: 0, percentageWaterDrunk });
+          daysArr.push({ date: i, percent: '0%', norm: '2L', drinks: 0});
         }
         if (!day && i > today.day) {
-          daysArr.push({ date: i, percent: '', percentageWaterDrunk });
+          daysArr.push({ date: i, percent: ''});
         }
         if (day) {
           const drinkCount = Array.isArray(day.drinks)
@@ -44,12 +44,12 @@ const MonthStatistic = ({ selectedMonth, monthStatistic, registrationDate }) => 
             percent: `${day.percent}%`,
             norm: `${day.norm / 1000}L`,
             drinks: drinkCount,
-            percentageWaterDrunk,
+          
           });
         }
       }
       if (compare === 1) {
-        daysArr.push({ date: i, percent: '', percentageWaterDrunk });
+        daysArr.push({ date: i, percent: ''});
       }
 
       if (compare === -1) {
@@ -59,13 +59,13 @@ const MonthStatistic = ({ selectedMonth, monthStatistic, registrationDate }) => 
             percent: `${day.percent}%`,
             norm: `${day.norm / 1000}L`,
             drinks: day.drinks,
-            percentageWaterDrunk,
+          
           });
         } else if (selectedMonth.year === registrationDate.year && selectedMonth.month === registrationDate.month && i < registrationDate.day) {
-          daysArr.push({ date: i, percent: '', norm: '2L', drinks: 0, percentageWaterDrunk });
+          daysArr.push({ date: i, percent: '', norm: '2L', drinks: 0 });
 
         } else {
-          daysArr.push({ date: i, percent: '0%', norm: '2L', drinks: 0, percentageWaterDrunk });
+          daysArr.push({ date: i, percent: '0%', norm: '2L', drinks: 0});
         }
       }
     }
@@ -77,7 +77,7 @@ const MonthStatistic = ({ selectedMonth, monthStatistic, registrationDate }) => 
     selectedMonth.month,
     monthStatistic
   );
-
+console.log(statistic)
   return (
     <>
       <div className={s.div}>
