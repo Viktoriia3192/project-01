@@ -8,7 +8,7 @@ const DailyNormaModal = ({ onClose }) => {
   const [mass, setMass] = useState('');
   const [time, setTime] = useState('');
   const [amount, setAmount] = useState('');
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState('');
   const [gender, setGender] = useState('woman');
 
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const DailyNormaModal = ({ onClose }) => {
   }, [gender, mass, time]);
 
   const handleSubmit = async (result) => {
-    const formattedResult = result * 1000;
+    const formattedResult = result;
     await dispatch(updateWaterRateThunk(formattedResult));
 
     onClose();
@@ -143,7 +143,7 @@ const DailyNormaModal = ({ onClose }) => {
         <p className={css.amountWaterText}>
           The required amount of water in liters per day:
         </p>
-        <span className={css.amount}>{result.toFixed(1)} L </span>
+        <span className={css.amount}>{result} L </span>
       </div>
 
       <div className={css.normaWaterDrink}>
@@ -154,7 +154,7 @@ const DailyNormaModal = ({ onClose }) => {
           type="text"
           className={css.normaWaterDrinkInput}
           name="waterVolume"
-          placeholder={result.toFixed(1)}
+          placeholder={result}
           min="0"
           max="15"
           value={amount}
@@ -167,7 +167,7 @@ const DailyNormaModal = ({ onClose }) => {
           type="submit"
           className={css.normaModalBtn}
           aria-label="click to save"
-          onClick={() => handleSubmit(result.toFixed(1))}
+          onClick={() => handleSubmit(result)}
         >
           Save
         </button>
