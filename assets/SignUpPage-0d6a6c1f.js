@@ -1,0 +1,1 @@
+import{b as e,m as t,j as r}from"./index-1077982d.js";import{S as o,h as a,A as i,i as n}from"./SignUpPage.styled-7874af85.js";import"./emotion-styled.browser.esm-36ec9b44.js";const c=()=>{const s=e(t);return r.jsxs(o,{children:[r.jsx(a,{}),r.jsx(i,{isRegister:!0}),s&&r.jsx(n,{children:s})]})};export{c as default};
