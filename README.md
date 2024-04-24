@@ -1,11 +1,9 @@
-<div style="background-image: url('/src/images/main/BackMainDesk.png'); background-size: cover; background-position: center; min-height: 300px;">
-
 ## About:
 
-Water tracker is a project that was developed by the CodeWave team. This can
-help people calculate their water intake and track its amount over time.
+Water tracker is a project that was developed by the CodeWave team. App can help
+people calculate their water intake and track its amount over time.
 
-<img src="./src/images/main/BackMainDesk.png" alt="banner project" />
+<img src="./src/images/Banner.jpg" alt="banner project" />
 
 ## Technologies:
 
@@ -30,5 +28,3 @@ help people calculate their water intake and track its amount over time.
    TodayWaterList; WaterRatioPanel; RestrictedRoute; PrivateRoute; DailyNorma
 
 ## **[Back-End](https://github.com/EvgenBilous/Project01_water_backend)**
-
-</div>
