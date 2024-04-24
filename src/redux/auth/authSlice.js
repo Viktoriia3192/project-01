@@ -71,6 +71,7 @@ const authSlice = createSlice({
           signUpThunk.pending,
           logOutThunk.pending,
           signInThunk.pending,
+          userAvatarThunk.pending,
           refreshUserThunk.pending,
           updateUserInfoThunk.pending,
           updateWaterRateThunk.pending
@@ -85,6 +86,7 @@ const authSlice = createSlice({
           logOutThunk.rejected,
           signInThunk.rejected,
           signUpThunk.rejected,
+          userAvatarThunk.rejected,
           refreshUserThunk.rejected,
           updateUserInfoThunk.rejected,
           updateWaterRateThunk.rejected

@@ -8,11 +8,31 @@ import {
 } from '../../redux/waterData/waterOperations';
 import css from './EditWater.module.css';
 
+const convertTo24HourFormat = (time12Hour) => {
+  const [time, period] = time12Hour.split(' ');
+  const [hours, minutes] = time.split(':').map(Number);
+
+  let hours24 = hours;
+  if (period === 'PM' && hours !== 12) {
+    hours24 += 12;
+  } else if (period === 'AM' && hours === 12) {
+    hours24 = 0;
+  }
+
+  return `${hours24.toString().padStart(2, '0')}:${minutes
+    .toString()
+    .padStart(2, '0')}`;
+};
+
 export default function EditWaterModal({ onClose, modalData }) {
   const { recordId, waterVolume: oldWaterVolume, time: oldTime } = modalData;
-  const [time, setTime] = useState(modalData ? oldTime : '00:00');
+
+  const [time, setTime] = useState(
+    modalData ? convertTo24HourFormat(oldTime) : '00:00'
+  );
   const [amount, setAmount] = useState(modalData ? oldWaterVolume : 250);
   const [waterValue, setWaterValue] = useState(250);
+  const [twelveHourTime, setTwelveHourTime] = useState(oldTime || '');
 
   const dispatch = useDispatch();
 
@@ -26,6 +46,7 @@ export default function EditWaterModal({ onClose, modalData }) {
     const waterVolume = event.currentTarget.water.value;
     const formData = {
       waterVolume,
+      time: twelveHourTime,
     };
 
     handleUpdateWater(formData);
@@ -53,7 +74,16 @@ export default function EditWaterModal({ onClose, modalData }) {
   };
 
   const handleTimeChange = (event) => {
-    setTime(event.target.value);
+    const { value } = event.target;
+
+    const [hh, mm] = value.split(':').map(Number);
+    const period = hh < 12 ? 'AM' : 'PM';
+    const twelveHourTime = hh % 12 || 12;
+    const newTime = `${twelveHourTime}:${mm < 10 ? '0' : ''}${mm} ${period}`;
+    console.log(newTime);
+
+    setTime(value);
+    setTwelveHourTime(newTime);
   };
 
   const generateOptions = () => {

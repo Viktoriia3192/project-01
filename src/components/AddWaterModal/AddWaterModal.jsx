@@ -11,6 +11,7 @@ import css from './AddWater.module.css';
 export default function AddWaterModal({ onClose }) {
   const [time, setTime] = useState('00:00');
   const [waterValue, setWaterValue] = useState(250);
+  const [changedTime, setChangedTime] = useState('');
 
   const dispatch = useDispatch();
 
@@ -25,8 +26,17 @@ export default function AddWaterModal({ onClose }) {
     setWaterValue((prev) => (prev > 0 ? prev - 50 : 0));
   };
   const handleTimeChange = (event) => {
-    setTime(event.target.value);
+    const { value } = event.target;
+
+    const [hh, mm] = value.split(':').map(Number);
+    const period = hh < 12 ? 'AM' : 'PM';
+    const twelveHourTime = hh % 12 || 12;
+    const newTime = `${twelveHourTime}:${mm < 10 ? '0' : ''}${mm} ${period}`;
+
+    setTime(value);
+    setChangedTime(newTime);
   };
+
   const generateOptions = () => {
     let options = [];
     for (let hour = 0; hour < 24; hour++) {
@@ -51,7 +61,10 @@ export default function AddWaterModal({ onClose }) {
     const newNote = {
       waterVolume: waterValue,
       date: formattedDate,
+      time: changedTime,
     };
+
+    // console.log(newNote);
     await dispatch(addWaterThunk(newNote));
     // await dispatch(todayThunk());
     onClose();
