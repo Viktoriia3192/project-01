@@ -78,7 +78,7 @@ export default function EditWaterModal({ onClose, modalData }) {
             </svg>
           </span>
           <p className={css.water_info}>{waterValue} ml</p>
-          <p className={css.water_info_time}>{time} AM</p>
+          <p className={css.water_info_time}>{time}</p>
         </div>
         <p className={css.correct_title}>Correct entered data:</p>
         <p className={css.correct_subtitle}>Amount of water:</p>
