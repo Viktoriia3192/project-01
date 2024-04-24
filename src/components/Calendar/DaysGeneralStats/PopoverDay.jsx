@@ -1,14 +1,21 @@
 import { Popover } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { getMonthsArr } from '../helpers/getMonthsArr';
-// import { TfiClose } from 'react-icons/tfi';
 import  d from './PopoverDayStyles.module.css';
 import b from './PopoverButton.module.css';
+import { selectTodayWater } from '../../../redux/waterData/waterSelectors'
+import { useSelector } from 'react-redux';
 
-const PopoverDay = ({ date, percent, drinks, norm, selectedMonth }) => {
+const PopoverDay = ({ date, percent, norm, selectedMonth }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [coordsButton, setCoordsButton] = useState({ left: 0, top: 0 });
   const [isMobile, setIsMobile] = useState(false);
+
+  const { percentageWaterDrunk } = useSelector(selectTodayWater);
+const normValue = parseInt(norm);
+
+
+  
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 767px)');
@@ -87,18 +94,17 @@ const PopoverDay = ({ date, percent, drinks, norm, selectedMonth }) => {
               {date},{' '}
               {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}
             </p>
-            {/* <button className={d.button} onClick={handleClose}>
-              <TfiClose />
-            </button> */}
+            
           </div>
           <p>
             Daily norma: <span className={d.span}>{norm}</span>
           </p>
           <p>
-            Fulfillment of the daily norm: <span className={d.span}>{percent}</span>
+            Fulfillment of the daily norm: <span className={d.span}>{percentageWaterDrunk}%</span>
           </p>
           <p>
-            How many servings of water: <span className={d.span}>{drinks}</span>
+            How many servings of water: <span className={d.span}>{Math.ceil(percentageWaterDrunk / 100 * normValue)
+}</span>
           </p>
         </div>
       </Popover>
@@ -106,4 +112,4 @@ const PopoverDay = ({ date, percent, drinks, norm, selectedMonth }) => {
   );
 };
 
-export default PopoverDay;
+export default PopoverDay;    
