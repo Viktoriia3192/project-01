@@ -1,6 +1,6 @@
 .whyWaterContainer {
   font-family: 'Roboto', sans-serif;
-  background-color: #ECF2FF;
+  background-color: #ecf2ff;
   border-radius: 10px;
   padding: 24px 16px 24px 16px;
 }
@@ -13,7 +13,6 @@
 
 .whyWaterContainerUl {
   list-style-type: none;
-  
 }
 
 .whyWaterContainerUl li {
@@ -44,7 +43,6 @@
 @media screen and (min-width: 1440px) {
   .whyWaterContainerUl li {
     margin: 0;
-
   }
 
   .whyWaterContainerUl {
@@ -52,5 +50,4 @@
     flex-direction: column;
     gap: 16px;
   }
-  
 }
