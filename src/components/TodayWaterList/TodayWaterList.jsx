@@ -27,6 +27,7 @@ const TodayWaterList = () => {
     setModalContent(children);
     setModalIsOpen(true);
   };
+
   const handleCloseModal = async () => {
     await dispatch(todayThunk());
     setModalIsOpen(false);
