@@ -16,19 +16,18 @@ import deskBottle2x from '../../images/signup/desktop/bottle-for-sign-in@2x.png'
 import deskBub2x from '../../images/signup/desktop/background-element-main-page@2x.png';
 
 export const StyledBackgroundWrap = styled.div`
-  max-width: 320px;
   width: 100%;
-  height: 620px;
+  height: 100vh;
   position: absolute;
   top: 60px;
   left: 0;
   z-index: -10;
   background-image: url(${mobBottle}), url(${mobBubbles});
-  background-size: 280px, cover;
+  background-size: 100%, cover;
   background-repeat: no-repeat;
   background-position:
     top 400px left 20px,
-    top 0 left 0;
+    center;
 
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
@@ -38,15 +37,16 @@ export const StyledBackgroundWrap = styled.div`
   }
 
   @media (min-width: 768px) {
+    margin: 0 auto;
     max-width: 768px;
     width: 100%;
-    height: 680px;
+    height: 100vh;
     top: -20px;
     left: 0;
     right: 30px;
     background-image: url(${tabBottle});
     background-size: cover;
-    background-position: top 0 left 0;
+    background-position: center;
 
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
@@ -57,16 +57,17 @@ export const StyledBackgroundWrap = styled.div`
   }
 
   @media (min-width: 1440px) {
+    margin: 0 auto;
     max-width: 1404px;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     top: 60px;
     left: 18px;
     background-image: url(${deskBottle}), url(${deskBub});
     background-size: 916px, 1404px;
     background-position:
       top 28px left -51px,
-      top 0 left 0;
+      center;
 
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),

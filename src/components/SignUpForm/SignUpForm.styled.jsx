@@ -4,8 +4,13 @@ import { Form, ErrorMessage } from 'formik';
 export const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
-  padding-right: 20px;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const StyledForm = styled(Form)`
@@ -13,7 +18,7 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   gap: 16px;
   margin-top: 24px;
-  width: 100%;
+  width: 320px;
   justify-content: center;
 
   @media (min-width: 768px) {
