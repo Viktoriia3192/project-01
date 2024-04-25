@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { Formik, Field } from 'formik';
 import { signUpThunk } from '../../redux/auth/authOperations';
+import css from './SignUpForm.module.css';
 
 import {
   StyledError,
@@ -62,76 +63,79 @@ const SignUpForm = () => {
           <StyledWrapper>
             <StyledForm>
               <h1>Sign Up</h1>
-              <label>
-                <StyledFieldName>Enter your email</StyledFieldName>
-                <Field name="email" type="email" placeholder="E-mail" />
-                <StyledError name="email" component="span" />
-              </label>
-              <label>
-                <StyledFieldName>Enter your password</StyledFieldName>
-                <div>
-                  <Field
-                    name="password"
-                    type={isPasswordVisible ? 'text' : 'password'}
-                    placeholder="Password"
-                    // pattern=".{8,}"
-                  />
-                  <StyledToggleBtn
-                    type="button"
-                    onClick={() => setPasswordVisibility(!isPasswordVisible)}
-                  >
-                    {isPasswordVisible ? (
-                      <Icon
-                        iconName={'icon-eye'}
-                        width={'16px'}
-                        height={'16px'}
-                      />
-                    ) : (
-                      <Icon
-                        iconName={'icon-eye-slash'}
-                        width={'16px'}
-                        height={'16px'}
-                      />
-                    )}
-                  </StyledToggleBtn>
-                </div>
-                <StyledError name="password" component="span" />
-              </label>
-              <label>
-                <StyledFieldName>Repeat password</StyledFieldName>
-                <div>
-                  <Field
-                    name="repeatPassword"
-                    type={isRepeatPasswordVisible ? 'text' : 'password'}
-                    placeholder="Password"
-                    // pattern=".{8,}"
-                  />
-                  <StyledToggleBtn
-                    type="button"
-                    onClick={() =>
-                      setRepeatPasswordVisibility(!isRepeatPasswordVisible)
-                    }
-                  >
-                    {isRepeatPasswordVisible ? (
-                      <Icon
-                        iconName={'icon-eye'}
-                        width={'16px'}
-                        height={'16px'}
-                      />
-                    ) : (
-                      <Icon
-                        iconName={'icon-eye-slash'}
-                        width={'16px'}
-                        height={'16px'}
-                      />
-                    )}
-                  </StyledToggleBtn>
-                </div>
+              <div className={css.inputFields}>
+                <label>
+                  <StyledFieldName>Enter your email</StyledFieldName>
+                  <Field name="email" type="email" placeholder="E-mail" />
+                  <StyledError name="email" component="span" />
+                </label>
+                <label>
+                  <StyledFieldName>Enter your password</StyledFieldName>
+                  <div>
+                    <Field
+                      name="password"
+                      type={isPasswordVisible ? 'text' : 'password'}
+                      placeholder="Password"
+                      // pattern=".{8,}"
+                    />
+                    <StyledToggleBtn
+                      type="button"
+                      onClick={() => setPasswordVisibility(!isPasswordVisible)}
+                    >
+                      {isPasswordVisible ? (
+                        <Icon
+                          iconName={'icon-eye'}
+                          width={'16px'}
+                          height={'16px'}
+                        />
+                      ) : (
+                        <Icon
+                          iconName={'icon-eye-slash'}
+                          width={'16px'}
+                          height={'16px'}
+                        />
+                      )}
+                    </StyledToggleBtn>
+                  </div>
+                  <StyledError name="password" component="span" />
+                </label>
+                <label>
+                  <StyledFieldName>Repeat password</StyledFieldName>
+                  <div>
+                    <Field
+                      name="repeatPassword"
+                      type={isRepeatPasswordVisible ? 'text' : 'password'}
+                      placeholder="Password"
+                      // pattern=".{8,}"
+                    />
+                    <StyledToggleBtn
+                      type="button"
+                      onClick={() =>
+                        setRepeatPasswordVisibility(!isRepeatPasswordVisible)
+                      }
+                    >
+                      {isRepeatPasswordVisible ? (
+                        <Icon
+                          iconName={'icon-eye'}
+                          width={'16px'}
+                          height={'16px'}
+                        />
+                      ) : (
+                        <Icon
+                          iconName={'icon-eye-slash'}
+                          width={'16px'}
+                          height={'16px'}
+                        />
+                      )}
+                    </StyledToggleBtn>
+                  </div>
 
-                <StyledError name="repeatPassword" component="span" />
-              </label>
-              <StyledSubmitBtn type="submit">Sign Up</StyledSubmitBtn>
+                  <StyledError name="repeatPassword" component="span" />
+                </label>
+                <StyledSubmitBtn type="submit">Sign Up</StyledSubmitBtn>
+              </div>
               <Link
+                className={css.signInLink}
                 to="/signin"
                 onClick={() => {
                   formik.handleReset();
