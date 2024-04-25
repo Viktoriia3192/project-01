@@ -11,6 +11,7 @@ import {
   updateUserInfoThunk,
   userAvatarThunk,
 } from '../../redux/userInfo/userInfoOperations';
+import { useState } from 'react';
 
 // const testUser = {
 //   token:
@@ -26,9 +27,12 @@ import {
 // };
 
 export default function SettingModal({ isOpen, setIsSettingOpen }) {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isOldPasswordVisible, setIsOldPasswordVisible] = useState(false);
+  const [isRepeatPasswordVisible, setIsRepeatPasswordVisible] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(selectAuthUserData);
-  // const { user } = testUser;
+
   const { email, avatarURL, gender, name } = user;
 
   const avatarHandleChange = async (e) => {
@@ -206,6 +210,7 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
                       value="male"
                       checked={formik.values.gender === 'male'}
                       onChange={formik.handleChange}
+                      className={css.genderRadio}
                     />
                     <label htmlFor="male">Man</label>
                   </div>
@@ -252,17 +257,39 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
                 </label>
                 <div className={css.inputContainer}>
                   <input
-                    className={css.input_field}
+                    style={{
+                      color: formik.errors.oldPassword ? '#EF5050' : '#407BFF',
+                      borderColor: formik.errors.oldPassword
+                        ? '#EF5050'
+                        : '#D7E3FF',
+                    }}
+                    className={`${css.input_field} ${
+                      formik.errors.oldPassword && css.errorInput
+                    }`}
                     id="oldPassword"
                     name="oldPassword"
-                    type="password"
+                    type={isOldPasswordVisible ? 'text' : 'password'}
                     onChange={formik.handleChange}
                     value={formik.values.oldPassword}
                     placeholder="Password"
                   />
-                  <svg className={css.eyeSlash} width="16" height="16">
-                    <use href={`${sprite}#icon-eye-slash`}></use>
-                  </svg>
+                  <button
+                    className={css.eyeButton}
+                    type="button"
+                    onClick={() =>
+                      setIsOldPasswordVisible(!isOldPasswordVisible)
+                    }
+                  >
+                    {isOldPasswordVisible ? (
+                      <svg className={css.eyeSlash} width="16" height="16">
+                        <use href={`${sprite}#icon-eye`}></use>
+                      </svg>
+                    ) : (
+                      <svg className={css.eyeSlash} width="16" height="16">
+                        <use href={`${sprite}#icon-eye-slash`}></use>
+                      </svg>
+                    )}
+                  </button>
                 </div>
                 {formik.errors.oldPassword ? (
                   <div className={css.error}>{formik.errors.oldPassword}</div>
@@ -271,16 +298,40 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
                 <label className={css.lable_password} htmlFor="password">
                   New Password:
                 </label>
-                <input
-                  className={css.input_field}
-                  id="password"
-                  name="password"
-                  type="password"
-                  onChange={formik.handleChange}
-                  value={formik.values.password}
-                  placeholder="Password"
-                />
-
+                <div className={css.inputContainer}>
+                  <input
+                    style={{
+                      color: formik.errors.password ? '#EF5050' : '#407BFF',
+                      borderColor: formik.errors.password
+                        ? '#EF5050'
+                        : '#D7E3FF',
+                    }}
+                    className={`${css.input_field} ${
+                      formik.errors.password && css.errorInput
+                    }`}
+                    id="password"
+                    name="password"
+                    type={isPasswordVisible ? 'text' : 'password'}
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                    placeholder="Password"
+                  />
+                  <button
+                    className={css.eyeButton}
+                    type="button"
+                    onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                  >
+                    {isPasswordVisible ? (
+                      <svg className={css.eyeSlash} width="16" height="16">
+                        <use href={`${sprite}#icon-eye`}></use>
+                      </svg>
+                    ) : (
+                      <svg className={css.eyeSlash} width="16" height="16">
+                        <use href={`${sprite}#icon-eye-slash`}></use>
+                      </svg>
+                    )}
+                  </button>
+                </div>
                 {formik.errors.password ? (
                   <div className={css.error}>{formik.errors.password}</div>
                 ) : null}
@@ -288,16 +339,44 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
                 <label className={css.lable_password} htmlFor="repeatPassword">
                   Repeat new password:
                 </label>
-                <input
-                  className={css.input_field}
-                  id="repeatPassword"
-                  name="repeatPassword"
-                  type="password"
-                  onChange={formik.handleChange}
-                  value={formik.values.repeatPassword}
-                  placeholder="Password"
-                />
-
+                <div className={css.inputContainer}>
+                  <input
+                    style={{
+                      color: formik.errors.repeatPassword
+                        ? '#EF5050'
+                        : '#407BFF',
+                      borderColor: formik.errors.repeatPassword
+                        ? '#EF5050'
+                        : '#D7E3FF',
+                    }}
+                    className={`${css.input_field} ${
+                      formik.errors.repeatPassword && css.errorInput
+                    }`}
+                    id="repeatPassword"
+                    name="repeatPassword"
+                    type={isRepeatPasswordVisible ? 'text' : 'password'}
+                    onChange={formik.handleChange}
+                    value={formik.values.repeatPassword}
+                    placeholder="Password"
+                  />
+                  <button
+                    className={css.eyeButton}
+                    type="button"
+                    onClick={() =>
+                      setIsRepeatPasswordVisible(!isRepeatPasswordVisible)
+                    }
+                  >
+                    {isRepeatPasswordVisible ? (
+                      <svg className={css.eyeSlash} width="16" height="16">
+                        <use href={`${sprite}#icon-eye`}></use>
+                      </svg>
+                    ) : (
+                      <svg className={css.eyeSlash} width="16" height="16">
+                        <use href={`${sprite}#icon-eye-slash`}></use>
+                      </svg>
+                    )}
+                  </button>
+                </div>
                 {formik.errors.repeatPassword ? (
                   <div className={css.error}>
                     {formik.errors.repeatPassword}
