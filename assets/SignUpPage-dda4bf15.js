@@ -1,1 +1,0 @@
-import{b as e,g as t,j as r}from"./index-b13e3777.js";import{S as a,h as o,A as i,i as n}from"./SignUpPage.styled-2f4e81e8.js";const g=()=>{const s=e(t);return r.jsxs(a,{children:[r.jsx(o,{}),r.jsx(i,{isRegister:!0}),s&&r.jsx(n,{children:s})]})};export{g as default};
