@@ -41,8 +41,8 @@ const DayComponent = ({ calendarRef, day, dayInfo }) => {
         className={clsx(
           s.day,
           !dayInfo?.percentageWaterDrunk || dayInfo.percentageWaterDrunk < 100
-            ? ''
-            : s.outlineVisible
+            ? s.outlineVisible
+            : ''
         )}
         ref={ref}
         onClick={() => toggleModal(day)}
