@@ -220,12 +220,19 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
                   Your name
                 </label>
                 <input
-                  className={css.input_field}
+                  style={{
+                    color: formik.errors.name ? '#EF5050' : '#407BFF',
+                    borderColor: formik.errors.name ? '#EF5050' : '#D7E3FF',
+                  }}
+                  className={`${css.input_field} ${
+                    formik.errors.name && css.errorInput
+                  }`}
                   id="name"
                   name="name"
                   type="text"
                   onChange={formik.handleChange}
                   value={formik.values.name}
+                  placeholder="Name"
                 />
 
                 {formik.errors.name ? (
@@ -236,12 +243,19 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
                   E-mail
                 </label>
                 <input
-                  className={css.input_field}
+                  style={{
+                    color: formik.errors.email ? '#EF5050' : '#407BFF',
+                    borderColor: formik.errors.email ? '#EF5050' : '#D7E3FF',
+                  }}
+                  className={`${css.input_field} ${
+                    formik.errors.email && css.errorInput
+                  }`}
                   id="email"
                   name="email"
                   type="email"
                   onChange={formik.handleChange}
                   value={formik.values.email}
+                  placeholder="E-mail"
                 />
 
                 {formik.errors.email ? (
