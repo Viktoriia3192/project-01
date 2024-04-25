@@ -88,4 +88,5 @@ const waterSlice = createSlice({
         }
       ),
 });
+console.log(waterSlice)
 export const waterDataReducer = waterSlice.reducer;
