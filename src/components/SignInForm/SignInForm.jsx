@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { Formik, Field } from 'formik';
 import { signInThunk } from '../../redux/auth/authOperations';
+import css from './SigninForm.module.css';
 
 import {
   StyledError,
@@ -54,37 +55,43 @@ const SignInForm = () => {
       <StyledWrapper>
         <StyledForm>
           <h1>Sign In</h1>
-          <label>
-            <StyledFieldName>Enter your email</StyledFieldName>
-            <Field name="email" type="email" placeholder="E-mail" />
-            <StyledError name="email" component="span" />
-          </label>
-          <label>
-            <StyledFieldName>Enter your password</StyledFieldName>
-            <div>
-              <Field
-                name="password"
-                type={isPasswordVisible ? 'text' : 'password'}
-                placeholder="Password"
-              />
-              <StyledToggleBtn
-                type="button"
-                onClick={() => setPasswordVisibility(!isPasswordVisible)}
-              >
-                {isPasswordVisible ? (
-                  <Icon iconName={'icon-eye'} width={'16px'} height={'16px'} />
-                ) : (
-                  <Icon
-                    iconName={'icon-eye-slash'}
-                    width={'16px'}
-                    height={'16px'}
-                  />
-                )}
-              </StyledToggleBtn>
-            </div>
-            <StyledError name="password" component="span" />
-          </label>
-          <StyledSubmitBtn type="submit">Sign In</StyledSubmitBtn>
+          <div className={css.signInFields}>
+            <label>
+              <StyledFieldName>Enter your email</StyledFieldName>
+              <Field name="email" type="email" placeholder="E-mail" />
+              <StyledError name="email" component="span" />
+            </label>
+            <label>
+              <StyledFieldName>Enter your password</StyledFieldName>
+              <div>
+                <Field
+                  name="password"
+                  type={isPasswordVisible ? 'text' : 'password'}
+                  placeholder="Password"
+                />
+                <StyledToggleBtn
+                  type="button"
+                  onClick={() => setPasswordVisibility(!isPasswordVisible)}
+                >
+                  {isPasswordVisible ? (
+                    <Icon
+                      iconName={'icon-eye'}
+                      width={'16px'}
+                      height={'16px'}
+                    />
+                  ) : (
+                    <Icon
+                      iconName={'icon-eye-slash'}
+                      width={'16px'}
+                      height={'16px'}
+                    />
+                  )}
+                </StyledToggleBtn>
+              </div>
+              <StyledError name="password" component="span" />
+            </label>
+            <StyledSubmitBtn type="submit">Sign In</StyledSubmitBtn>
+          </div>
           <Link to="/signup">Sign Up</Link>
         </StyledForm>
       </StyledWrapper>

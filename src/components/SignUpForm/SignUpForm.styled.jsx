@@ -16,17 +16,14 @@ export const StyledWrapper = styled.div`
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 16px;
   margin-top: 24px;
-  width: 320px;
+  width: 280px;
   justify-content: center;
 
   @media (min-width: 768px) {
-    width: 316px;
     margin-top: 40px;
   }
   @media (min-width: 1440px) {
-    width: 364px;
     margin-top: 140px;
     margin-right: 104px;
     margin-left: auto;
@@ -39,10 +36,11 @@ export const StyledForm = styled(Form)`
   }
   label {
     position: relative;
+    margin-top: 16px;
   }
   input {
     padding: 12px 10px;
-    width: 100%;
+    width: 280px;
     font-size: 16px;
     line-height: 1.2;
     border-radius: 6px;
@@ -68,7 +66,7 @@ export const StyledForm = styled(Form)`
     width: fit-content;
     font-size: 16px;
     line-height: 1.25;
-    color: var(--primery-color-black);
+    color: var(--primery-color-blue);
     transition: color ease-in-out 250ms;
   }
   a:hover {
@@ -79,7 +77,10 @@ export const StyledForm = styled(Form)`
   }
 `;
 export const StyledSubmitBtn = styled.button`
+  margin-top: 16px;
+  margin-bottom: 16px;
   padding: 8px 30px;
+  width: 280px;
   font-size: 16px;
   line-height: 1.25;
   border-radius: 10px;
