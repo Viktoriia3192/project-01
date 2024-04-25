@@ -1,4 +1,4 @@
-.mainontainer {
+/* .mainontainer {
   width: 100%;
   background-image: url('../../images/main/BackMainMobile.png');
   background-size: cover;
@@ -12,9 +12,9 @@
   }
 }
 
-/* .titleContainer {
+.titleContainer {
   width: 280px;
-} */
+}
 
 .titleConsumption {
   font-family: 'Roboto', sans-serif;
@@ -46,7 +46,7 @@
 @media screen and (min-width: 768px) {
   .mainContainer {
     background-image: url('../../images/main/BackMainTablet.png');
-    /* width: 768; */
+    width: 768;
     padding: 0px 32px 50px 32px;
     margin-top: 40px;
   }
@@ -119,5 +119,109 @@
 
   .blocksContainer > * {
     margin-right: 0;
+  }
+} */
+.container {
+  width: 100%;
+  background-image: url(../../images/main/BackMainMobile.png);
+  background-position-y: 105%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 24px 20px 40px 20px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .container {
+    background-image: url('../../images/main/BackMainMobile2x.png');
+  }
+}
+
+.titleContainer {
+  margin-bottom: 40px;
+}
+
+.titleConsumption {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 114%;
+  color: var(--primery-color-black);
+  margin-bottom: 16px;
+}
+
+.titleRecord {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 125%;
+  color: var(--primery-color-black);
+  width: 197px;
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    background-image: url('../../images/main/BackMainTablet.png');
+    padding: 40px 32px 50px 32px;
+    /* background-position-y: 100%; */
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .container {
+      background-image: url('../../images/main/BackMainDesk2x.png');
+    }
+  }
+
+  .titleContainer {
+    margin-bottom: 60px;
+  }
+
+  .titleConsumption {
+    font-size: 36px;
+    line-height: 117%;
+    width: auto;
+  }
+
+  .titleRecord {
+    font-size: 26px;
+    line-height: 123%;
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    background-image: url('../../images/main/BackMainDesk.png');
+    /* padding: 40px 32px 50px 32px; */
+
+    padding: 49px 18px 109px 18px;
+    /* margin: 80px 98px 109px 104px; */
+    background-position-y: center;
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .container {
+      background-image: url('../../images/main/BackMainDesk2x.png');
+    }
+  }
+
+  .mainContainer {
+    display: flex;
+
+    gap: 81px;
+
+    padding: 31px 192px 185px 198px;
+    /* flex-direction: row;
+    justify-content: center;
+    gap: 81px;
+    align-items: flex-end; */
+  }
+
+  .titleContainer {
+    margin-bottom: 185px;
+  }
+
+  .blocksContainer {
+    margin-top: 34px;
   }
 }
