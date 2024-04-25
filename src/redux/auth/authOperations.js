@@ -1,13 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
-  // requestCurrentUser,
   requestLogIn,
   requestLogOut,
-  // requestRefreshUser,
   requestSignUp,
   setToken,
 } from '../../services/authAPI';
-// import { toast } from 'react-toastify';
 import { toastError, toastSuccess } from '../../services/toastNotification';
 
 export const signUpThunk = createAsyncThunk(
@@ -53,24 +50,3 @@ export const logOutThunk = createAsyncThunk(
     }
   }
 );
-
-// export const currentUserThunk = createAsyncThunk(
-//   'auth/current',
-//   async (_, thunkAPI) => {
-//     const token = thunkAPI.getState().auth.token;
-//     try {
-//       setToken(token);
-//       const response = await requestCurrentUser();
-//       return response;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// {
-//   condition: (_, thunkAPI) => {
-//     const token = thunkAPI.getState().auth.token;
-//     if (!token) return false;
-//     return true;
-//   },
-// }
-// );

@@ -25,12 +25,12 @@ export const todayThunk = createAsyncThunk(
 
 export const monthThunk = createAsyncThunk(
   'water-notes/month',
-  async (_, thunkAPI) => {
+  async (date, thunkAPI) => {
     const token = thunkAPI.getState().auth.token;
 
     try {
       setToken(token);
-      const response = await requestMonth();
+      const response = await requestMonth(date);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -75,7 +75,7 @@ export const updateWaterThunk = createAsyncThunk(
 
     try {
       setToken(token);
-      //тут потрібно змінити id i newData на те що буде передано з EditWaterModal
+
       const { id, newData } = data;
       const response = await requestUpdateWater(id, newData);
       return response;

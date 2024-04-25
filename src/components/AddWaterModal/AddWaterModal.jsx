@@ -4,6 +4,7 @@ import { GrAdd } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
 import {
   addWaterThunk,
+  monthThunk,
   todayThunk,
 } from '../../redux/waterData/waterOperations';
 import css from './AddWater.module.css';
@@ -57,6 +58,7 @@ export default function AddWaterModal({ onClose }) {
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
     const formattedDate = `${year}-${month}-${day}`;
+    const formattedMonth = `${year}-${month}`;
 
     const newNote = {
       waterVolume: waterValue,
@@ -66,7 +68,8 @@ export default function AddWaterModal({ onClose }) {
 
     // console.log(newNote);
     await dispatch(addWaterThunk(newNote));
-    // await dispatch(todayThunk());
+
+    await dispatch(monthThunk(formattedMonth));
     onClose();
   };
 
