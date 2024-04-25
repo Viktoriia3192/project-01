@@ -10,6 +10,7 @@ const UserLogoModal = () => {
   const toggleLogOutModal = () => {
     setIsLogOutModalOpen(!isLogOutModalOpen);
   };
+
   return (
     <div className={css.modal}>
       <button
