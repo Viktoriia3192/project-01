@@ -1,7 +1,7 @@
 {
   "name": "react_vite",
   "private": true,
-  "homepage": "https://Viktoriia3192.github.io/project-01/",
+  "homepage": "https://Viktoriia3192.github.io/project-01",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -22,6 +22,7 @@
     "axios": "^1.6.8",
     "clsx": "^2.1.0",
     "formik": "^2.4.5",
+    "framer-motion": "^11.1.7",
     "i18next": "^23.11.1",
     "modern-normalize": "^2.0.0",
     "normalize.css": "^8.0.1",

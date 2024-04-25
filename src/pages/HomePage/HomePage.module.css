@@ -28,6 +28,7 @@
   flex-direction: column;
   gap: 24px;
   width: 280px;
+  height: 836px;
   margin: 0 auto;
 }
 @media screen and (min-width: 768px) {
@@ -39,11 +40,11 @@
     width: 768px;
     padding: 0 32px;
   }
-  /* .dailyNormaWrapper {
-  } */
+
   .todayMonthWrapper {
     width: 704px;
     padding: 32px 24px;
+    height: 688px;
   }
 }
 @media only screen and (max-width: 1439px) {
@@ -67,5 +68,6 @@
   .todayMonthWrapper {
     width: 50%;
     padding: 32px 24px;
+    height: 680px;
   }
 }

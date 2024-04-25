@@ -1,6 +1,6 @@
-.whyWaterContainer {
+/* .whyWaterContainer {
   font-family: 'Roboto', sans-serif;
-  background-color: #ECF2FF;
+  background-color: #ecf2ff;
   border-radius: 10px;
   padding: 24px 16px 24px 16px;
 }
@@ -13,7 +13,6 @@
 
 .whyWaterContainerUl {
   list-style-type: none;
-  
 }
 
 .whyWaterContainerUl li {
@@ -44,7 +43,6 @@
 @media screen and (min-width: 1440px) {
   .whyWaterContainerUl li {
     margin: 0;
-
   }
 
   .whyWaterContainerUl {
@@ -52,5 +50,56 @@
     flex-direction: column;
     gap: 16px;
   }
-  
+} */
+
+.whyWaterContainer {
+  border-radius: 10px;
+  padding: 24px 16px;
+  width: 280px;
+  height: 416px;
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+  background: var(--secondary-color-2);
+}
+
+.whyWaterContainerH3 {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 111%;
+  color: var(--primery-color-black);
+  margin-bottom: 12px;
+}
+
+.whyWaterContainerUl {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.whyWaterContainerUl li {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--primery-color-black);
+}
+
+.whyWaterContainerSvg {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .whyWaterContainer {
+    padding: 32px 24px;
+    width: 494px;
+    height: 332px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
 }

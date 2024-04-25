@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import css from './DailyNormaModal.module.css';
 import { useDispatch } from 'react-redux';
 import { updateWaterRateThunk } from '../../redux/userInfo/userInfoOperations';
+import { todayThunk } from '../../redux/waterData/waterOperations';
 
 const DailyNormaModal = ({ onClose }) => {
   const [mass, setMass] = useState('');
@@ -25,13 +26,16 @@ const DailyNormaModal = ({ onClose }) => {
   };
 
   const onChangeAmount = (event) => {
-    setAmount(event.currentTarget.value);
-    setResult(event.currentTarget.value);
+    setAmount(Number(event.currentTarget.value));
+    setResult(Number(event.currentTarget.value));
   };
+  useEffect(() => {
+    dispatch(todayThunk());
+  }, [dispatch]);
 
   useEffect(() => {
     if (gender === 'woman') {
-      setResult(mass * 0.03 + time * 0.4);
+      setResult(Number((mass * 0.03 + time * 0.4).toFixed(1)));
     } else {
       setResult(mass * 0.04 + time * 0.6);
     }
@@ -39,7 +43,9 @@ const DailyNormaModal = ({ onClose }) => {
 
   const handleSubmit = async (result) => {
     const formattedResult = result * 1000;
+
     await dispatch(updateWaterRateThunk(formattedResult));
+
     onClose();
   };
 
@@ -107,7 +113,7 @@ const DailyNormaModal = ({ onClose }) => {
         <label>
           <p className={css.weightKilogramsText}>Your weight in kilograms:</p>
           <input
-            type="text"
+            type="number"
             className={css.weightKilogramsInput}
             name="mass"
             placeholder="0"
@@ -124,7 +130,7 @@ const DailyNormaModal = ({ onClose }) => {
             a high physical. load in hours:
           </p>
           <input
-            type="text"
+            type="number"
             className={css.timeHoursInput}
             name="time"
             placeholder="0"
@@ -138,7 +144,7 @@ const DailyNormaModal = ({ onClose }) => {
         <p className={css.amountWaterText}>
           The required amount of water in liters per day:
         </p>
-        <span className={css.amount}>{result.toFixed(1)} L </span>
+        <span className={css.amount}>{result} L </span>
       </div>
 
       <div className={css.normaWaterDrink}>
@@ -146,12 +152,12 @@ const DailyNormaModal = ({ onClose }) => {
           Write down how much water you will drink:
         </p>
         <input
-          type="text"
+          type="number"
           className={css.normaWaterDrinkInput}
           name="waterVolume"
-          placeholder={result.toFixed(1)}
-          min="0"
-          max="15"
+          placeholder={result}
+          min={0}
+          max={15}
           value={amount}
           onChange={onChangeAmount}
           required
@@ -162,7 +168,7 @@ const DailyNormaModal = ({ onClose }) => {
           type="submit"
           className={css.normaModalBtn}
           aria-label="click to save"
-          onClick={() => handleSubmit(result.toFixed(1))}
+          onClick={() => handleSubmit(result)}
         >
           Save
         </button>

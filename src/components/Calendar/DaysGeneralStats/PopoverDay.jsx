@@ -1,14 +1,17 @@
-import { Popover } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { getMonthsArr } from '../helpers/getMonthsArr';
-// import { TfiClose } from 'react-icons/tfi';
-import  d from './PopoverDayStyles.module.css';
+import { Popover } from '@mui/material';
+import d from './PopoverDayStyles.module.css';
 import b from './PopoverButton.module.css';
+import { useSelector } from 'react-redux';
+import { selectTodayWater } from '../../../redux/waterData/waterSelectors';
 
-const PopoverDay = ({ date, percent, drinks, norm, selectedMonth }) => {
+const PopoverDay = ({ date, norm, selectedMonth }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [coordsButton, setCoordsButton] = useState({ left: 0, top: 0 });
   const [isMobile, setIsMobile] = useState(false);
+
+  const { percentageWaterDrunk, dosesWater } = useSelector(selectTodayWater);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 767px)');
@@ -42,66 +45,56 @@ const PopoverDay = ({ date, percent, drinks, norm, selectedMonth }) => {
   const screenWidth = window.innerWidth / 2;
   const leftCoordinate = screenWidth + halfWidthPopover;
 
-  const returnNumber = string => {
-    const processedString = string.slice(0, -1);
-    if (processedString === '0') {
-      return 1;
-    }
-    const number = Number(processedString);
-    return number;
-  };
+  const popoverContent = useMemo(() => (
+    <Popover
+      id={id}
+      open={open}
+      anchorEl={anchorEl}
+      onClose={handleClose}
+      anchorReference={anchor}
+      anchorPosition={{ top: coordsButton.top, left: leftCoordinate }}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'center',
+      }}
+      transformOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+    >
+      <div className={d.div}>
+        <div>
+          <p className={d.date}>
+            {date}, {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}
+          </p>
+        </div>
+        <p>
+          Daily norma: <span className={d.span}>{norm}</span>
+        </p>
+        <p>
+          Fulfillment of the daily norm: <span className={d.span}>{percentageWaterDrunk}%</span>
+        </p>
+        <p>
+          How many servings of water: <span className={d.span}>{Array.isArray(dosesWater) ? dosesWater.length : 0}</span>
+        </p>
+      </div>
+    </Popover>
+  ), [id, open, anchorEl, handleClose, coordsButton.top, leftCoordinate, date, norm, selectedMonth, percentageWaterDrunk, dosesWater]);
 
   return (
     <>
       <>
         <button className={b.button}
-          data-fulfilled={returnNumber(percent) >= 100 ? 'true' : 'false'}
-          disabled={!returnNumber(percent) ? true : false}
+          data-fulfilled={percentageWaterDrunk >= 100 ? 'true' : 'false'}
+          disabled={!percentageWaterDrunk ? true : false}
           aria-describedby={id}
           onClick={handleClick}
-          // onMouseEnter={handleClick}
         >
           {date}
         </button>
       </>
 
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorReference={anchor}
-        anchorPosition={{ top: coordsButton.top, left: leftCoordinate }}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-      >
-        <div className={d.div}>
-          <div>
-            <p className={d.date}>
-              {date},{' '}
-              {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}
-            </p>
-            {/* <button className={d.button} onClick={handleClose}>
-              <TfiClose />
-            </button> */}
-          </div>
-          <p>
-            Daily norma: <span className={d.span}>{norm}</span>
-          </p>
-          <p>
-            Fulfillment of the daily norm: <span className={d.span}>{percent}</span>
-          </p>
-          <p>
-            How many servings of water: <span className={d.span}>{drinks}</span>
-          </p>
-        </div>
-      </Popover>
+      {popoverContent}
     </>
   );
 };

@@ -1,13 +1,12 @@
 import { useSelector } from 'react-redux';
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
-import MonthStatsTable from '../../components/Calendar/MonthStatsTable.jsx';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
-
-import s from './HomePage.module.css';
 import { selectAuthIsLoading } from '../../redux/auth/authSelectors';
 import Loader from '../../components/Loader/Loader';
 import Picture from '../../components/Picture/Picture.jsx';
+import MonthStatsTable2 from '../../components/MonthStatsTable/MonthStatsTable2.jsx';
+import s from './HomePage.module.css';
 
 const HomePage = () => {
   const isLoading = useSelector(selectAuthIsLoading);
@@ -24,7 +23,7 @@ const HomePage = () => {
         </div>
         <div className={s.todayMonthWrapper}>
           <TodayWaterList />
-          <MonthStatsTable />
+          <MonthStatsTable2 />
         </div>
       </div>
     </div>

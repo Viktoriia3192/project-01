@@ -33,8 +33,9 @@
   align-items: center;
   border-bottom: 1px solid var(--secondary-color---5);
   width: 254px;
-  height: 26px;
-  margin-bottom: 12px;
+  height: 50px;
+  padding-bottom: 12px;
+  padding-top: 12px;
 }
 
 .glassSvg {
@@ -56,16 +57,39 @@
   color: var(--primery-color-black);
 }
 .editBtn {
-  margin: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px;
+  width: 16px;
+}
+.editBtn:hover {
+  border-bottom: 1px solid var(--secondary-color-lightblue);
 }
 .editSvg {
   width: 14px;
   height: 14px;
 }
-
+.deleteBtn {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px;
+  width: 16px;
+}
+.deleteBtn:hover {
+  border-bottom: 1px solid var(--secondary-color-red);
+}
 .deleteSvg {
   width: 12px;
   height: 14px;
+}
+.noNotesRow {
+  width: 100%;
+}
+.noNotes {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  padding-left: 10px;
 }
 .addBtn {
   display: flex;
@@ -99,7 +123,7 @@
   }
   .tRow {
     width: 646px;
-    height: 36px;
+    height: 60px;
   }
   .glassSvg {
     width: 23px;
@@ -118,7 +142,7 @@
   }
   .tRow {
     width: 534px;
-    height: 36px;
+    height: 60px;
   }
   .doseTime {
     padding-right: 278px;

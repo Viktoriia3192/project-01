@@ -15,7 +15,9 @@ const UserLogoModal = () => {
     <div className={css.modal}>
       <button
         className={css.settingButton}
-        onClick={() => setIsSettingOpen(!isSettingOpen)}
+        onClick={() => {
+          setIsSettingOpen(!isSettingOpen);
+        }}
       >
         <svg className={css.toothSvg}>
           <use href={`${sprite}#icon-tooth`}></use>

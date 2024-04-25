@@ -1,6 +1,6 @@
 .container {
   display: inline-block;
-
+  margin-top: 24px;
   border-radius: 10px;
   border: 1px solid var(--secondary-color-2);
   background-color: var(--primery-color-white);
@@ -45,6 +45,9 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .container {
+    margin-top: 40px;
+  }
   .waterRate {
     font-size: 24px;
     line-height: 24px;

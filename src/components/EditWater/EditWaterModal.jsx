@@ -1,15 +1,39 @@
 import { useEffect, useState } from 'react';
 import sprite from '../../images/sprite.svg';
-import css from './EditWater.module.css';
 import { GrAdd } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
-import { updateWaterThunk } from '../../redux/waterData/waterOperations';
+import {
+  monthThunk,
+  todayThunk,
+  updateWaterThunk,
+} from '../../redux/waterData/waterOperations';
+import css from './EditWater.module.css';
+
+const convertTo24HourFormat = (time12Hour) => {
+  const [time, period] = time12Hour.split(' ');
+  const [hours, minutes] = time.split(':').map(Number);
+
+  let hours24 = hours;
+  if (period === 'PM' && hours !== 12) {
+    hours24 += 12;
+  } else if (period === 'AM' && hours === 12) {
+    hours24 = 0;
+  }
+
+  return `${hours24.toString().padStart(2, '0')}:${minutes
+    .toString()
+    .padStart(2, '0')}`;
+};
 
 export default function EditWaterModal({ onClose, modalData }) {
   const { recordId, waterVolume: oldWaterVolume, time: oldTime } = modalData;
-  const [time, setTime] = useState(modalData ? oldTime : '00:00');
+
+  const [time, setTime] = useState(
+    modalData ? convertTo24HourFormat(oldTime) : '00:00'
+  );
   const [amount, setAmount] = useState(modalData ? oldWaterVolume : 250);
   const [waterValue, setWaterValue] = useState(250);
+  const [twelveHourTime, setTwelveHourTime] = useState(oldTime || '');
 
   const dispatch = useDispatch();
 
@@ -23,6 +47,7 @@ export default function EditWaterModal({ onClose, modalData }) {
     const waterVolume = event.currentTarget.water.value;
     const formData = {
       waterVolume,
+      time: twelveHourTime,
     };
 
     handleUpdateWater(formData);
@@ -35,7 +60,14 @@ export default function EditWaterModal({ onClose, modalData }) {
       ...formData,
     };
 
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const formattedMonth = `${year}-${month}`;
+
     await dispatch(updateWaterThunk({ newData, id: recordId }));
+    await dispatch(todayThunk);
+    await dispatch(monthThunk(formattedMonth));
   };
 
   const incrementAmount = () => {
@@ -49,7 +81,15 @@ export default function EditWaterModal({ onClose, modalData }) {
   };
 
   const handleTimeChange = (event) => {
-    setTime(event.target.value);
+    const { value } = event.target;
+
+    const [hh, mm] = value.split(':').map(Number);
+    const period = hh < 12 ? 'AM' : 'PM';
+    const twelveHourTime = hh % 12 || 12;
+    const newTime = `${twelveHourTime}:${mm < 10 ? '0' : ''}${mm} ${period}`;
+
+    setTime(value);
+    setTwelveHourTime(newTime);
   };
 
   const generateOptions = () => {
@@ -74,7 +114,7 @@ export default function EditWaterModal({ onClose, modalData }) {
             </svg>
           </span>
           <p className={css.water_info}>{waterValue} ml</p>
-          <p className={css.water_info_time}>{time} AM</p>
+          <p className={css.water_info_time}>{time}</p>
         </div>
         <p className={css.correct_title}>Correct entered data:</p>
         <p className={css.correct_subtitle}>Amount of water:</p>
