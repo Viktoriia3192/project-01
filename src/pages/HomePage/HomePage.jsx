@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
-import Month from '../../components/Calendar/Month/Month.jsx';
+import MonthStatsTable from '../../components/Calendar/MonthStatsTable.jsx';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
 
@@ -24,7 +24,7 @@ const HomePage = () => {
         </div>
         <div className={s.todayMonthWrapper}>
           <TodayWaterList />
-          <Month />
+          <MonthStatsTable />
         </div>
       </div>
     </div>
