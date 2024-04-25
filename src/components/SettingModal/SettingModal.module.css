@@ -13,11 +13,12 @@
 
 .inputContainer {
   position: relative;
+  /* width: 256px; */
 }
 
 .eyeSlash {
   position: absolute;
-  right: 10px; /* Наприклад, 10px від правого краю */
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -78,7 +79,7 @@
   gap: 8px;
 }
 .genderRadio {
-  border: var(--primery-color-blue);
+  border-color: var(--primery-color-blue);
 }
 .name_lable {
   font-weight: 500;
@@ -88,6 +89,7 @@
 }
 
 .input_field {
+  width: 100%;
   border: 1px solid var(--secondary-color---5);
   border-radius: 6px;
   padding: 12px 10px;
@@ -95,14 +97,16 @@
   color: var(--primery-color-blue);
   outline: transparent;
 }
-
+.input_field:invalid {
+  color: var(--secondary-color-red);
+  border: 1px solid var(--secondary-color-red);
+}
 .input_field:focus {
   border: 1px solid var(--secondary-color---5);
-}
-.input_field:hover {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   transition: box-shadow 0.3s ease;
 }
+
 .input_field::placeholder {
   color: #9ebbff;
 }
@@ -113,6 +117,10 @@
   font-size: 18px;
   line-height: 1.11;
   margin-bottom: 8px;
+}
+
+.eyeButton {
+  padding: 0;
 }
 
 .passwordContainer {
@@ -139,6 +147,10 @@
   stroke: var(--primery-color-blue);
 }
 
+.errorInput::placeholder {
+  color: var(--secondary-color-red);
+}
+
 .lable_password {
   margin-top: 12px;
   margin-bottom: 8px;
@@ -157,13 +169,18 @@
 }
 
 .error {
-  color: red;
+  color: var(--secondary-color-red);
+  font-size: 14px;
+  line-height: 1.3;
 }
 @media screen and (min-width: 768px) {
   .form {
     width: 656px;
   }
-
+  .inputContainer {
+    position: relative;
+    width: 392px;
+  }
   .save_btn {
     width: 160px;
     margin-left: auto;
@@ -173,6 +190,12 @@
   }
   .email_lable {
     margin-top: 24px;
+  }
+  .eyeSlash {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 @media screen and (min-width: 1440px) {
