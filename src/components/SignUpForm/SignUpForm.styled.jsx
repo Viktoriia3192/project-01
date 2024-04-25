@@ -115,5 +115,5 @@ export const StyledToggleBtn = styled.button`
 export const StyledError = styled(ErrorMessage)`
   margin-left: 4px;
   font-size: 14px;
-  color: var(--secondary-color-orange);
+  color: var(--secondary-color-red);
 `;
