@@ -191,12 +191,12 @@
 
 @media screen and (min-width: 1440px) {
   .container {
-    background-image: url('../../images/main/BackMainDesk.png');
-    /* padding: 40px 32px 50px 32px; */
-
+    background-image: url('../../images/main/WelcomeDeskBack.png');
+    background-size: 100%;
+      background-position-y: 96px;
     padding: 49px 18px 109px 18px;
     /* margin: 80px 98px 109px 104px; */
-    background-position-y: center;
+    /* padding: 40px 32px 50px 32px; */
   }
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
