@@ -1,4 +1,4 @@
-import{b as r,m as a,j as i}from"./index-23e78828.js";import{n as o}from"./emotion-styled.browser.esm-4f365305.js";import{m as n,a as t,b as d,t as p,c as s,d as m,e as x,f as l,g as u,S as c,A as g}from"./SignUpPage.styled-5ff08243.js";const b=o.div`
+import{b as r,g as a,j as i}from"./index-6fc513b8.js";import{n as o,m as n,a as t,b as d,t as p,c as s,d as x,e as l,f as m,g as u,S as g,A as c}from"./SignUpPage.styled-4029803a.js";const b=o.div`
   width: 100%;
   height: 100vh;
   position: absolute;
@@ -46,7 +46,7 @@ import{b as r,m as a,j as i}from"./index-23e78828.js";import{n as o}from"./emoti
     height: 100vh;
     top: 60px;
     left: 18px;
-    background-image: url(${m}), url(${x});
+    background-image: url(${x}), url(${l});
     background-size: 916px, 1404px;
     background-position:
       top 28px left -51px,
@@ -56,7 +56,7 @@ import{b as r,m as a,j as i}from"./index-23e78828.js";import{n as o}from"./emoti
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(${l}), url(${u});
+      background-image: url(${m}), url(${u});
     }
   }
 `,h=o.p`
@@ -74,4 +74,4 @@ import{b as r,m as a,j as i}from"./index-23e78828.js";import{n as o}from"./emoti
     margin-left: auto;
     margin-right: 133px;
   }
-`,v=()=>{const e=r(a);return i.jsxs(c,{children:[i.jsx(b,{}),i.jsx(g,{}),e&&i.jsx(h,{children:e})]})};export{v as default};
+`,v=()=>{const e=r(a);return i.jsxs(g,{children:[i.jsx(b,{}),i.jsx(c,{}),e&&i.jsx(h,{children:e})]})};export{v as default};
