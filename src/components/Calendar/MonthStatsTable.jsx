@@ -21,7 +21,7 @@ const MonthStatsTable = () => {
   const currentDayStatistic = useSelector(selectTodayWater);
   const isMonthLoading = useSelector(selectWaterDataIsLoading);
   const [isOtherMonthLoading, setIsOtherMonthLoading] = useState(false);
-  const startDay =useSelector(getStartDay);
+  const startDay = useSelector(getStartDay);
   const registrationDate = funcGetDate(startDay);
 
   useEffect(() => {
@@ -79,14 +79,14 @@ const MonthStatsTable = () => {
       <div className={m.month}>
         {isMonthLoading || isOtherMonthLoading ? (
           <div>
-            <PiSpinnerGap/>
+            <PiSpinnerGap />
           </div>
         ) : (
           <MonthStatistic
             selectedMonth={selectedMonth}
             monthStatistic={monthStatistic}
-              setSelectedMonth={setSelectedMonth}
-              registrationDate={registrationDate}
+            setSelectedMonth={setSelectedMonth}
+            registrationDate={registrationDate}
           />
         )}{' '}
       </div>
