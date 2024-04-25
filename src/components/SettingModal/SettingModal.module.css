@@ -11,6 +11,17 @@
   margin-bottom: 24px;
 }
 
+.inputContainer {
+  position: relative;
+}
+
+.eyeSlash {
+  position: absolute;
+  right: 10px; /* Наприклад, 10px від правого краю */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .subtitle_photo {
   font-weight: 500;
   font-size: 18px;
@@ -40,6 +51,9 @@
 }
 
 .photo_lable {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
@@ -63,7 +77,9 @@
   display: flex;
   gap: 8px;
 }
-
+.genderRadio {
+  border: var(--primery-color-blue);
+}
 .name_lable {
   font-weight: 500;
   font-size: 18px;
@@ -77,8 +93,16 @@
   padding: 12px 10px;
   height: 44px;
   color: var(--primery-color-blue);
+  outline: transparent;
 }
 
+.input_field:focus {
+  border: 1px solid var(--secondary-color---5);
+}
+.input_field:hover {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease;
+}
 .input_field::placeholder {
   color: #9ebbff;
 }
@@ -110,6 +134,7 @@
 
 .uploadPhotoSvg {
   display: inline;
+  margin-right: 8px;
   fill: var(--primery-color-blue);
   stroke: var(--primery-color-blue);
 }
@@ -155,7 +180,7 @@
     width: 960px;
   }
   .save_btn {
-    width: 100px;
+    width: 160px;
     margin-left: auto;
     margin-top: 24px;
   }

@@ -168,14 +168,15 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
                 accept="image/*,.png,.jpg"
                 onChange={avatarHandleChange}
               />
-              <svg className={css.uploadPhotoSvg} width="16" height="16">
-                <use
-                  xlinkHref={`${sprite}#icon-upload-photo`}
-                  width="16"
-                  height="16"
-                ></use>
-              </svg>
+
               <label className={css.photo_lable} htmlFor="avatarURL">
+                <svg className={css.uploadPhotoSvg} width="16" height="16">
+                  <use
+                    xlinkHref={`${sprite}#icon-upload-photo`}
+                    width="16"
+                    height="16"
+                  ></use>
+                </svg>
                 Upload a photo
               </label>
             </div>
@@ -192,6 +193,7 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
                       value="female"
                       checked={formik.values.gender === 'female'}
                       onChange={formik.handleChange}
+                      className={css.genderRadio}
                     />
                     <label htmlFor="female">Woman</label>
                   </div>
@@ -248,16 +250,20 @@ export default function SettingModal({ isOpen, setIsSettingOpen }) {
                 <label className={css.lable_password} htmlFor="oldPassword">
                   Outdated password:
                 </label>
-                <input
-                  className={css.input_field}
-                  id="oldPassword"
-                  name="oldPassword"
-                  type="password"
-                  onChange={formik.handleChange}
-                  value={formik.values.oldPassword}
-                  placeholder="Password"
-                />
-
+                <div className={css.inputContainer}>
+                  <input
+                    className={css.input_field}
+                    id="oldPassword"
+                    name="oldPassword"
+                    type="password"
+                    onChange={formik.handleChange}
+                    value={formik.values.oldPassword}
+                    placeholder="Password"
+                  />
+                  <svg className={css.eyeSlash} width="16" height="16">
+                    <use href={`${sprite}#icon-eye-slash`}></use>
+                  </svg>
+                </div>
                 {formik.errors.oldPassword ? (
                   <div className={css.error}>{formik.errors.oldPassword}</div>
                 ) : null}

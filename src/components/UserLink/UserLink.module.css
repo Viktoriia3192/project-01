@@ -13,6 +13,7 @@
   color: var(--secondary-color-orange);
 }
 .userLogo {
+  border-radius: 50%;
   margin: 0 4px 0 8px;
   width: 28px;
   height: 28px;

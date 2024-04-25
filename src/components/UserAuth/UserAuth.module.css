@@ -7,12 +7,11 @@
   align-items: center;
   flex-direction: row;
   margin-left: 8px;
-  color: var(--primery-color-blue);
+  color: var(--primery-color-black);
 }
-.signinButton:hover {
-  color: var(--secondary-color-orange);
-}
+
 .userLogo {
+  border-radius: 50%;
   margin: 0 0 0 8px;
   width: 28px;
   height: 28px;
