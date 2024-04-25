@@ -75,7 +75,7 @@ export const updateWaterThunk = createAsyncThunk(
 
     try {
       setToken(token);
-      //тут потрібно змінити id i newData на те що буде передано з EditWaterModal
+
       const { id, newData } = data;
       const response = await requestUpdateWater(id, newData);
       return response;

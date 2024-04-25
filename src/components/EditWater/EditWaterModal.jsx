@@ -3,6 +3,7 @@ import sprite from '../../images/sprite.svg';
 import { GrAdd } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
 import {
+  monthThunk,
   todayThunk,
   updateWaterThunk,
 } from '../../redux/waterData/waterOperations';
@@ -59,8 +60,14 @@ export default function EditWaterModal({ onClose, modalData }) {
       ...formData,
     };
 
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const formattedMonth = `${year}-${month}`;
+
     await dispatch(updateWaterThunk({ newData, id: recordId }));
     await dispatch(todayThunk);
+    await dispatch(monthThunk(formattedMonth));
   };
 
   const incrementAmount = () => {
@@ -80,7 +87,6 @@ export default function EditWaterModal({ onClose, modalData }) {
     const period = hh < 12 ? 'AM' : 'PM';
     const twelveHourTime = hh % 12 || 12;
     const newTime = `${twelveHourTime}:${mm < 10 ? '0' : ''}${mm} ${period}`;
-    console.log(newTime);
 
     setTime(value);
     setTwelveHourTime(newTime);

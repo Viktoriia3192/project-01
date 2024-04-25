@@ -1,16 +1,22 @@
 import { useDispatch } from 'react-redux';
 import {
   deleteWaterThunk,
+  monthThunk,
   todayThunk,
 } from '../../redux/waterData/waterOperations';
 import css from './DeleteModal.module.css';
 
 export default function DeleteModal({ onClose, modalData }) {
   const dispatch = useDispatch();
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const formattedMonth = `${year}-${month}`;
 
   const handleDelete = async () => {
     await dispatch(deleteWaterThunk(modalData));
     await dispatch(todayThunk());
+    await dispatch(monthThunk(formattedMonth));
     onClose();
   };
 
